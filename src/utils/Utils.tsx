@@ -3,6 +3,7 @@ import ToDoList from '../components/ToDoList';
 import CounterExample from "../components/CounterExample";
 import ShowHideDiv from "../components/ShowHideDiv";
 import Home from "../components/Home";
+import LazyLoadSuspense from "../components/LazyLoadSuspense";
 
 interface RouteType {
   path: string;
@@ -12,6 +13,7 @@ interface RouteType {
 }
 
 export const routes: RouteType[] = [
+  {path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense"},
   {path: "/ToDoList", element: <ToDoList />, linkText: "To Do List"},
   {path:"/counter-example" , element: <CounterExample />, linkText: "Counter"},
   {path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content"},
