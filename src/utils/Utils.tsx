@@ -5,6 +5,8 @@ import ShowHideDiv from "../components/ShowHideDiv";
 import Home from "../components/Home";
 import LazyLoadSuspense from "../components/LazyLoadSuspense";
 import GoBackToHome from "../components/GoBacktoHome";
+import FetchLazyLoadImages from "../components/FetchLazyLoadImages";
+import IntersectionObserver from "../components/IntersectionObserver";
 
 interface RouteType {
   path: string;
@@ -14,6 +16,8 @@ interface RouteType {
 }
 
 export const routes: RouteType[] = [
+  {path:"/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer"},
+  {path:"/FetchLazyLoadImages", element: <FetchLazyLoadImages />, linkText: "Fetch Lazy Load Images"},
   {path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense"},
   {path: "/ToDoList", element: <ToDoList />, linkText: "To Do List"},
   {path:"/counter-example" , element: <CounterExample />, linkText: "Counter"},
