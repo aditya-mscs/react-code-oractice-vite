@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { routes } from "../routes/AppRouter";
+import { routes } from "../utils/Utils";
 
 export default function Home() {
   return (

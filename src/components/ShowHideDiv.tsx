@@ -8,9 +8,9 @@ const ShowHideDiv = () => {
     <div>
       <GoBackToHome />
       <h1>Show Hide Div</h1>
-      <button onClick={() => setShow(!show)}>Toggle show</button>
+      <button type="button" onClick={() => setShow(!show)}>Toggle show</button>
       { show &&
-        <div>
+        <div> 
           <h5>Content</h5>
         </div>
       }
