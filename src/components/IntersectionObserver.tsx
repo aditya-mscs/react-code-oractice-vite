@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState, useRef } from 'react';
-import FetchLazyLoadImages from './FetchLazyLoadImages';
+import FetchLazyLoadImages from './FetchApiImages';
 import GoBackToHome from './GoBacktoHome';
 
 

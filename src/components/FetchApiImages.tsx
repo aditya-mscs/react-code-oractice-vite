@@ -19,7 +19,7 @@ const FetchLazyLoadImages = () => {
       })
       .catch(error => console.error(error))
   }, [])
-
+  
   return (
     <div>
       <GoBackToHome />
