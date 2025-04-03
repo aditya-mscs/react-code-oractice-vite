@@ -1,19 +1,20 @@
 import { useState } from "react"
 import GoBackToHome from "./GoBacktoHome"
 
+type Task = {
+  id: number,
+  task: string
+}
+
 
 const ToDoList = () => {
-  type Task = {
-    id: number,
-    task: string
-  }
-  const [toDoList, setToDoList] = useState<Task[]>([])
+  const [toDoList, setToDoList] = useState<Task[]>([]) //Note definition during useState
 
   const addTask = () => {
-    const task = (document.getElementById("task") as HTMLInputElement).value.trim();
+    const task = (document.getElementById("task") as HTMLInputElement).value.trim(); //This apporach avoid adding input state
     if (task) {
       //Add to top of list
-      const newTask: Task = { id: Date.now(), task };
+      const newTask: Task = { id: Date.now(), task }; // Using Date.now() as id to make it unique
       setToDoList([newTask, ...toDoList]);
     }
     (document.getElementById("task") as HTMLInputElement).value = ""
@@ -29,6 +30,15 @@ const ToDoList = () => {
       addTask();
     }
   }
+
+  //Another approach: Add state for input
+  // <input
+  // value={input}
+  // onChange={(e) => setInput(e.target.value)}
+  // const handleAddItem = useCallback(() => {
+  //   setItems((prev) => [input, ...prev])
+  //   setInput('')
+  // }, [input]);
 
   return (
     <div>
