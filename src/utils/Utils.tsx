@@ -10,6 +10,10 @@ import IntersectionObserver from "../components/IntersectionObserver";
 import { ArticleSort } from "../components/ArticleSort";
 import { WordOmitter } from "../components/WordOmitter";
 import { ES6 } from "../components/ES6";
+import Cart from "../components/Cart";
+import UsePreviousHook from "../components/usePreviousHook";
+import { ConnectFour } from "../components/ConnectFour";
+import ImageCarousel from "../components/ImageCarousel";
 
 interface RouteType {
   path: string;
@@ -64,6 +68,10 @@ export const ARTICLES_DATA: ArticlesDataI= [
 ]
 
 export const routes: RouteType[] = [
+  {path:"ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel"},
+  {path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four"},
+  {path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook"},
+  {path: "/cart", element: <Cart />, linkText: "Cart"},
   {path: "/es6-features", element: <ES6 />, linkText: "ES6 Features"},
   {path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter"},
   {path:"/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort"},

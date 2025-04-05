@@ -3,13 +3,15 @@ import { routes } from '../utils/Utils';
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-      </Routes>
-    </BrowserRouter>
+    <div className="daddy">
+      <BrowserRouter>
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 export default AppRouter;

@@ -6,6 +6,21 @@ type Task = {
   task: string
 }
 
+//BEST APPROACH: useRef for input
+//const inputRef = useRef<HTMLInputElement>(null); ------------> IMPORTANT LINE
+//const task = inputRef.current?.value.trim(); // Safely access the input value
+//setToDoList([newTask, ...toDoList]); // Important line
+//if (inputRef.current) inputRef.current.value = "";
+//<input type="text" ref={inputRef} />
+
+//Another approach: Add state for input ---> NOT GOOD
+// <input
+// value={input}
+// onChange={(e) => setInput(e.target.value)}
+// const handleAddItem = useCallback(() => {
+//   setItems((prev) => [input, ...prev])
+//   setInput('')
+// }, [input]);
 
 const ToDoList = () => {
   const [toDoList, setToDoList] = useState<Task[]>([]) //Note definition during useState
@@ -15,7 +30,7 @@ const ToDoList = () => {
     if (task) {
       //Add to top of list
       const newTask: Task = { id: Date.now(), task }; // Using Date.now() as id to make it unique
-      setToDoList([newTask, ...toDoList]);
+      setToDoList([newTask, ...toDoList]); //---------> ONLY IMPORTANT LINE
     }
     (document.getElementById("task") as HTMLInputElement).value = ""
   }
@@ -31,14 +46,6 @@ const ToDoList = () => {
     }
   }
 
-  //Another approach: Add state for input
-  // <input
-  // value={input}
-  // onChange={(e) => setInput(e.target.value)}
-  // const handleAddItem = useCallback(() => {
-  //   setItems((prev) => [input, ...prev])
-  //   setInput('')
-  // }, [input]);
 
   return (
     <div>

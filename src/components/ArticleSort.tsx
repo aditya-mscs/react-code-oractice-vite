@@ -53,7 +53,6 @@ export const ArticleSort = ({articlesData}: { articlesData: ArticlesDataI }) => 
     setSortOrderDate("");
   }, [articlesData, sortOrderUpvotes]);
 
-
   // ✅ useMemo to memoize the sorted articles based on upvotes
   // const sortedArticles = useMemo(() => {
   //   if (!sortOrderUpvotes) return articlesData;
@@ -69,18 +68,31 @@ export const ArticleSort = ({articlesData}: { articlesData: ArticlesDataI }) => 
   //   setSortOrderDate(""); // Reset date sorting when sorting by upvotes
   // }, [sortedArticles]);
 
+  const jsCode = `
+    const sortedArticles = [...articlesData].sort((a, b) => {
+      return sortOrderUpvotes === "asc" // ASC -> a-b, DESC -> b-a
+      ? a.upvotes - b.upvotes
+      : b.upvotes - a.upvotes;
+      });
+  `;
 
   return (
     <div>
-      <GoBackToHome />Word Omitter
+      <GoBackToHome />
 
-      <h1>Sort Articles</h1>
+      <h1>Article Sort</h1>
+
+      <pre className="code-wrapper">
+          <code>{jsCode}</code>
+      </pre>
+
       <button type="button" onClick={sortByDate}>
         Sort by Date ({sortOrderDate || "N/A"})
       </button>
       <button type="button" onClick = {sortByUpvotes}>
         Sort by Votes ({sortOrderUpvotes || "N/A"})
       </button>
+
       <ArticleSortChild articles={articles} />
     </div>
   );
