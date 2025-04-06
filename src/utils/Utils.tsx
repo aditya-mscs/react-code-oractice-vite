@@ -16,6 +16,8 @@ import { ConnectFour } from "../components/ConnectFour";
 import ImageCarousel from "../components/ImageCarousel";
 import { TicTacToe } from "../components/TicTacToe";
 import { VirtualizedListWrapper } from "../components/VirtualizedList";
+import ErrorBoundary from "../components/ErrorBoundary";
+import ErrorBoundaryThrowError from "../components/ErrorBoundaryThrowError";
 
 interface RouteType {
   path: string;
@@ -70,6 +72,7 @@ export const ARTICLES_DATA: ArticlesDataI= [
 ]
 
 export const routes: RouteType[] = [
+  {path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary"},
   {path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List"},
   {path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe"},
   {path:"ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel"},

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FixedSizeList as List } from 'react-window';
 import { FixedSizeGrid as Grid } from 'react-window';
 import GoBackToHome from './GoBacktoHome';
@@ -10,8 +8,10 @@ type VirtualizedListProps = {
   height: number;
   width: number;
 };
+
 // Create virtualized list component
-const VirtualizedList: React.FC<VirtualizedListProps> = ({ items, itemSize, height, width }) => {
+const VirtualizedList = ({ items, itemSize, height, width }: VirtualizedListProps) => {
+//OR const VirtualizedList: React.FC<VirtualizedListProps> = ({ items, itemSize, height, width }) => {
   return (
     <List
       height={height}
