@@ -14,6 +14,8 @@ import Cart from "../components/Cart";
 import UsePreviousHook from "../components/usePreviousHook";
 import { ConnectFour } from "../components/ConnectFour";
 import ImageCarousel from "../components/ImageCarousel";
+import { TicTacToe } from "../components/TicTacToe";
+import { VirtualizedListWrapper } from "../components/VirtualizedList";
 
 interface RouteType {
   path: string;
@@ -68,6 +70,8 @@ export const ARTICLES_DATA: ArticlesDataI= [
 ]
 
 export const routes: RouteType[] = [
+  {path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List"},
+  {path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe"},
   {path:"ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel"},
   {path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four"},
   {path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook"},

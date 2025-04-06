@@ -58,3 +58,103 @@ html, body, #root {
 .read-the-docs {
   color: #888;
 }
+
+
+
+
+
+
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+
+  h1 {
+    margin: 10px 0;
+  }
+
+  .status {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+
+    &.winner {
+      color: green;
+    }
+
+    &.draw {
+      color: red;
+    }
+  }
+
+  .board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 5px;
+    margin: 20px 0;
+
+    .line {
+      position: absolute;
+      width: 5px;
+      height: 180px;
+      background-color: green;
+      z-index: 0;
+      transform-origin: center;
+      animation: grow 0.3s ease-in-out;
+    }
+  }
+
+  .square, .reset-button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f4f4f4;
+    border: 2px solid #333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2px;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+  }
+
+  .reset-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+}
