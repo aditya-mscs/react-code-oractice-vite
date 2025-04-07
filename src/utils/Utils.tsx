@@ -11,13 +11,18 @@ import { ArticleSort } from "../components/ArticleSort";
 import { WordOmitter } from "../components/WordOmitter";
 import { ES6 } from "../components/ES6";
 import Cart from "../components/Cart";
-import UsePreviousHook from "../components/usePreviousHook";
+import UsePreviousHook from "../hooks/usePreviousHook";
 import { ConnectFour } from "../components/ConnectFour";
 import ImageCarousel from "../components/ImageCarousel";
 import { TicTacToe } from "../components/TicTacToe";
 import { VirtualizedListWrapper } from "../components/VirtualizedList";
 import ErrorBoundary from "../components/ErrorBoundary";
 import ErrorBoundaryThrowError from "../components/ErrorBoundaryThrowError";
+import UseTransition from "../hooks/useTransition";
+import AutomaticBatching from "../components/AutomaticBatching";
+import UseDeferredValue from "../hooks/UseDeferredValue";
+import { BamChallenge } from "../components/BamChallenge";
+import UseWindowDimentionsOnResize from "../hooks/useWindowDimentionsOnResize";
 
 interface RouteType {
   path: string;
@@ -33,7 +38,7 @@ type ArticleData = {
 }
 export type ArticlesDataI = ArticleData[];
 
-export const ARTICLES_DATA: ArticlesDataI= [
+export const ARTICLES_DATA: ArticlesDataI = [
   {
     title: "A message to our customers",
     upvotes: 12,
@@ -72,22 +77,27 @@ export const ARTICLES_DATA: ArticlesDataI= [
 ]
 
 export const routes: RouteType[] = [
-  {path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary"},
-  {path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List"},
-  {path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe"},
-  {path:"ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel"},
-  {path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four"},
-  {path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook"},
-  {path: "/cart", element: <Cart />, linkText: "Cart"},
-  {path: "/es6-features", element: <ES6 />, linkText: "ES6 Features"},
-  {path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter"},
-  {path:"/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort"},
-  {path:"/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer"},
-  {path:"/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API"},
-  {path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense"},
-  {path: "/ToDoList", element: <ToDoList />, linkText: "To Do List"},
-  {path:"/counter-example" , element: <CounterExample />, linkText: "Counter"},
-  {path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content"},
-  {path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)"},
-  {path: "/", element: <Home />, hideOnHome: true, linkText: "Home"},
+  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
+  { path: "/BamChallenge", element: <BamChallenge />, linkText: "Bam Challenge" },
+  { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
+  { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
+  { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
+  { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
+  { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
+  { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },
+  { path: "ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel" },
+  { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
+  { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
+  { path: "/cart", element: <Cart />, linkText: "Cart" },
+  { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
+  { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
+  { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
+  { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
+  { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
+  { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
+  { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
+  { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
+  { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
+  { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)" },
+  { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 ]
