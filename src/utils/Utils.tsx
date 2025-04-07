@@ -21,8 +21,8 @@ import ErrorBoundaryThrowError from "../components/ErrorBoundaryThrowError";
 import UseTransition from "../hooks/useTransition";
 import AutomaticBatching from "../components/AutomaticBatching";
 import UseDeferredValue from "../hooks/UseDeferredValue";
-import { BamChallenge } from "../components/BamChallenge";
 import UseWindowDimentionsOnResize from "../hooks/useWindowDimentionsOnResize";
+import SuggestedCities from "../components/SuggestedCities";
 
 interface RouteType {
   path: string;
@@ -77,8 +77,8 @@ export const ARTICLES_DATA: ArticlesDataI = [
 ]
 
 export const routes: RouteType[] = [
+  { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
   { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
-  { path: "/BamChallenge", element: <BamChallenge />, linkText: "Bam Challenge" },
   { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
   { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
