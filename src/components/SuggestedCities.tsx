@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import GoBackToHome from './GoBacktoHome';
 
 //[
 // {
@@ -95,6 +96,7 @@ export default function SuggestedCities() {
 
   return (
     <div>
+      <GoBackToHome />
       <h1>US City Suggestion App</h1>
       <div>
         <label>Latitude: </label>
@@ -108,7 +110,7 @@ export default function SuggestedCities() {
           <li key={city?.id}>{city.City} (Pop: {city.Population}) Distance: {city.distance}</li>
         ))}
       </ul>
-      <MapContainer center={[latitude, longitude]} zoom={5} style={{ height: '400px', width: '100%' }}>
+      <MapContainer zoom={5} style={{ height: '400px', width: '100%' }} whenCreated={(map) => map.setView([latitude, longitude])}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <MapBounds cities={suggestedCities} />
         {suggestedCities.map((city) => (

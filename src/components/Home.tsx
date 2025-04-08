@@ -1,11 +1,24 @@
 import { Link } from "react-router";
 import { routes } from "../utils/Utils";
 import { API_URL } from "../config/config";
+import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { user, setUser } = useGlobalContext();
+
+  // Update user only once when the component mounts
+  useEffect(() => {
+    if (!user?.name) {  // Check if the user is already set
+      setUser?.({ ...user, name: 'Addy' });
+    }
+  }, [user, setUser]);  // Depend on user to avoid redundant calls
+
+
   return (
     <div>
-      <h1>React coding practices</h1>
+      <h1>React coding practice</h1>
+      <h2>By {user?.name}</h2>
       {routes.map((route) => (
         !route.hideOnHome && <ol key={route.path}><Link to={route.path}>{route.linkText}</Link></ol>
       ))}
