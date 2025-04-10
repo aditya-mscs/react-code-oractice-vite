@@ -182,6 +182,14 @@ export const Es6TsPractice = () => {
 
 
   //------------------- 2 ARRAY QUESTIONS ------------------
+
+  //Replace all occurrences of a given value in an array
+  const replaceAllOccurrences = (arr: number[], target: number, replacement: number): number[] => {
+    return arr.map((item) => (item === target ? replacement : item));
+  }
+  console.log('2.1 replaceAllOccurrences: ', replaceAllOccurrences([1, 2, 3, 4, 5, 2], 2, 99)); // Outputs: [1, 99, 3, 4, 5, 99]
+  //NOTE : Replace all occurrences of a given value in an array without using built-in functions
+
   //---> break helps us exit the current loop, while continue helps us skip the current iteration and move to the next one.
   const array = [
     ["Apt 101", "Apt 102", "Apt 103"],

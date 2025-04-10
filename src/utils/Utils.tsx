@@ -24,6 +24,7 @@ import UseDeferredValue from "../hooks/UseDeferredValue";
 import UseWindowDimentionsOnResize from "../hooks/useWindowDimentionsOnResize";
 import SuggestedCities from "../components/SuggestedCities";
 import { Es6TsPractice } from "../components/Es6TsPractice";
+import UseDebounceExample from "../components/useDebounceExample";
 
 interface RouteType {
   path: string;
@@ -78,26 +79,32 @@ export const ARTICLES_DATA: ArticlesDataI = [
 ]
 
 export const routes: RouteType[] = [
-  { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
-  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
-  { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
-  { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
-  { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
-  { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
-  { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
-  { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },
-  { path: "ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel" },
-  { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
-  { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
-  { path: "/cart", element: <Cart />, linkText: "Cart" },
+  //Coding Practice
   { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice" },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
+  //hooks
+  { path: "/UseDebounceExample", element: <UseDebounceExample />, linkText: "useDebounce" },
+  { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
+  { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
+  { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
+  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
+  //Examples
+  { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
+  { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },
+  { path: "/ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel" },
+  { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
+  { path: "/cart", element: <Cart />, linkText: "Cart" },
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
+  { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
+
+  //React, Next Concepts
+  { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
+  { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
+  { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
   { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
-  { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
   { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
   { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)" },

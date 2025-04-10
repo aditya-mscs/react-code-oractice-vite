@@ -134,7 +134,7 @@ export const ES6 = () => {
   console.log('-------------------------ARRAY QUESTIONS--------------------------');
   //ES6 array features
   const numbersX = [1, 2, 3, 4, 5];
-  const doubledNumbers = numbersX.map(num => num * 2); //-----> Best for Creating New Arrays
+  const doubledNumbers = numbersX.map(num => num * 2); //-----> Best for Creating New Arrays SO REPLACE ALL uses map
   const filteredNumbers = numbersX.filter(num => num > 2); //-----> Best for Filtering Arrays
   const sum = numbersX.reduce((total, num) => total + num, 0); //-----> Best for Summing or Aggregation
   //NOTE: first param is acc/total and second param is indiviual number. second param 0 is initialValue
