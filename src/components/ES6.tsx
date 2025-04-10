@@ -30,67 +30,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------OBJECT DATA TYPE-----------------------------');
-  //Object: Object.is(obj), Object.keys(obj), Object.values(obj), Object.entries(obj), Object.assign(), ____ Object.hasOwn()
-  const person = {
-    name: 'John',
-    age: 30,
-    greet() { //NOTE : _________ shorthand method definition
-      console.log(`Hello ${this.name}`);
-    },
-    greetArrow: () => { //NOTE : _________ arrow function DOESNT work with this
-      //NOTE : ___________ this is not bound to the object, so it will be undefined
-      //NOTE : this is bound to the global object (window in browsers)
-      console.log(`Hello ${this?.name}`); //Hello undefined
-    },
-    greetRegular: function () { //NOTE : regular function
-      console.log(`Hello ${this.name}`); //Hello John
-    },
-    greetWithDefault: function (greeting = 'Hello') { //NOTE : default parameter
-      console.log(`${greeting} ${this.name}`); //Hello John
-    },
-    greetWithRest: function (...args: string[]) { //NOTE : rest parameter
-      console.log(`Hello ${this.name} and I have ${args.length} arguments: ${args.join(', ')}`); //Hello John and I have 3 arguments: Hi, Hello, Hey
-    },
-    greetWithSpread: function (...args: string[]) { //NOTE : spread operator
-      const newArgs = [...args, 'John'];
-      console.log(`Hello ${this.name} and I have ${newArgs.length} arguments: ${newArgs.join(', ')}`); //Hello John and I have 4 arguments: Hi, Hello, Hey, John
-    }
-  };
-
-  //Loop within object
-  const getObjectProps = (obj: object) => {
-    const keys = Object.keys({ a: 1, b: 2 }) // ['a', 'b']
-    const values = Object.values({ a: 1, b: 2 }) // [1, 2]
-    const entries = Object.entries({ a: 1, b: 2 }) // [['a', 1], ['b', 2]];
-    console.log('keys:', keys);
-    console.log('values:', values);
-    console.log('entries:', entries);
-  }
-  getObjectProps(person);
-  //NOTE : Object.keys() returns an array of the object's own enumerable property names
-
-  const tslaObj = {
-    symbol: 'TSLA',
-    price: 200,
-    name: 'Tesla',
-    changePercent: 0.5,
-    marketCap: 1000000,
-    volume: 1000000,
-  }
-  Object.keys(tslaObj).forEach((key) => {
-    console.log(key, ': ', tslaObj[key]);
-  });
-  console.log(tslaObj.price); // 200
-  Object.assign(tslaObj, { price: 300 }); //----> Updates ORIGINAL object. FIRST PARAM GETS UPDATED EVERY TIME
-  console.log(tslaObj.price); // 300
-
-  const tslaObj2 = Object.assign({}, tslaObj, { price: 400 }); //----> Creates a SHALLOW copy of the object
-  console.log(tslaObj2.price); // 400
-  console.log(tslaObj.price); // 300
-
-  console.log(Object.hasOwn({ a: 1 }, 'a')) // true
-
+  console.log('----------------------OBJECT QUESTIONS-----------------------------');
   //ChatGpt
   // Object Property and Value Access
   console.log('1. Object.keys:', Object.keys({ a: 1, b: 2 })); // ['a', 'b']
@@ -139,15 +79,65 @@ export const ES6 = () => {
 
 
 
+  //Object: Object.is(obj), Object.keys(obj), Object.values(obj), Object.entries(obj), Object.assign(), ____ Object.hasOwn()
+  const person = {
+    name: 'John',
+    age: 30,
+    greet() { //NOTE : _________ shorthand method definition
+      console.log(`Hello ${this.name}`);
+    },
+    greetArrow: () => { //NOTE : _________ arrow function DOESNT work with this
+      //NOTE : ___________ this is not bound to the object, so it will be undefined
+      //NOTE : this is bound to the global object (window in browsers)
+      console.log(`Hello ${this?.name}`); //Hello undefined
+    },
+    greetRegular: function () { //NOTE : regular function
+      console.log(`Hello ${this.name}`); //Hello John
+    },
+    greetWithDefault: function (greeting = 'Hello') { //NOTE : default parameter
+      console.log(`${greeting} ${this.name}`); //Hello John
+    },
+    greetWithRest: function (...args: string[]) { //NOTE : rest parameter
+      console.log(`Hello ${this.name} and I have ${args.length} arguments: ${args.join(', ')}`); //Hello John and I have 3 arguments: Hi, Hello, Hey
+    },
+    greetWithSpread: function (...args: string[]) { //NOTE : spread operator
+      const newArgs = [...args, 'John'];
+      console.log(`Hello ${this.name} and I have ${newArgs.length} arguments: ${newArgs.join(', ')}`); //Hello John and I have 4 arguments: Hi, Hello, Hey, John
+    }
+  };
+
+  const tslaObj = {
+    symbol: 'TSLA',
+    price: 200,
+    name: 'Tesla',
+    changePercent: 0.5,
+    marketCap: 1000000,
+    volume: 1000000,
+  }
+  Object.keys(tslaObj).forEach((key) => {
+    console.log(key, ': ', tslaObj[key]);
+  });
+  console.log(tslaObj.price); // 200
+  Object.assign(tslaObj, { price: 300 }); //----> Updates ORIGINAL object. FIRST PARAM GETS UPDATED EVERY TIME
+  console.log(tslaObj.price); // 300
+
+  const tslaObj2 = Object.assign({}, tslaObj, { price: 400 }); //----> Creates a SHALLOW copy of the object
+  console.log(tslaObj2.price); // 400
+  console.log(tslaObj.price); // 300
+
+  console.log(Object.hasOwn({ a: 1 }, 'a')) // true
 
 
 
-  console.log('-------------------------ARRA DATA TYPE--------------------------');
+
+
+  console.log('-------------------------ARRAY QUESTIONS--------------------------');
   //ES6 array features
   const numbersX = [1, 2, 3, 4, 5];
-  const doubledNumbers = numbersX.map(num => num * 2);
-  const filteredNumbers = numbersX.filter(num => num > 2);
-  const sum = numbersX.reduce((total, num) => total + num, 0); //NOTE: first param is acc/total and second param is indiviual number. second param 0 is initialValue
+  const doubledNumbers = numbersX.map(num => num * 2); //-----> Best for Creating New Arrays
+  const filteredNumbers = numbersX.filter(num => num > 2); //-----> Best for Filtering Arrays
+  const sum = numbersX.reduce((total, num) => total + num, 0); //-----> Best for Summing or Aggregation
+  //NOTE: first param is acc/total and second param is indiviual number. second param 0 is initialValue
 
   //ChatGpt
   // 🌟 Creation and Filling
@@ -159,44 +149,100 @@ export const ES6 = () => {
   [1, 2, 3].forEach((num) => console.log('4. forEach:', num * 2)); // 2, 4, 6
   console.log('5. map:', [1, 2, 3].map(x => x * 2)); // [2, 4, 6]
   console.log('6. filter:', [1, 2, 3, 4].filter(x => x % 2 === 0)); // [2, 4]
-  console.log('7. reduce:', [1, 2, 3].reduce((sum, x) => sum + x, 0)); // 6
+  console.log('7. reduce:', [1, 2, 3].reduce((sum, x) => sum + x, 0)); // 6 //----> reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: number[]) => number, initialValue: number)
   console.log('8. reduceRight:', ['a', 'b', 'c'].reduceRight((acc, val) => acc + val)); // "cba"
 
   // 🔍 Searching
   console.log('9. find:', [1, 2, 3, 4].find(x => x > 2)); // 3
   console.log('10. findIndex:', [1, 2, 3, 4].findIndex(x => x > 2)); // 2
   console.log('11. includes:', [1, 2, 3].includes(2)); // true
-  console.log('12. indexOf:', [1, 2, 3].indexOf(2)); // 1
+  console.log('12. indexOf:', [1, 2, 3].indexOf(2)); // 1 --->  Array<number>.indexOf(searchElement: number, fromIndex?: number): number
   console.log('13. lastIndexOf:', [1, 2, 3, 2].lastIndexOf(2)); // 3
   console.log('14. some:', [1, 2, 3].some(x => x > 2)); // true
   console.log('15. every:', [1, 2, 3].every(x => x > 0)); // true
 
   // 🧩 Transformation
   console.log('16. concat:', [1, 2].concat([3, 4])); // [1, 2, 3, 4]
-  console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3"
+  console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3" //---> .join(separator?: string): string
+  console.log('18. flat:', [1, [2, [3]]].flat()); // (3) [1, 2, Array(1)] ---> .flat by default flattens only 1 level deep
   console.log('18. flat:', [1, [2, [3]]].flat(2)); // [1, 2, 3]
   console.log('19. flatMap:', [1, 2].flatMap(x => [x * 2])); // [2, 4]
   console.log('20. reverse:', [1, 2, 3].reverse()); // [3, 2, 1]
 
-  // 📋 Adding and Removing Elements
-  console.log('21. push:', [1, 2].push(3), [1, 2]); // 3, [1, 2, 3]
-  console.log('22. pop:', [1, 2, 3].pop(), [1, 2]); // 3, [1, 2]
-  console.log('23. unshift:', [2, 3].unshift(1), [2, 3]); // 3, [1, 2, 3]
-  console.log('24. shift:', [1, 2, 3].shift(), [2, 3]); // 1, [2, 3]
-  console.log('25. splice (add):', [1, 3].splice(1, 0, 2), [1, 2, 3]); // [], [1, 2, 3]
-  console.log('26. splice (remove):', [1, 2, 3].splice(1, 1), [1, 3]); // [2], [1, 3]
+  //Adding removing from array
+  // 📋 PUSH POP at the END
+  console.log('21. push:', [1, 2].push(3), [1, 2]); // 3, [1, 2, 3] ---> PUSH AT END
+  console.log('22. pop:', [1, 2, 3].pop(), [1, 2]); // 3, [1, 2] ---> POP FROM END
+  // UNSHIFT = PUSH at the START
+  console.log('23. unshift:', [2, 3].unshift(1), [2, 3]); // 3, [1, 2, 3] --> UNSHIFT is PUSH AT START. unshift(...items: number[])
+  console.log('24. shift:', [1, 2, 3].shift(), [2, 3]); // 1, [2, 3] ---> SHIFT is pop from START
+
+  //SPLICE ----> (INDEX, HOW MANY TO REMOVE, HOW MANY TO ADD)
+  //	•	⚠️ Mutating – _________ SPLICE Modifies the original array. Used to add, remove, or replace elements
+  console.log('25. splice (add):', [1, 3].splice(1, 0, 2), [1, 2, 3]); //returns [], Original array[1,2] --> [1, 2, 3] ---> INSERTS INBETWEEN
+  console.log('26. splice (remove):', [1, 2, 3].splice(1, 1), [1, 3]); // [2], [1, 3] ---> DELETES
+  const a1 = [1, 2, 3, 4];
+  console.log('26.1 Remove first:', [...a1].splice(0, 1));        // [1] //Original array: [2, 3, 4]
+  console.log('26.2 Remove last:', [...a1].splice(3, 1));         // [4] //Original array: [1, 2, 3]
+  console.log('26.3 Remove middle:', [...a1].splice(1, 2));       // [2, 3] //Original array: [1, 4]
+  console.log('26.4 Insert at index 2:', [...a1].splice(2, 0, 99)); // [] ---> .splice() always returns an array of removed items. Since deleteCount = 0, nothing is removed, so the return value is: [] // Original array: [1, 2, 99, 3, 4]
+  //-------> SO NEED TO ASSIGN TO OTHER VARIABLE
+  const a2 = [1, 2, 3, 4]
+  const a3 = a2.splice(2, 0, 99); // a3 = [] // a2 = [1, 2, 99, 3, 4]
+  console.log('26.5 Insert at start:', [...a1].splice(0, 0, 0));  // [] // Original array: [0, 1, 2, 3, 4]
+  console.log('26.6 Insert at end:', [...a1].splice(4, 0, 5));    // [] // Original array: [1, 2, 3, 4, 5]
+  console.log('26.7 Replace 1 with 2:', [...a1].splice(1, 1, 'a', 'b')); // [2] // Original array: [1, 'a', 'b', 3, 4]
+  console.log('26.8 Insert 2 items at 1:', [...a1].splice(1, 0, 'a', 'b')); // [] // Original array: [1, 'a', 'b', 2, 3, 4]
+  console.log('26.9 Remove last using -1:', [...a1].splice(-1, 1)); // [4] // Original array: [1, 2, 3]
+  console.log('26.10 Remove third using -2:', [...a1].splice(-2, 1)); // [3] // Original array: [1, 2, 4]
+  console.log('26.11 Replace first 2 with 10,11:', [...a1].splice(0, 2, 10, 11)); // [1, 2] // Original array: [10, 11, 3, 4]
+  console.log('26.12 Empty array:', [...a1].splice(0, a1.length)); // [1, 2, 3, 4] // Original array: []
+  console.log('26.13 Remove from index 2:', [...a1].splice(2));   // [3, 4] // Original array: [1, 2]
+  console.log('26.14 No remove, no insert:', [...a1].splice(1, 0)); // [] // Original array: [1, 2, 3, 4]
+  console.log('26.15 Remove 3 from 1, insert x:', [...a1].splice(1, 3, 'x')); // [2, 3, 4] // Original array: [1, 'x']
+  console.log('26.16 Add "start" at beginning:', [...a1].splice(0, 0, 'start')); // [] // Original array: ['start', 1, 2, 3, 4]
+  console.log('26.17 Add "end" at end:', [...a1].splice(a1.length, 0, 'end')); // [] // Original array: [1, 2, 3, 4, 'end']
+
+  const a4 = [1, 2, 3, 4]
+  function deleteFromArray(valueToRemove) { //search and delete --> indexOf and splice
+    const index = a4.indexOf(valueToRemove);
+    if (index !== -1) {
+      a4.splice(index, 1);
+    }
+  }
+  deleteFromArray(3); // a4 = [1, 2, 4] ----> same array modfied
+  // OR
+  function deleteFromArray(valueToRemove) {
+    return a4.filter(val => val !== valueToRemove);
+  }
+  const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
+
+
+  //Chunking -----> slice(start?: number, end?: number)  RETURNS SLICE
+  //	✅ Non-mutating ___________Returns a shallow copy, original array remains unchanged. Used to extract a portion of an array
+  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3] //----------->
+  //Slice 3 from [1, 2, 3, 4] and returns [2, 3]
+  console.log('38. slice:', [1, 2, 3, 4].slice(-2)); // [3, 4] //----------->
+  console.log('38.1 Slice full:', a1.slice());                     // [1, 2, 3, 4]
+  console.log('38.2 Slice from index 1:', a1.slice(1));            // [2, 3, 4]
+  console.log('38.3 Slice index 1 to 3:', a1.slice(1, 3));         // [2, 3]
+  console.log('38.4 Slice with negative start:', a1.slice(-2));    // [3, 4]
+  console.log('38.5 Slice with negative end:', a1.slice(0, -1));   // [1, 2, 3]
+  console.log('38.6 Slice last element only:', a1.slice(-1));      // [4]
+  console.log('38.7 Slice with both negative:', a1.slice(-3, -1)); // [2, 3]
+  console.log('38.8 Slice zero elements:', a1.slice(2, 2));        // []
 
   // 🔄 Sorting and Rearranging
   console.log('27. sort:', [3, 1, 2].sort((a, b) => a - b)); // [1, 2, 3]
   console.log('28. copyWithin:', [1, 2, 3, 4].copyWithin(0, 2)); // [3, 4, 3, 4]
-  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0]
+  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0] //fill(value, start, end): number[]
 
   // 📐 Array Properties
   console.log('30. length:', [1, 2, 3].length); // 3
   console.log('31. isArray:', Array.isArray([1, 2, 3])); // true
 
   // 🌟 Finding Min/Max
-  console.log('32. Math.min:', Math.min(...[1, 2, 3])); // 1
+  console.log('32. Math.min:', Math.min(...[1, 2, 3])); // 1 //----> Note ... is spread operator to unpack array
   console.log('33. Math.max:', Math.max(...[1, 2, 3])); // 3
 
   // 🔀 Converting and Cloning
@@ -204,9 +250,8 @@ export const ES6 = () => {
   console.log('35. toLocaleString:', [1, 2].toLocaleString()); // "1,2"
   const arr = [1, 2, 3]; const clonedArr = [...arr]; console.log('36. spread operator:', clonedArr); // [1, 2, 3]
 
-  // 🧩 Grouping and Chunking
+  // 🧩 Grouping
   console.log('37. Array.from (range):', Array.from({ length: 5 }, (_, i) => i + 1)); // [1, 2, 3, 4, 5]
-  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3]
 
   // 🗃️ Advanced
   console.log('39. Array.prototype.at:', [1, 2, 3].at(-1)); // 3
@@ -215,34 +260,15 @@ export const ES6 = () => {
   console.log('42. Array.prototype.values:', [...[1, 2, 3].values()]); // [1, 2, 3]
 
 
-  //NOTE : Find the number of occurrences of each string in an array
-  const strings = ['hello', 'hello', 'world', 'test', 'tree'];
-  const queries = ['hello', 'world', 'waitWhat'];  //output = [2, 1, 0]
-  function matchingStrings(strings: string[], queries: string[]): number[] {
-    // Write your code here
-    const result: number[] = [];
-    queries.forEach((query) => {
-      let count = 0;
-      strings.forEach((string) => {
-        if (string === query) {
-          count++;
-        }
-      });
-      result.push(count);
-    });
-    return result;
-  }
-  console.log(matchingStrings(strings, queries)); // [2, 1, 0]
 
 
 
 
 
-
-  console.log('-----------------------SET DATA TYPE----------------------------');
-  //Set --> new Set(), .add(X), .has(X), .delete(X), .clear(), .size
+  console.log('-----------------------SET QUESTIONS----------------------------');
+  //Set --> new Set(), .add(X), .has(X), .delete(X), .clear(), .size, forEach,
   //NOTE : Set is an collection of ______ unique values, meaning it can only contain one instance of each value
-  //NOTE : Set is an NOT iterable, so we canNOT use forEach, map, filter, reduce, etc. on it
+  //NOTE : Set is an NOT iterable, so we canNOT use map, filter, reduce, etc. on it
   //NOTE : Set is not an object or array, so we can't use its methods on it
   const setX = new Set([4, 5, 2, 3]);
   setX.add(1);
@@ -281,7 +307,9 @@ export const ES6 = () => {
   const numbersSet = new Set([10, 20, 30, 40, 50]);
 
   // 🔄 Iteration
-  numbersSet.forEach(val => console.log('6. forEach:', val * 2)); // 20, 40, 60, 80, 100
+  numbersSet.forEach(val => console.log('6. forEach:', val * 2)); // 20, 40, 60, 80, 100 //---> forEach WORKS on set
+  const numberArray = [...numbersSet] // OR const numberArray = Array.from(numbersSet)  //---> CONVERT SET TO ARRAY
+  console.log('6.5 set to array:', numberArray); // [10, 20, 30, 40, 50]
   console.log('7. keys:', [...numbersSet.keys()]); // [10, 20, 30, 40, 50]
   console.log('8. values:', [...numbersSet.values()]); // [10, 20, 30, 40, 50]
   console.log('9. entries:', [...numbersSet.entries()]); // [[10, 10], [20, 20], [30, 30], [40, 40], [50, 50]]
@@ -343,7 +371,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------MAP DATA TYPE-----------------------------');
+  console.log('----------------------MAP QUESTIONS-----------------------------');
   //MAP --> new Map(), .set(key, value), .has(key), .get(key), .delete(key), .clear(), .size .forEach()
   const map = new Map(); //NOTE : Map is an collection of ______ key-value pairs with unique keys
   map.set('name', 'John');
@@ -375,7 +403,7 @@ export const ES6 = () => {
   console.log('3. Population of Los Angeles:', cityPopulationMap.get('Los Angeles')); // 3980400
 
   // 4. Checking if a key exists
-  console.log('4. Has New York:', cityPopulationMap.has('New York')); // true
+  console.log('4. Has New York:', cityPopulationMap.has('New York')); // true -------> checks value
   console.log('5. Has Houston:', cityPopulationMap.has('Houston')); // false
 
   // 5. Updating a value
@@ -400,7 +428,7 @@ export const ES6 = () => {
 
   // 9. Converting Map to Array
   const cityArray = Array.from(cityPopulationMap);
-  console.log('10. Map to Array:', cityArray); // [['New York', 8419000], ['Chicago', 2750000]]
+  console.log('10. Map to Array:', cityArray); // [['New York', 8419000], ['Chicago', 2750000]] //---> CONVERT MAP TO ARRAY of ARRAY
 
   // 10. Getting keys and values
   const cityKeys = Array.from(cityPopulationMap.keys());
@@ -469,7 +497,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------WEAKMAP DATA TYPE-----------------------------');
+  console.log('----------------------WEAKMAP QUESTIONS-----------------------------');
   //WeakMap -> new WeakMap(), .set(key, value), .has(key), .get(key), .delete(key)
   //NOTE : WeakMap is an collection of ______ key-value pairs with unique keys, but the keys must be objects
   //Use: to store private data for an object
@@ -555,7 +583,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------WEAKSET DATA TYPE-----------------------------');
+  console.log('----------------------WEAKSET QUESTIONS-----------------------------');
   //WeakSet -> new WeakSet(), .add(value), .has(value), .delete(value)
   //NOTE : WeakSet is an collection of ______ unique values, but the values must be objects
   // 1. Creating a WeakSet
@@ -646,7 +674,7 @@ export const ES6 = () => {
 
 
 
-  console.log('-------------------------STRING DATA TYPE--------------------------');
+  console.log('-------------------------STRING QUESTIONS--------------------------');
   // 1. Creating strings
   const str1 = 'Hello, World!';
   const str2 = "JavaScript is awesome";
@@ -767,7 +795,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------REGEX DATA TYPE-----------------------------');
+  console.log('----------------------REGEX QUESTIONS-----------------------------');
 
   // 1. Creating a simple regex pattern to match digits
   const digitPattern1 = /\d+/;
@@ -890,7 +918,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------SYMBOL DATA TYPE-----------------------------');
+  console.log('----------------------SYMBOL QUESTIONS-----------------------------');
 
   // 1. Creating simple symbols
   const symbolA = Symbol();
@@ -1057,7 +1085,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------DATE DATA TYPE-----------------------------');
+  console.log('----------------------DATE QUESTIONS-----------------------------');
 
   // 1. Creating a new Date object for the current date and time
   const now = new Date();
@@ -1126,7 +1154,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------PROMISE DATA TYPE-----------------------------');
+  console.log('----------------------PROMISE QUESTIONS-----------------------------');
 
   // 1. Creating a simple resolved promise
   const resolvedPromise = Promise.resolve('Success');

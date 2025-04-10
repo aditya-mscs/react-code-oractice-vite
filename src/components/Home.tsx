@@ -17,11 +17,16 @@ export default function Home() {
 
   return (
     <div>
-      <h1>React coding practice</h1>
+      <h1 className="text-3xl font-bold underline">React coding practice</h1>
       <h2>By {user?.name}</h2>
-      {routes.map((route) => (
-        !route.hideOnHome && <ol key={route.path}><Link to={route.path}>{route.linkText}</Link></ol>
-      ))}
+      <div>
+        <ol role="list" className="divide-y divide-gray-100">
+          {routes.map((route) => (
+            !route.hideOnHome &&
+            <li key={route.path} className="flex justify-between gap-x-6 py-2"><Link to={route.path}>{route.linkText}</Link></li>
+          ))}
+        </ol>
+      </div>
       <p>API URL: {API_URL}</p>
     </div>
   )

@@ -8,13 +8,13 @@ import { GlobalProvider } from "../hooks/useGlobalContext";
 const onRender = (
   id: string,
   phase: "mount" | "update" | "nested-update",
-  actualDuration: number,
-  baseDuration: number,
-  startTime: number,
-  commitTime: number
+  // actualDuration: number,
+  // baseDuration: number,
+  // startTime: number,
+  // commitTime: number
 ) => {
   console.log(`------- Profiling ${id} - ${phase} -------`);
-  console.log(`Actual duration: ${actualDuration} ms. Base duration: ${baseDuration} ms. Start time: ${startTime} ms. Commit time: ${commitTime} ms`);
+  // console.log(`Actual duration: ${actualDuration} ms. Base duration: ${baseDuration} ms. Start time: ${startTime} ms. Commit time: ${commitTime} ms`);
 };
 
 const AppRouter = () => {

@@ -23,6 +23,7 @@ import AutomaticBatching from "../components/AutomaticBatching";
 import UseDeferredValue from "../hooks/UseDeferredValue";
 import UseWindowDimentionsOnResize from "../hooks/useWindowDimentionsOnResize";
 import SuggestedCities from "../components/SuggestedCities";
+import { Es6TsPractice } from "../components/Es6TsPractice";
 
 interface RouteType {
   path: string;
@@ -89,6 +90,7 @@ export const routes: RouteType[] = [
   { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
   { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
   { path: "/cart", element: <Cart />, linkText: "Cart" },
+  { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice" },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
