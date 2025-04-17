@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { debounce } from "../hooks/useDebounce";
+import GoBackToHome from "./GoBacktoHome";
 
 const UseDebounceExample = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -22,6 +23,7 @@ const UseDebounceExample = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+      <GoBackToHome />
       <h2>Debounce Input Example (With useCallback)</h2>
       <input
         type="text"

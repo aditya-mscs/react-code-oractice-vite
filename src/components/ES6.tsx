@@ -30,7 +30,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------OBJECT QUESTIONS-----------------------------');
+  console.log('----------------------2 OBJECT QUESTIONS-----------------------------');
   //ChatGpt
   // Object Property and Value Access
   console.log('1. Object.keys:', Object.keys({ a: 1, b: 2 })); // ['a', 'b']
@@ -131,7 +131,7 @@ export const ES6 = () => {
 
 
 
-  console.log('-------------------------ARRAY QUESTIONS--------------------------');
+  console.log('-------------------------1 ARRAY QUESTIONS--------------------------');
   //ES6 array features
   const numbersX = [1, 2, 3, 4, 5];
   const doubledNumbers = numbersX.map(num => num * 2); //-----> Best for Creating New Arrays SO REPLACE ALL uses map
@@ -141,15 +141,34 @@ export const ES6 = () => {
 
   //ChatGpt
   // 🌟 Creation and Filling
-  console.log('1. Array.from:', Array.from('Hello')); // ['H', 'e', 'l', 'l', 'o']
-  console.log('2. Array.of:', Array.of(1, 2, 3)); // [1, 2, 3]
-  console.log('3. Array.fill:', [1, 2, 3].fill(0)); // [0, 0, 0]
+  console.log('1.1 Array.from:', Array.from('Hello')); // ['H', 'e', 'l', 'l', 'o']
+  console.log('1.1 Array.from:', Array.from({ length: 5 }, (_, i) => i)); // [0,1,2,3,4] ----> IMP for creating arrays
+  console.log('1.1 Array.from:', Array.from({ length: 5 }, (_, i) => (i & 1 ? 1 : -1))); // [1, -1, 1, -1, 1]
+  console.log('1.1 Array.from:', Array.from({ length: 3 }, () => Math.random())); // [0.123, 0.456, 0.789]
+  console.log('1.1 Array.from:', Array.from([1, 2, 3], x => x * 2)); // [2, 4, 6]
+  console.log('1.1 Array.from:', Array.from(new Set([1, 2, 3, 4]))); // [1, 2, 3, 4]
+  console.log('1.1 Array.from:', Array.from(new Map([['a', 1], ['b', 2]]))); // [['a', 1], ['b', 2]]
+  // console.log('1.1 Array.from:', Array.from('123abc456').filter(c => !isNaN(parseInt(c)))); // ['1', '2', '3', '4', '5', '6']
+
+  console.log('1.3 Array.of:', Array.of(1, 2, 3)); // [1, 2, 3]
+  console.log('1.4 Array.fill:', [1, 2, 3].fill(0)); // [0, 0, 0]
 
   // 🔄 Iteration
   [1, 2, 3].forEach((num) => console.log('4. forEach:', num * 2)); // 2, 4, 6
   console.log('5. map:', [1, 2, 3].map(x => x * 2)); // [2, 4, 6]
   console.log('6. filter:', [1, 2, 3, 4].filter(x => x % 2 === 0)); // [2, 4]
-  console.log('7. reduce:', [1, 2, 3].reduce((sum, x) => sum + x, 0)); // 6 //----> reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: number[]) => number, initialValue: number)
+  console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 //----> reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: number[]) => number, initialValue: number)
+  console.log('1.7 Max:', [1, 2, 3, 4].reduce((max, curr) => (curr > max ? curr : max), -Infinity));
+  console.log('1.7 Fruit count:', ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'].reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+  }, {})); // { apple: 3, banana: 2, orange: 1 }
+  console.log('1.7 Grouped by letter:', ['dog', 'cat', 'car', 'apple'].reduce((acc, word) => {
+    const letter = word[0];
+    acc[letter] = acc[letter] || [];
+    acc[letter].push(word);
+    return acc;
+  }, {})); // { d: ['dog'], c: ['cat', 'car'], a: ['apple'] }
   console.log('8. reduceRight:', ['a', 'b', 'c'].reduceRight((acc, val) => acc + val)); // "cba"
 
   // 🔍 Searching
@@ -796,15 +815,45 @@ export const ES6 = () => {
 
 
   console.log('----------------------REGEX QUESTIONS-----------------------------');
+  /*
+  \d → digit
+  \s → space
+  \w → word character (letter, digit, underscore)
+  ^ inside [] → NOT
+
+  g → global (all matches)
+  i → ignore case
+  + → one or more
+  * → zero or more
+  
+  {n} → exactly n
+  () → capture group
+  \1 → reference 1st capture group
+  
+  
+  */
+
+
 
   // 1. Creating a simple regex pattern to match digits
   const digitPattern1 = /\d+/;
   console.log('1. Is "123" a number?', digitPattern1.test('123')); // true
   console.log('2. Is "abc" a number?', digitPattern1.test('abc')); // false
 
+  // 8. Finding all vowels in a string
+  const vowelsPattern1 = /[aeiou]/gi;
+  const text1 = 'Regular expressions are powerful!';
+  const vowels1 = text1.match(vowelsPattern1);
+  console.log('10. Vowels found:', vowels1); // ['e', 'u', 'a', 'e', 'e', 'i', 'o', 'a', 'e', 'o', 'u', 'a']
+
   // 2. Matching a specific word in a string
   const wordPattern1 = /hello/i; // Case-insensitive
   console.log('3. Contains "hello"?', wordPattern1.test('Hello World')); // true
+
+  // 7. Removing all non-alphanumeric characters
+  const specialChars1 = 'Hello@123!';
+  const cleanedString1 = specialChars1.replace(/[^a-zA-Z0-9]/g, '');
+  console.log('9. Cleaned string:', cleanedString1); // 'Hello123'
 
   // 3. Extracting all numbers from a string
   const extractNumbers1 = 'Order number: 12345, Tracking ID: 67890';
@@ -816,6 +865,14 @@ export const ES6 = () => {
   const singleSpaceString1 = multiSpaceString1.replace(/\s+/g, ' ');
   console.log('5. Replaced multiple spaces:', singleSpaceString1); // 'This is a test.'
 
+  // 16. Extracting initials from a name
+  const fullName1 = 'John Doe Smith';
+  const initials1 = fullName1.match(/\b\w/g).join('');
+  console.log('22. Extracted initials:', initials1); // 'JDS'
+
+
+
+  //IGNORE BELOW -
   // 5. Validating an email address
   const emailPattern1 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   console.log('6. Valid email (test@example.com)?', emailPattern1.test('test@example.com')); // true
@@ -826,16 +883,6 @@ export const ES6 = () => {
   const extractedWords1 = sentence1.match(/\b\w+\b/g);
   console.log('8. Extracted words:', extractedWords1); // ['Hello', 'this', 'is', 'a', 'test']
 
-  // 7. Removing all non-alphanumeric characters
-  const specialChars1 = 'Hello@123!';
-  const cleanedString1 = specialChars1.replace(/[^a-zA-Z0-9]/g, '');
-  console.log('9. Cleaned string:', cleanedString1); // 'Hello123'
-
-  // 8. Finding all vowels in a string
-  const vowelsPattern1 = /[aeiou]/gi;
-  const text1 = 'Regular expressions are powerful!';
-  const vowels1 = text1.match(vowelsPattern1);
-  console.log('10. Vowels found:', vowels1); // ['e', 'u', 'a', 'e', 'e', 'i', 'o', 'a', 'e', 'o', 'u', 'a']
 
   // 9. Splitting a sentence by punctuation
   const sentenceWithPunctuation1 = 'Hello! How are you? Fine, thank you.';
@@ -875,11 +922,6 @@ export const ES6 = () => {
   const matchedUrls1 = urls1.match(urlPattern1);
   console.log('21. Matched URLs:', matchedUrls1); // ['https://example.com', 'http://test.org']
 
-  // 16. Extracting initials from a name
-  const fullName1 = 'John Doe Smith';
-  const initials1 = fullName1.match(/\b\w/g).join('');
-  console.log('22. Extracted initials:', initials1); // 'JDS'
-
   // 17. Password validation (8+ characters, at least 1 letter and 1 number)
   const passwordPattern1 = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   console.log('23. Valid password (Abc12345)?', passwordPattern1.test('Abc12345')); // true
@@ -899,7 +941,6 @@ export const ES6 = () => {
   const ipPattern1 = /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$/;
   console.log('28. Valid IP (192.168.1.1)?', ipPattern1.test('192.168.1.1')); // true
   console.log('29. Invalid IP (256.256.256.256)?', ipPattern1.test('256.256.256.256')); // false
-
 
   //getWords: get words from string
   const str = '!@#!HEllo!!!@#4hello,  (((*world! (* 9*)*)(! ^%$^%$% test &^$#^$^% tree';
