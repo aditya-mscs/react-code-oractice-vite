@@ -185,6 +185,7 @@ export const ES6 = () => {
   console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3" //---> .join(separator?: string): string
   console.log('18. flat:', [1, [2, [3]]].flat()); // (3) [1, 2, Array(1)] ---> .flat by default flattens only 1 level deep
   console.log('18. flat:', [1, [2, [3]]].flat(2)); // [1, 2, 3]
+  console.log('18. flat:', [1, [2, [3, [4, [5]]]]].flat(Infinity)); // [1, 2, 3, 4, 5]
   console.log('19. flatMap:', [1, 2].flatMap(x => [x * 2])); // [2, 4]
   console.log('20. reverse:', [1, 2, 3].reverse()); // [3, 2, 1]
 

@@ -27,6 +27,7 @@ import { Es6TsPractice } from "../components/Es6TsPractice";
 import UseDebounceExample from "../components/useDebounceExample";
 import TsFunctionDeclarations from "../hooks/TsFunctionDeclarations";
 import UseReducerComp from "../hooks/UseReducerComp";
+import ParkingLotUI from "../components/ParkingSystemUsage";
 
 interface RouteType {
   path: string;
@@ -106,6 +107,7 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
+  { path: "/ParkingLotSystem", element: <ParkingLotUI />, linkText: "Parking Lot System" },
   { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
   { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },
   { path: "/ImageCarousel", element: <ImageCarousel />, linkText: "Image Carousel" },
