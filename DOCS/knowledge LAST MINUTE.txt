@@ -1,0 +1,283 @@
+
+jp:
+
+Currently I am in JPmorgan "CCB line of business" as "Sr Software Engineer" and Mostly worked on chase.com website
+
+I led modernization of YouInvest Trade workflows like "Equity, Mutual Funds, Options, 401k Rollover, Inv profile"
+We completely revamped the user experience from JavaScript to React octagon stack with better performance and accessibility which saw 30-40% increase in "user ______traffic and trading volume" and I received “Technical Feedback Excellence” award within my horizontal for the same.
+	SKIP
+	(So for Equities - we implemented "Chosing stocks or etfs, buy/sell order flows, implementing different order type(market, limit(price going down), stop(price going up), stop limit), tax lots, preview, confirmation and order status pages". We migrated legacy BlueJS application to REACT octagon framework which is more responsive, modern, user friendly.)
+
+I also led (Youinvest portfolios) which is automated portfolio creation tool. We migrated third party APIs to inhouse logic which saved millions so far.
+	SKIP
+	(User enters initial and monthly contributions, goal type(whether retirement, build wealth), risk profile(aggressive), time horizon)
+	System create portfolio that is diversified between US etfs, international equity, Fixed income etfs, bonds, Cash etc
+
+TIME:
+I would say 70% of time, I am IC. 15% I will say leadership and 15% on product coordination and support.
+Within handson, I mostly worked on JS, ReactJS, Typescript, next.js, redux, Node, Express, Some python and java on and off, CI/CD pipeline.
+Also HTML5, CSS preprocessors, charting and grid libraries, testing frameworks.
+
+Also exploring AWS services for FPIC (Field performance incentives and compensation) project to calculate advisor compensations. So working on eventbridge, terraform, s3, gluejobs, EAC etc
+
+MY ROLE:
+I was responsible for for entire agile lifecycle ______ "from front end perspective" starting from "requirement gathering, design, implementation, task assignment, successful delivery, deployment, release and support"
+So I handle grooming sessions, sprint planning, code review sessions, demos post sprint, sprint retro sessions, task assignemnts, 
+
+
+Tech stack:
+- JS, ReactJS, Typescript, next.js, redux, ReduxTooKit, TanStack, Ag grid, highcharts, Python, Java
+- Testing frameworks like ReactTestingLibrary, cypress, vitest
+
+
+
+Some of the achienements are -
+❖ We completely revamped the user experience from JavaScript to React octagon stack with better performance and accessibility which saw 30-40% increase in "user ______traffic and trading volume" and I received “Technical Feedback Excellence” award within my horizontal for the same.
+❖ Mentored so far 7 interns, three of whom converted to full-time hires
+❖ Reduced UI latency by 40% by frontend optimization techniques
+❖ I also Led migration from AngularJS to React, reducing code complexity by 30% and improving maintainability
+❖ Participated in JPMorgan Hackathons. Runner up for AI project to cleanup backlogs
+
+========================
+
+Behavior questions -
+
+
+=====================
+
+JS/HTML/CSS:
+
+debounce = "delay the execution of a function". Its used for "search inputs"/scroll events/typing and fetching search results etc. We can use debounce function or use lodash or create custom hook using setTimeout
+
+webworker = "separate background thread". USed to "Offload CPU-intensive tasks" (e.g., image processing, data computations) to maintain a smooth UI. We communicate using postmessage and listen using onmessage
+
+
+lcp questions/fid questions/cls questions
+LCPAINT CLSHIFT FIDELAY  --> CL LC
+LargeContentfulPAINT CummulativeLayoutSHIFT FirstInputDELAY
+	LCP <¤ 2.5s 	-> rel="preload" loading="lazy" next/image SSR CriticalCSS font-display:swap
+	CLS <= 0.1 		-> animations or transitions / font-display:swap / d ebounce
+		Use font-display: swap to avoid "flash of invisible text" (FOIT). This ensures that text remains visible while fonts load.
+	FID <= 100ms 	-> React.lazy async defer W eb W orkers useTransition
+
+
+
+========================
+
+ES/TS:
+
+
+
+
+========================
+
+React:
+
+Virtual DOM
+One-way data-binding
+Component based
+
+JSX = syntax extension to JavaScript.
+	Optimization (pure) and compilation errors
+Isomorphic JavaScript:
+	It has Isomorphic JavaScript. ie. react can perform on the client side,
+	but it can also be rendered server side, and they can work together inter-operably.
+
+React hooks
+	Use useCallback to memorize functions
+		useCallback 	= memoize functions when functions are passed as props
+	useMemo to memorize computed values
+		useMemo 			= Use for Expensive Computations(filter) or Avoiding Unnecessary Re-Renders(sortList)
+	Use react.memo ___ "on child components" when parent component props are not changed
+	useContext for global state management (theme, auth, user settings) OR prop drilling
+	useTransition/React fiber:
+		= INCREMENTAL RENDERING. eg search list functionality
+		Concurrent Mode (useTransition)		Keeps UI responsive
+
+Code-splitting										Smaller componenets
+Lazy Loading (React.lazy)					Loads components on demand
+
+Server-Side Rendering 						Pre-renders HTML for faster load
+Concurrent Rendering 							(renders parts of the UI separately for better performance).
+
+Automatic Batching (groups multiple updates to minimize re-renders).
+
+Optimized Images (next/image)			Improves rendering speed
+Font Preloading										Prevents layout shifts
+
+Minimizing JavaScript							Improves FCP
+
+Custom API Caching Hook						Reduces API calls
+Virtualization 										with libraries like React Virtualized.
+Optimizing renders 								by using key props correctly.
+
+
+
+React 19 Server Actions: ---> MOstly for form submissions, CRUD operations and Authentication
+	= asynchronous functions executed on the server
+	best suited for scenarios where direct server interaction is needed without setting up API routes.
+
+
+
+Virtual DOM:
+React ---> render or React.createElement imp step --> JSX ---into---> JS Obj / DOM Object based on TypePropChildren --> (Hence virtual DOM)
+DOM Object ------(______first render converts it to)----> DOM node (3 cases)
+	type is string(div/span)
+	type is function or class(<Link>)
+	children under props
+state/props change -----> render ------> New DOM Object on 4 scenarios:
+	type is string and type and props stayed the same
+	type is same string, props are different
+	type has changed
+	type is react component but same
+
+
+
+Problems:
+🚀 2️⃣ Not Always the Fastest Approach
+Solution: O ptimize React by using memoization (React.memo, useMemo, useCallback).
+Use React Server Components for static parts of the UI.
+Use React’s key property efficiently in lists.
+Use useTransition() for concurrent rendering to prioritize updates.
+4️⃣ Memory Usage Concerns
+Use React Profiler to identify unnecessary renders.
+6️⃣ Not Ideal for CPU-Intensive Applications
+Use WebGL, Canvas, or direct DOM manipulation for high-performance graphics.
+
+
+
+graphql questions:
+rest has fixed repsonse while graphql gives exactly what you need
+
+
+
+
+========================
+
+Next.js:
+	framework for fast and scalable
+	Transpiler: SWC (old babel)
+	Build: Turbopack (old webpack)
+
+	SSG (getStaticProps) for BLOGS, POSTS
+	SSR(getServerSideProps) for REAL TIME CONTENT (e.g., stock prices, news) OR user-specific content (e.g., dashboards, authenticated pages)
+	Incremental Static Regeneration (ISR for News articles) / Prefetching Links (next/link)
+	
+	_____ File-basedRouting(no router needed) ApiRoutes DynamicRouting Middleware(NextResponse)
+	Performance
+		CodeSplitting
+		Image optimization (next/image)  /   next/font next/link --> L CP, C LS, F ID
+	Built-in SEO features
+	next.config -> redirects, rewrites, Webpack settings, and image optimizations
+
+
+
+
+
+
+
+========================
+
+Node:
+🔹 How the Event Loop Works (Step-by-Step)/HOW:
+	1️⃣ JavaScript runs synchronously on the "Call Stack"
+	2️⃣ When it encounters an asynchronous operation (setTimeout, fetch, Promise.then), it’s sent to the ____ Web API.
+	3️⃣ Once completed, the ____ callback is pushed into the "Callback Queue" (or Microtask Queue for Promises).
+	4️⃣ When call stack is empty, event loop comes into picture. 
+	Event Loop checks if the Call Stack is empty and moves the task _______"from the queue to execution".
+	5️⃣ This cycle continues infinitely.
+
+🚀 Event Loop Priority Order
+	1️⃣ Call Stack (Executes synchronously).
+	2️⃣ Microtask Queue (Promise.then, queueMicrotask).
+	3️⃣ Callback Queue (setTimeout, setInterval).
+
+
+=========================
+
+
+
+
+
+
+=========================
+
+template literal-based libraries/CSS-in-JS/JSX in styles:
+3 ways: Template Literals / classnames / styled-components
+
+
+
+=========================
+
+
+=========================
+
+Jenkins and jules diff:
+•	Use Jenkins if you need a flexible, customizable CI/CD tool that can integrate with a wide range of technologies.
+•	Choose Jules if your primary focus is Salesforce development and deployment, as it is optimized for this ecosystem.
+
+
+=========================
+
+Web:
+
+websockets
+
+
+
+=========================
+
+
+Security:
+
+
+
+Optimization/Performance:
+
+
+
+testing:
+
+=========================
+
+
+
+
+============Code questions=============
+
+const gcd = (a, b) => { //-------------> REUSE FOR NEXT 4
+	if (b === 0) {
+		return a;
+	}
+	return gcd(b, a % b); //gcd(48, 18) -> gcd(18, 48 % 18) = gcd(18, 12) = gcd(12, 6) = gcd(6, 0) = 6 --> REMEMBER THIS
+}
+console.log('6.3 gcd(48, 18): ', gcd(48, 18)); // Outputs: 6
+
+const lcm = (a, b) => {
+	return (a * b) / gcd(a, b);  //------------->  a * b / GCD = LCM
+}
+console.log('6.4 lcm(4, 5): ', lcm(4, 5)); // Outputs: 20 // 4*5/gcd(4,5)
+
+
+
+[1, [2, [3, [4, [5]]]]].flat(Infinity) //Time and space O(n)
+const rotated = [...A.slice(r), ...A.slice(0, r)]; // [1,2,3] -> [2,3,1] -> [3,1,2]
+
+
+export const debounce = (func, delay) => {
+   let timeoutId; //1
+   return (...args) => { //2 VAAAAAAA
+     clearTimeout(timeoutId); //3
+     timeoutId = setTimeout(() => { //4 timeout = setTimeout VA
+       func(...args); //5
+     }, delay);
+   };
+}
+
+
+
+
+=========================
+
+
+

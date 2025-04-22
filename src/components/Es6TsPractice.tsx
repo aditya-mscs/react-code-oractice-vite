@@ -402,6 +402,22 @@ export const Es6TsPractice = () => {
 
   //------------------- 2 ARRAY QUESTIONS ------------------
 
+  //Given two arrays A and B of the same length, how many cyclic rotations of A make every element A[i] >= B[i]
+  //Time O(n²), Space O(n) — brute-force approach
+  function countValidRotations(A, B) {
+    const n = A.length;
+    let count = 0;
+    for (let r = 0; r < n; r++) {
+      const rotated = [...A.slice(r), ...A.slice(0, r)]; // [1,2,3] -> [2,3,1] -> [3,1,2]
+      if (rotated.every((val, i) => val > B[i])) {
+        count++;
+      }
+    }
+    return count;
+  }
+  console.log('2.11 countValidRotations: ', countValidRotations([1, 2, 3], [0, 1, 2])); // Outputs: 1
+  console.log('2.11 countValidRotations: ', countValidRotations([1, 2, 3], [0, 1, 4])); // Outputs: 0
+
   //Flatten the array
   // var test1 = [1,2,3],            // [1,2,3]
   //   test2 = [[1,2],3],          // [1,2,3]
@@ -1007,8 +1023,13 @@ export const Es6TsPractice = () => {
 
 
 
-  //------------------- 9 Queue questions ------------------
 
+
+
+
+
+
+  //------------------- 9 Queue questions ------------------
   class Queue {
     constructor() {
       this.items = [];
