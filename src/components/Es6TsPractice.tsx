@@ -3,171 +3,81 @@
 import GoBackToHome from "./GoBacktoHome";
 
 export const Es6TsPractice = () => {
-
-
-
   /*
-  TODO: 
-Hands-On/Algorithmic Technical Interview
-  https://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/
-Design focused Technical Interview
-  https://github.com/mutablealligator/system-design-primer#system-design-topics-start-here
-https://www.kearney.com/careers/ace-the-interview/crack-the-case
-
-Behavioral Interview:
-https://www.kearney.com/careers/ace-the-interview/crack-the-case
-https://www.youtube.com/watch?v=iqVlc0G_sBA&list=PLX4RP_tIsvqformMaEHl0m1_k5_V48Kwz&index=3
-https://www.youtube.com/watch?v=y4SwYdIM6yA&list=PLX4RP_tIsvqformMaEHl0m1_k5_V48Kwz&index=3
-https://www.youtube.com/watch?v=4cDT5YZQwOs&list=PLX4RP_tIsvqeugoNRz10pxj81ovm_BL3m&index=12
-
-
-1. Array Algorithm
-Maximum Subarray Sum
-Find the Missing Number
-Trapping Rain Water
-Maximum Product Subarray
-Find the equilibrium index of an array
-Leaders in an array
-Minimum Platforms Required for a Railway/Bus Station
-Rotate an array to the right by k steps
-Kth smallest/largest element in an array
-Maximum Length Bitonic Subarray
-
-For more, please refer: Array Data Structure Guide
-
-
-2. String Algorithm
-Longest Palindromic Substring
-String Matching with Wildcard
-Edit Distance
-Longest Repeating Subsequence
-Count all distinct substrings of a given string
-Reverse words in a given string
-Check if a string is a rotated palindrome
-KMP Algorithm for Pattern Searching
-Minimum characters to be added at front to make string palindrome
-
-For more, please refer: String Data Structure
-
-
-3. Sorting Algorithm
-QuickSort
-MergeSort
-HeapSort
-Counting Sort
-Radix Sort
-Bubble Sort
-Selection Sort
-Insertion Sort
-Shell Sort
-Bucket Sort
-
-4. Searching Algorithm
-Linear Search
-Binary Search
-Ternary Search
-Depth-First Search (DFS)
-Breadth-First Search (BFS)
-Fibonacci Search
-
-5. Recursion/Backtracking Algorithm
-N-Queens Problem
-Sudoku Solver
-Rat in a Maze
-Word Break Problem using Backtracking
-Subset Sum Problem
-Permutations of a given string
-Combination Sum
-Generate all possible valid IP addresses from given string
-Rat in a Maze with multiple steps or jump allowed
-
-6. Greedy Algorithm
-Fractional Knapsack
-Huffman Coding
-Job Sequencing with Deadlines
-Activity Selection Problem
-Greedy Algorithm to find Minimum number of Coins
-Minimum Number of Platforms Required for a Railway/Bus Station
-Maximum Length Chain of Pairs
-Minimize Cash Flow among a given set of friends who have borrowed money from each other
-Connect n Ropes with Minimum Cost
-Prim’s Minimum Spanning Tree (MST)
-
-7. Tree Algorithm
-Lowest Common Ancestor (LCA)
-Diameter of Binary Tree
-Binary Tree Level Order Traversal
-Serialize and Deserialize a Binary Tree
-Check if a Binary Tree is BST
-Inorder Traversal without Recursion
-Convert Binary Tree to Doubly Linked List
-Check if Two Trees are Identical
-Maximum Width of a Binary Tree
-Mirror of a Binary Tree
-
-8. Dynamic Programming Algorithm
-Longest Common Subsequence
-0/1 Knapsack
-Matrix Chain Multiplication
-Longest Increasing Subsequence
-Maximum Sum Increasing Subsequence
-Coin Change Problem
-Longest Palindromic Subsequence
-Edit Distance
-Largest Sum Contiguous Subarray
-Longest Common Substring
-
-9. Graph Algorithm
-Dijkstra’s Algorithm
-Kruskal’s Algorithm
-Topological Sorting
-Bellman-Ford Algorithm
-Floyd Warshall Algorithm
-Prim’s Algorithm
-Depth-First Traversal of a Graph
-Breadth-First Traversal of a Graph
-Detect Cycle in a Directed Graph
-Articulation Points (or Cut Vertices) in a Graph
-
-10. Bit Manipulation Algorithm
-Find the Only Non-Repeating Element
-Count Total Set Bits
-Maximum XOR of Two Numbers in an Array
-Find the two non-repeating elements in an array of repeating elements
-Check if a number is sparse or not
-Count total set bits in all numbers from 1 to n
-Maximum subarray XOR in a given array
-Sum of XOR of all subarrays
-Find the element that appears once in an array where every other element appears twice
-Program to find whether a no is power of two
-
-Top 50 Array Coding Problems for Interviews
-Top 50 String Coding Problems for Interviews
-Top 50 Problems on Heap Data for Interviews
-Top 50 Tree Coding Problems for Interviews
-Top 50 Dynamic Programming Coding Problems
-Top 50 Graph Coding Problems for Interviews
-Top 50 Problems on Stack Problems for Interviews
-Top 50 Problems on Linked List Problems for Interviews
-Top 50 Problems on Matrix/Grid Problems for Interviews
-Must Do Coding Questions for Product Based Companies
-Must Do Coding Questions for Companies like Amazon
-
-Design:
-Topics covered:
-  Vertical scaling
-  Horizontal scaling
-  Caching
-  Load balancing
-  Database replication
-  Database partitioning
-
-  Performance vs scalability
-  Latency vs throughput
-  Availability vs consistency
-
-
-
+  Hands-On/Algorithmic Technical Interview
+    https://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/
+  Design focused Technical Interview
+    https://github.com/mutablealligator/system-design-primer#system-design-topics-start-here
+  
+  1. Array Algorithm
+  Maximum Subarray Sum
+  Find the Missing Number
+  Trapping Rain Water
+  Maximum Product Subarray
+  Find the equilibrium index of an array
+  Leaders in an array
+  Minimum Platforms Required for a Railway/Bus Station
+  Rotate an array to the right by k steps
+  Kth smallest/largest element in an array
+  Maximum Length Bitonic Subarray
+  
+  2. String Algorithm
+  Longest Palindromic Substring
+  String Matching with Wildcard
+  Edit Distance
+  Longest Repeating Subsequence
+  Count all distinct substrings of a given string
+  Reverse words in a given string
+  Check if a string is a rotated palindrome
+  KMP Algorithm for Pattern Searching
+  Minimum characters to be added at front to make string palindrome
+  
+  5. Recursion/Backtracking Algorithm
+  N-Queens Problem
+  Sudoku Solver
+  Rat in a Maze
+  Word Break Problem using Backtracking
+  Subset Sum Problem
+  Permutations of a given string
+  Combination Sum
+  Generate all possible valid IP addresses from given string
+  Rat in a Maze with multiple steps or jump allowed
+  
+  6. Greedy Algorithm
+  Fractional Knapsack
+  Huffman Coding
+  Job Sequencing with Deadlines
+  Activity Selection Problem
+  Greedy Algorithm to find Minimum number of Coins
+  Minimum Number of Platforms Required for a Railway/Bus Station
+  Maximum Length Chain of Pairs
+  Minimize Cash Flow among a given set of friends who have borrowed money from each other
+  Connect n Ropes with Minimum Cost
+  Prim’s Minimum Spanning Tree (MST)
+  
+  8. Dynamic Programming Algorithm
+  Longest Common Subsequence
+  0/1 Knapsack
+  Matrix Chain Multiplication
+  Longest Increasing Subsequence
+  Maximum Sum Increasing Subsequence
+  Coin Change Problem
+  Longest Palindromic Subsequence
+  Edit Distance
+  Largest Sum Contiguous Subarray
+  Longest Common Substring
+  
+  10. Bit Manipulation Algorithm
+  Find the Only Non-Repeating Element
+  Count Total Set Bits
+  Maximum XOR of Two Numbers in an Array
+  Find the two non-repeating elements in an array of repeating elements
+  Check if a number is sparse or not
+  Count total set bits in all numbers from 1 to n
+  Maximum subarray XOR in a given array
+  Sum of XOR of all subarrays
+  Find the element that appears once in an array where every other element appears twice
+  Program to find whether a no is power of two
   */
 
 
@@ -263,6 +173,67 @@ Topics covered:
 
 
   //------------------- 1 STRING QUESTIONS ------------------
+
+  //Check string duplicates  - without extra memory
+  //Time O(n²), Space O(1) — nested loops for comparison
+  function removeDuplicates(str) {
+    if (!str || str.length < 2) return str;
+    const arr = str.split('');
+    let writeIndex = 1;
+
+    for (let i = 1; i < arr.length; i++) {
+      let isDuplicate = false;
+      for (let j = 0; j < writeIndex; j++) {
+        if (arr[i] === arr[j]) {
+          isDuplicate = true;
+          break;
+        }
+      }
+      if (!isDuplicate) {
+        arr[writeIndex] = arr[i];
+        writeIndex++;
+      }
+    }
+    return arr.slice(0, writeIndex).join('');
+  }
+  console.log('1.7 removeDuplicates: ', removeDuplicates('hello world')); // Outputs: 'helo wrd'
+  console.log('1.7 removeDuplicates: ', removeDuplicates('banana')); // Outputs: 'ban'
+  //Check duplicates - with extra memory
+  //Time O(n), Space O(n) — uses a set to track duplicates
+  function removeDuplicatesWithSet(str) {
+    const seen = new Set();
+    let result = '';
+    for (const char of str) {
+      if (!seen.has(char)) {
+        seen.add(char);
+        result += char;
+      }
+    }
+    return result;
+  }
+  console.log('1.7 hasDuplicates: ', removeDuplicatesWithSet('hello world')); // Outputs: 'helo wrd'
+
+
+
+  //Time O(n log n), Space O(n)
+  function areAnagrams(s1, s2) {
+    if (s1.length !== s2.length) return false;
+    return s1.split('').sort().join('') === s2.split('').sort().join('');
+  }
+  console.log('1.8 areAnagrams: ', areAnagrams('listen', 'silent')); // Outputs: true
+  console.log('1.8 areAnagrams: ', areAnagrams('hello', 'world')); // Outputs: false
+
+
+  //Check if a string is a rotation of another string
+  //Time O(n), Space O(n) — uses string concatenation
+  function isRotation(s1, s2) {
+    if (s1.length !== s2.length) return false;
+    const concatenated = s1 + s1; // Concatenate s1 with itself
+    return concatenated.includes(s2);
+  }
+  console.log('1.9 isRotation: ', isRotation('waterbottle', 'erbottlewat')); // Outputs: true
+
+
 
   // A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
   // For example, the number 9 has a binary representation of 1001 and contains a binary gap of length 2.
@@ -380,6 +351,21 @@ Topics covered:
   }
   console.log(isPalindrome('racecar')); // true
   console.log(isPalindrome('hello')); // false
+  //Time O(n), Space O(1) — two-pointer approach
+  function isPalindrome2(str) {
+    let left = 0;
+    let right = str.length - 1;
+
+    while (left < right) {
+      if (str[left] !== str[right]) {
+        return false;
+      }
+      left++;
+      right--;
+    }
+    return true;
+  }
+  console.log('1.2 isPalindrome: ', isPalindrome2('racecar')); // Outputs: true
 
 
 
@@ -415,6 +401,117 @@ Topics covered:
 
 
   //------------------- 2 ARRAY QUESTIONS ------------------
+
+  //Flatten the array
+  // var test1 = [1,2,3],            // [1,2,3]
+  //   test2 = [[1,2],3],          // [1,2,3]
+  //   test3 = [1,[2],[3,[4]]];    // [1,2,3,4]
+
+  function flattenArray(arr) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        result.push(...flattenArray(arr[i])); // Recursively flatten the sub-array
+      } else {
+        result.push(arr[i]); // Push non-array elements directly
+      }
+    }
+    return result;
+  }
+  console.log('2.10 flattenArray: ', flattenArray([1, [2], [3, [4]]])); // Outputs: [1,2,3,4]
+
+
+  //You’re given two arrays A and B of equal length. You can cyclically rotate A any number of times. Count how many rotations result in the condition A[i] > B[i] for all i.
+  function countRotations(A, B) {
+    let count = 0;
+    const n = A.length;
+
+    for (let i = 0; i < n; i++) {
+      let valid = true;
+      for (let j = 0; j < n; j++) {
+        if (A[(i + j) % n] <= B[j]) {
+          valid = false;
+          break;
+        }
+      }
+      if (valid) {
+        count++;
+      }
+    }
+    return count;
+  }
+  console.log('2.9 countRotations: ', countRotations([1, 2, 3], [0, 1, 2])); // Outputs: 1
+
+  /*
+  Longest Increasing Subsequence (LIS)
+  Input: arr[] = [3, 10, 2, 1, 20]
+  Output: 3
+  Explanation: The longest increasing subsequence is 3, 10, 20
+  Time O(n²), Space O(n) — dynamic programming
+  */
+  function lis(arr) {
+    const n = arr.length;
+    const dp = Array(n).fill(1); // Initialize LIS values for all indexes as 1
+
+    //	•	For each element arr[i], look back at all previous elements arr[j] (where j < i).
+    // •	If arr[i] > arr[j], it can extend the increasing subsequence ending at j.
+    // •	Update dp[i] = max(dp[i], dp[j] + 1)
+    for (let i = 1; i < n; i++) {
+      for (let j = 0; j < i; j++) {
+        if (arr[i] > arr[j] && dp[i] < dp[j] + 1) {
+          dp[i] = dp[j] + 1;
+        }
+      }
+    }
+    // Pick maximum of all LIS values
+    return Math.max(...dp);
+  }
+  console.log('2.8 lis: ', lis([100, 10, 2, 1, 20])); // Outputs: 2 // 10, 20
+  console.log('2.8 lis: ', lis([100, 10, 1, 2, 3, 10, 20])); // Outputs: 5 // 1, 2, 3, 10, 20
+
+
+  /*
+  Longest Common Subsequence (LCS)
+  Given two strings, s1 and s2, the task is to find the length of the Longest Common Subsequence.
+  subsequences of “ABC” are “”, “A”, “B”, “C”, “AB”, “AC”, “BC” and “ABC”. In general, a string of length n has 2n subsequences
+  Input: s1 = “ABC”, s2 = “ACD”
+  Output: 2 Explanation: The longest subsequence which is present in both strings is “AC”.
+  Input: s1 = “ABC”, s2 = “CBA”
+  Output: 1 A/B/C
+  */
+  function lcs(s1, s2) {
+    const m = s1.length;
+    const n = s2.length;
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        //Use this rule:
+        // •	If s1[i-1] === s2[j-1] → dp[i][j] = dp[i-1][j-1] + 1
+        // •	Else → dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+        if (s1[i - 1] === s2[j - 1]) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+        } else {
+          dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+      }
+    }
+    return dp[m][n];
+  }
+  /*
+        B  D  E
+   ┌────────────
+   │ 0  0  0  0
+ A │ 0  0  0  0
+ B │ 0  1  1  1
+ C │ 0  1  1  1
+ D │ 0  1  2  2
+ E │ 0  1  2  3
+  */
+  console.log('2.7 lcs: ', lcs("ABCDE", "BDE")); // Outputs: 3
+  console.log('2.7 lcs: ', lcs("ABC", "ACD")); // Outputs: 2
+  console.log('2.7 lcs: ', lcs("ABC", "CBA")); // Outputs: 1
+
 
   /*
   6. Greedy Algorithm: Fractional Knapsack Problem
@@ -722,6 +819,296 @@ Topics covered:
   }
   console.log('7.1: buildWall([8, 8, 5, 7, 9, 8, 7, 4, 8]): ', buildWall([8, 8, 5, 7, 9, 8, 7, 4, 8])); // Outputs: 7
   console.log('7.1: buildWall([8, 2, 9, 7, 9, 8, 10, 1, 2]): ', buildWall([8, 2, 9, 7, 9, 8, 10, 1, 2])); // Outputs:
+
+
+  //Trapping Rain Water Problem
+  /*
+  Trapping Rainwater Problem states that given an array of n non-negative integers arr[] representing an elevation map where the width of each bar is 1, compute how much water it can trap after rain.
+  Input: arr[] = [3, 0, 1, 0, 4, 0, 2]
+  Output: 10
+  Time: O(n) Space: O(1)
+  */
+  function trapRainWater(height) {
+    let leftIndex = 0;
+    let rightIndex = height.length - 1;
+    let leftMaxHeight = 0;
+    let rightMaxHeight = 0;
+    let waterTrapped = 0;
+
+    while (leftIndex < rightIndex) { //We move the left and right pointers toward each other:
+      if (height[leftIndex] < height[rightIndex]) {
+        if (height[leftIndex] >= leftMaxHeight) {
+          leftMaxHeight = height[leftIndex];
+        } else {
+          waterTrapped += leftMaxHeight - height[leftIndex]; //At every index, calculate how much water it can hold:
+        }
+        leftIndex++;
+      } else {
+        if (height[rightIndex] >= rightMaxHeight) {
+          rightMaxHeight = height[rightIndex];
+        } else {
+          waterTrapped += rightMaxHeight - height[rightIndex];
+        }
+        rightIndex--;
+      }
+    }
+    return waterTrapped;
+  }
+  // Example
+  const arr = [3, 0, 1, 0, 4, 0, 2];
+  console.log(trapRainWater(arr)); // Output: 10
+
+
+
+  //------------------- 8 Tree questions ------------------
+
+  //BST implementation
+  class TreeNode {
+    constructor(value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  class BST {
+    constructor() {
+      this.root = null
+    }
+    _insertNode(node, newNode) {
+      if (newNode.value < node.value) {
+        if (node.left === null) {
+          node.left = newNode;
+        } else {
+          this._insertNode(node.left, newNode);
+        }
+      } else {
+        if (node.right === null) {
+          node.right = newNode;
+        } else {
+          this._insertNode(node.right, newNode);
+        }
+      }
+    }
+    insert(value) {
+      const newNode = new TreeNode(value);
+      if (this.root === null) {
+        this.root = newNode;
+      } else {
+        this._insertNode(this.root, newNode);
+      }
+    }
+    //delete Node
+    deleteNode(value) {
+      this.root = this._deleteNode(this.root, value);
+    }
+    _deleteNode(node, value) {
+      if (node === null) {
+        return null;
+      }
+      if (value < node.value) {
+        node.left = this._deleteNode(node.left, value);
+      } else if (value > node.value) {
+        node.right = this._deleteNode(node.right, value);
+      } else {
+        // Node with only one child or no child
+        if (node.left === null) {
+          return node.right;
+        } else if (node.right === null) {
+          return node.left;
+        }
+      }
+    }
+    //Diameter of a Binary Tree = number of edges on the longest path between any two nodes
+    getDiameter() {
+      let diameter = 0;
+      function calculateHeight(node) {
+        if (node === null) {
+          return 0;
+        }
+        const leftHeight = calculateHeight(node.left);
+        const rightHeight = calculateHeight(node.right);
+        diameter = Math.max(diameter, leftHeight + rightHeight);
+        return Math.max(leftHeight, rightHeight) + 1;
+      };
+      calculateHeight(this.root);
+      return diameter;
+    }
+    //LCA - Lowest Common Ancestor in a Binary Tree
+    getLca(node1, node2) {
+      const findLCA = (node, n1, n2) => {
+        if (node === null) {
+          return null;
+        }
+        if (node.value === n1 || node.value === n2) {
+          return node;
+        }
+        const leftLCA = findLCA(node.left, n1, n2);
+        const rightLCA = findLCA(node.right, n1, n2);
+        if (leftLCA && rightLCA) {
+          return node;
+        }
+        return leftLCA ? leftLCA : rightLCA;
+      };
+      return findLCA(this.root, node1, node2);
+    }
+
+    //inOrderTraversal: Go left from 10 → to 5 → to print 3. Go back to 5, print it ✅ Outputs: [3, 5, 7, 10, 12, 15, 18]
+    //Always sorted (ascending) order
+    inOrderTraversal(node = this.root, result = []) {
+      if (node) {
+        this.inOrderTraversal(node.left, result);
+        result.push(node.value);
+        this.inOrderTraversal(node.right, result);
+      }
+      return result;
+    }
+    //preOrderTraversal: Go to 10, print it. Go left to 5, print it. Go left to 3, print it ✅ Outputs: [10, 5, 3, 7, 15, 12, 18]
+    preOrderTraversal(node = this.root, result = []) {
+      if (node) {
+        result.push(node.value);
+        this.preOrderTraversal(node.left, result);
+        this.preOrderTraversal(node.right, result);
+      }
+      return result;
+    }
+    //postOrderTraversal: Go left to 3, print it. Go back to 5, print it. Go back to 10, print it ✅ Outputs: [3, 7, 5, 12, 18, 15, 10]
+    postOrderTraversal(node = this.root, result = []) {
+      if (node) {
+        this.postOrderTraversal(node.left, result);
+        this.postOrderTraversal(node.right, result);
+        result.push(node.value);
+      }
+      return result;
+    }
+  }
+
+  const tree = new BST();
+  tree.insert(10);
+  tree.insert(5);
+  tree.insert(15);
+  tree.insert(3);
+  tree.insert(7);
+  tree.insert(12);
+  tree.insert(18);
+  //     10
+  //   /    \
+  //  5      15
+  // / \     / \
+  //3   7   12 18
+  console.log('8.1: BST in-order traversal: ', tree.inOrderTraversal()); // Outputs: [3, 5, 7, 10, 12, 15, 18]
+  console.log('8.1: BST pre-order traversal: ', tree.preOrderTraversal()); // Outputs: [10, 5, 3, 7, 15, 12, 18]
+  console.log('8.1: BST post-order traversal: ', tree.postOrderTraversal()); // Outputs: [3, 7, 5, 12, 18, 15, 10]
+  tree.deleteNode(5);
+  console.log('8.1: BST in-order traversal after deleting 5: ', tree.inOrderTraversal()); // Outputs: [3, 7, 10, 12, 15, 18]
+  //Below breaking ui 
+  // console.log('8.1: BST diameter: ', tree.getDiameter()); // Outputs: 4 (3-5-10-15-18)
+  // console.log('8.1: BST LCA of 3 and 7: ', tree.getLca(3, 7).value); // Outputs: 5
+
+
+
+
+  //------------------- 9 Queue questions ------------------
+
+  class Queue {
+    constructor() {
+      this.items = [];
+    }
+    enqueue(element) {
+      this.items.push(element);
+    }
+    dequeue() {
+      if (this.isEmpty()) return null;
+      return this.items.shift();
+    }
+    front() {
+      return this.isEmpty() ? null : this.items[0];
+    }
+    isEmpty() {
+      return this.items.length === 0;
+    }
+    size() {
+      return this.items.length;
+    }
+    print() {
+      console.log('9.1 Queue: ', this.items.join(' <- '));
+    }
+  }
+  const queue = new Queue();
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
+  console.log('9.1: Queue size: ', queue.size()); // Outputs: 3
+  console.log('9.1: Queue front: ', queue.front()); // Outputs: 1
+  queue.print(); // Outputs: 1 <- 2 <- 3
+
+
+  //------------------- 10 Linked list questions ------------------
+  class Node {
+    constructor(value) {
+      this.value = value;
+      this.next = null;
+    }
+  }
+  class LinkedList {
+    constructor() {
+      this.head = null;
+    }
+    append(value) {
+      const newNode = new Node(value);
+      if (!this.head) {
+        this.head = newNode;
+        return;
+      }
+
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+      console.log('10.1: LinkedList append: ', current);
+    }
+    prepend(value) {
+      const newNode = new Node(value);
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    delete(value) {
+      if (!this.head) return;
+      if (this.head.value === value) {
+        this.head = this.head.next;
+        return;
+      }
+      let current = this.head;
+      while (current.next && current.next.value !== value) {
+        current = current.next;
+      }
+      if (current.next) {
+        current.next = current.next.next;
+      }
+    }
+    print() {
+      let current = this.head;
+      const values = [];
+      while (current) {
+        values.push(current.value);
+        current = current.next;
+      }
+      console.log('10.1 Linked list: ', values.join(" -> "));
+    }
+  }
+  const linkedList = new LinkedList();
+  linkedList.append(1);
+  linkedList.append(2);
+  linkedList.append(3);
+  linkedList.print(); // Outputs: 1 -> 2 -> 3
+  // Node {value: 1, next: Node}
+  //   next: Node {value: 2, next: Node}
+  //     next: Node {value: 3, next: null}
+  linkedList.prepend(0);
+  linkedList.delete(2);
+  linkedList.print(); // Outputs: 0 -> 1 -> 3
+
+
 
 
 
