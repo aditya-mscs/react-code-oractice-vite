@@ -16,6 +16,7 @@ function UseDeferredValue() {
   const [list, setList] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
 
+  //_____ Below is not needed if actual list is used. Here 2 sec delay otherwise react will return when ready so it shows quickly
   useEffect(() => {
     if (isTyping) return;
     const timeoutId = setTimeout(() => {
@@ -37,7 +38,7 @@ function UseDeferredValue() {
     }, 2000);
   };
 
-  const deferredList = useDeferredValue(list); // This will defer the rendering of the list until the input has stopped changing
+  const deferredList = useDeferredValue(list); //______ This will defer the rendering of the list until the input has stopped changing
 
   return (
     <div style={{ padding: '20px' }}>

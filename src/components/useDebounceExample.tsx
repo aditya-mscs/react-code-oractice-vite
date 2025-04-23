@@ -7,11 +7,9 @@ const UseDebounceExample = () => {
 
   // ✅ Debounced logger: created ONCE using useCallback
   // useCallback ensures the debounced function is not recreated on every render
-  const debouncedLog = useCallback(debounce((value: string) => {
-      console.log("Debounced value:", value);
-    }, 2000),
-    [] // empty dependency = only initialized once
-  );
+  const debouncedLog = debounce((value: string) => {
+    console.log("Debounced value:", value);
+  }, 2000);
 
   // 🔁 onChange handler: captures and logs value
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,14 +1,10 @@
+// @ts-nocheck Temporary ignore
 import React, { useEffect, useRef, useState } from "react";
 import GoBackToHome from "../components/GoBacktoHome";
 
-const usePrevious = (value: number) => {
-  const ref = useRef<number | null>(null);
-  console.log("ref", ref.current, value); //ref null 0 -------> 0, 1
-
-  // const prev = ref.current;
-  // ref.current = value;
-  //Above Might be worng. Better use useEffect
-
+const usePrevious = (value) => {
+  const ref = useRef(null);
+  // console.log("ref", ref.current, value); //ref null 0 -------> 0, 1
   useEffect(() => {
     ref.current = value;
   }, [value]);
@@ -16,6 +12,10 @@ const usePrevious = (value: number) => {
   return ref.current;
 };
 
+
+// const prev = ref.current;
+// ref.current = value;
+//Above Might be worng. Better use useEffect
 export default function App() {
   const [count, setCount] = useState(0);
   const prevCount = usePrevious(count);

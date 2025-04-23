@@ -1,5 +1,7 @@
+// @ts-nocheck Temporary ignore
 import React, { useState, useTransition } from 'react';
 import GoBackToHome from '../components/GoBacktoHome';
+import { debounce } from "./useDebounce";
 
 // Utility function to generate a large list
 const generateList = (size: number) => {
@@ -10,30 +12,32 @@ export const UseTransition = () => {
   const [list] = useState(generateList(10000));
   const [query, setQuery] = useState('');
   const [filteredList, setFilteredList] = useState(list);
+  const [status, setStatus] = useState('Idle');
 
   const [isPending, startTransition] = useTransition(); //_________ IMP: isPending, startTransition
 
-  const [status, setStatus] = useState('Idle');
-  let debounceTimeout: NodeJS.Timeout | undefined;
+  /*
+•	Debounce needed? Not required.
+•	useTransition makes updates non-blocking, but it will still run on every change.
+•	Combine with debounce if you want to avoid running the heavy computation on every keystroke, not just make it low-priority.
+*/
+  const debouncedSearch = debounce((value) => {
+    startTransition(() => {
+      const filtered = list.filter((item) =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredList(filtered);
+      setStatus('Completed');
+    }
+    );
+  }, 1500);
+
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
     setStatus('Searching...');
-
-    if (debounceTimeout) clearTimeout(debounceTimeout); //___________ important: similar to debounce
-
-    // Start a concurrent transition for non-urgent update
-    debounceTimeout = setTimeout(() => {
-      startTransition(() => {
-        setStatus('Searching...');
-        const filtered = list.filter((item) =>
-          item.toLowerCase().includes(value.toLowerCase())
-        );
-        setFilteredList(filtered);
-        setStatus('Completed');
-      });
-    }, 1500);  // Adjust the debounce time as needed
+    debouncedSearch(value);
   };
 
   return (

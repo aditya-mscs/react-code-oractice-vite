@@ -2,7 +2,7 @@
 
 //Remember these 5 lines -
 
-export const debounce = (func, delay) => {
+export const debounce = (func, delay) => { //_________ VI REM (func, delay)
   let timeoutId; //1
 
   return (...args) => { //2 VAAAAAAA

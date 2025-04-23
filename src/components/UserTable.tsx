@@ -2,6 +2,7 @@
 // @ts-nocheck Temporary ignore
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { debounce } from '../hooks/useDebounce';
+import GoBackToHome from './GoBacktoHome';
 
 const fetchUsers = () => new Promise((resolve, reject) =>
   setTimeout(() => resolve([
@@ -115,6 +116,7 @@ function UserTable() {
 
   return (
     <div style={{ maxWidth: 600, margin: '2rem auto' }}>
+      <GoBackToHome />
       <h2>User Table</h2>
       <input
         type="text"
