@@ -1,33 +1,31 @@
-import { useState, useEffect } from "react";
-import debounce from "lodash.debounce";
+import { useState, useEffect, useCallback } from "react";
+import { debounce } from "./useDebounce";
 import GoBackToHome from "../components/GoBacktoHome";
 
 // Custom Hook to get window dimensions
 export const useWindowDimensions = () => {
   // State to store the current width and height
-  const [windowDimensions, setWindowDimensions] = useState({ //-------------> State within hook
+  const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
+  const handleResize = useCallback(() => {
+    setWindowDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }, []); // or [] if setWindowDimensions is stable (from useState)
+
   // Update dimensions on window resize
   useEffect(() => {
     console.log("useEffect called");
-    const handleResize = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", debounce(handleResize, 100)); //-----> lodash debounce otherwise on every pixel
-
-    // Initial call to set dimensions
     handleResize();
 
+    window.addEventListener("resize", debounce(handleResize, 1000)); //-----> lodash debounce otherwise on every pixel
     // Cleanup function to remove the event listener
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize]);
 
   return windowDimensions;
 };

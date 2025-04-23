@@ -1,6 +1,6 @@
 import { FixedSizeList as List } from 'react-window';
 import { FixedSizeGrid as Grid } from 'react-window';
-import GoBackToHome from './GoBacktoHome';
+import GoBackToHome from '../components/GoBacktoHome';
 
 type VirtualizedListProps = {
   items: string[];
@@ -11,7 +11,7 @@ type VirtualizedListProps = {
 
 // Create virtualized list component
 const VirtualizedList = ({ items, itemSize, height, width }: VirtualizedListProps) => {
-//OR const VirtualizedList: React.FC<VirtualizedListProps> = ({ items, itemSize, height, width }) => {
+  //OR const VirtualizedList: React.FC<VirtualizedListProps> = ({ items, itemSize, height, width }) => {
   return (
     <List
       height={height}

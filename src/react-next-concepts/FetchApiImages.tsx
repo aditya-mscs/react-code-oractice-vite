@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import GoBackToHome from "./GoBacktoHome"
+import GoBackToHome from "../components/GoBacktoHome"
 
 
 const FetchLazyLoadImages = () => {
@@ -8,7 +8,7 @@ const FetchLazyLoadImages = () => {
   useEffect(() => {
     fetch("https://raw.githubusercontent.com/xfiveco/mock-api-images/main/images.json")
       .then(response => {
-        if(response.ok) { //response.ok returns true if the response status is in the 200-299 range.
+        if (response.ok) { //response.ok returns true if the response status is in the 200-299 range.
           return response.json()
         }
       })
@@ -27,7 +27,7 @@ const FetchLazyLoadImages = () => {
       <p>Fetch API is a modern replacement for XMLHttpRequest. It's a browser built-in API that allows you to make network requests similar to XMLHttpRequest, but with a simpler and more powerful interface.</p>
       {
         images.map((image) => {
-          return <img key={image} src={image} alt="Fetched image" height={500} style={{display: "block", margin: "10px"}} />
+          return <img key={image} src={image} alt="Fetched image" height={500} style={{ display: "block", margin: "10px" }} />
         })
       }
     </div>

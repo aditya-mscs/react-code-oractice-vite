@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GoBackToHome from './GoBacktoHome';
+import GoBackToHome from '../components/GoBacktoHome';
 
 function AutomaticBatching() {
   const [count, setCount] = useState(0);

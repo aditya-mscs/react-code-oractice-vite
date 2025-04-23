@@ -3,29 +3,29 @@ import ToDoList from '../components/ToDoList';
 import CounterExample from "../components/CounterExample";
 import ShowHideDiv from "../components/ShowHideDiv";
 import Home from "../components/Home";
-import LazyLoadSuspense from "../components/LazyLoadSuspense";
+import LazyLoadSuspense from "../react-next-concepts/LazyLoadSuspense";
 import GoBackToHome from "../components/GoBacktoHome";
-import FetchLazyLoadImages from "../components/FetchApiImages";
-import IntersectionObserver from "../components/IntersectionObserver";
+import FetchLazyLoadImages from "../react-next-concepts/FetchApiImages";
+import IntersectionObserver from "../react-next-concepts/IntersectionObserver";
 import { ArticleSort } from "../components/ArticleSort";
 import { WordOmitter } from "../components/WordOmitter";
-import { ES6 } from "../components/ES6";
+import { ES6 } from "../coding-practice/ES6";
 import Cart from "../components/Cart";
 import UsePreviousHook from "../hooks/usePreviousHook";
 import { ConnectFour } from "../components/ConnectFour";
 import ImageCarousel from "../components/ImageCarousel";
 import { TicTacToe } from "../components/TicTacToe";
-import { VirtualizedListWrapper } from "../components/VirtualizedList";
-import ErrorBoundary from "../components/ErrorBoundary";
-import ErrorBoundaryThrowError from "../components/ErrorBoundaryThrowError";
+import { VirtualizedListWrapper } from "../react-next-concepts/VirtualizedList";
+import ErrorBoundary from "../react-next-concepts/ErrorBoundary";
+import ErrorBoundaryThrowError from "../react-next-concepts/ErrorBoundaryThrowError";
 import UseTransition from "../hooks/useTransition";
-import AutomaticBatching from "../components/AutomaticBatching";
+import AutomaticBatching from "../react-next-concepts/AutomaticBatching";
 import UseDeferredValue from "../hooks/UseDeferredValue";
 import UseWindowDimentionsOnResize from "../hooks/useWindowDimentionsOnResize";
 import SuggestedCities from "../components/SuggestedCities";
-import { Es6TsPractice } from "../components/Es6TsPractice";
+import { Es6TsPractice } from "../coding-practice/Es6TsPractice";
 import UseDebounceExample from "../components/useDebounceExample";
-import TsFunctionDeclarations from "../hooks/TsFunctionDeclarations";
+import TsFunctionDeclarations from "../coding-practice/TsFunctionDeclarations";
 import UseReducerComp from "../hooks/UseReducerComp";
 import ParkingLotUI from "../components/ParkingSystemUsage";
 import UserTable from "../components/UserTable";
@@ -86,6 +86,8 @@ export const routes: RouteType[] = [
   //Coding Practice
   { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice" },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
+  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations" },
+
   //hooks
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
   { path: "/UseDebounceExample", element: <UseDebounceExample />, linkText: "useDebounce" },
@@ -95,20 +97,17 @@ export const routes: RouteType[] = [
   { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
 
   //React, Next Concepts
-  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
   { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
   { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
   { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
-  { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
-  { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
   { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)" },
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
-  {path: "/UserTable", element: <UserTable />, linkText: "User Table"},
+  { path: "/UserTable", element: <UserTable />, linkText: "User Table" },
   { path: "/ParkingLotSystem", element: <ParkingLotUI />, linkText: "Parking Lot System" },
   { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
   { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },
@@ -118,5 +117,7 @@ export const routes: RouteType[] = [
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
   { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
+  { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
+  { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
 
 ]

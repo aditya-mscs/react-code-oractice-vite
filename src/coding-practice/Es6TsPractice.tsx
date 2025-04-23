@@ -1,6 +1,6 @@
 // @ts-nocheck Temporary ignore
 //DONT USE TYPESCRIPT. USE PLAIN JAVASCRIPT
-import GoBackToHome from "./GoBacktoHome";
+import GoBackToHome from "../components/GoBacktoHome";
 
 export const Es6TsPractice = () => {
   /*

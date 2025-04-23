@@ -1,5 +1,5 @@
 import React from "react";
-import GoBackToHome from "./GoBacktoHome";
+import GoBackToHome from "../components/GoBacktoHome";
 
 class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; error: Error | null }> {
   constructor(props: { children: React.ReactNode }) {

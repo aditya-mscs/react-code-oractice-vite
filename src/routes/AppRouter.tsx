@@ -1,6 +1,6 @@
 import { Route, BrowserRouter, Routes } from "react-router";
 import { routes } from '../utils/Utils';
-import ErrorBoundary from "../components/ErrorBoundary";
+import ErrorBoundary from "../react-next-concepts/ErrorBoundary";
 import { Profiler } from "react";
 import { GlobalProvider } from "../hooks/useGlobalContext";
 

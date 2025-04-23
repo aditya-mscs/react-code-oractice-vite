@@ -4,7 +4,7 @@
 
 
 import React from "react";
-import GoBackToHome from "./GoBacktoHome";
+import GoBackToHome from "../components/GoBacktoHome";
 
 
 export const ES6 = () => {
