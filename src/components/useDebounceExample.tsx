@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { debounce } from "../hooks/useDebounce";
 import GoBackToHome from "./GoBacktoHome";
 
 const UseDebounceExample = () => {
   const [inputValue, setInputValue] = useState<string>("");
 
-  // ✅ Debounced logger: created ONCE using useCallback
-  // useCallback ensures the debounced function is not recreated on every render
-  const debouncedLog = debounce((value: string) => {
-    console.log("Debounced value:", value);
-  }, 2000);
+  // THIS IS PRINTING ALL LETTERS TYPED
+  // You are calling debounce(...) inside your React component.
+  // _________ This recreates a brand new debounced function on every render, so all the previous timeouts stay active and fire.
+
+  // const debouncedLog = debounce((value: string) => {
+  //   console.log("Debounced value:", value);
+  // }, 2000);
+
+  // Best solution: useRef
+  // Create your debounced function using useRef, so it is only ________ created ONCE for the lifetime of the component.
+  // so timeoutId is always the same variable (not reset on every render).
+  const debouncedLog = useRef(
+    debounce((value: string) => {
+      console.log("Debounced value:", value);
+    }, 2000)
+  ).current;
+
 
   // 🔁 onChange handler: captures and logs value
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

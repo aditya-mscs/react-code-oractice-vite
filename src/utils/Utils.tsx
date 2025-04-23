@@ -33,8 +33,10 @@ import UserTable from "../components/UserTable";
 interface RouteType {
   path: string;
   element: JSX.Element;
-  hideOnHome?: boolean;
   linkText: string;
+
+  hideOnHome?: boolean;
+  newSection?: boolean;
 }
 
 type ArticleData = {
@@ -86,7 +88,7 @@ export const routes: RouteType[] = [
   //Coding Practice
   { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice" },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
-  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations" },
+  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations", newSection: true },
 
   //hooks
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
@@ -94,7 +96,7 @@ export const routes: RouteType[] = [
   { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
   { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
   { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
-  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
+  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize", newSection: true },
 
   //React, Next Concepts
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
@@ -103,7 +105,7 @@ export const routes: RouteType[] = [
   { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
-  { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)" },
+  { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)", newSection: true },
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
@@ -118,6 +120,6 @@ export const routes: RouteType[] = [
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
   { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
-  { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
+  { path: "/counter-example", element: <CounterExample />, linkText: "Counter", newSection: true },
 
 ]

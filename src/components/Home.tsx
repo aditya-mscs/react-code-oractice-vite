@@ -23,7 +23,9 @@ export default function Home() {
         <ol role="list" className="divide-y divide-gray-100">
           {routes.map((route) => (
             !route.hideOnHome &&
-            <li key={route.path} className="flex justify-between gap-x-6 py-2"><Link to={route.path}>{route.linkText}</Link></li>
+            <li key={route.path} className={`flex justify-between gap-x-6 py-2 ${route.newSection ? 'bg-gray-50' : ''}`}>
+              <Link to={route.path}>{route.linkText}</Link>
+            </li>
           ))}
         </ol>
       </div>
