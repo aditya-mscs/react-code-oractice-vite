@@ -22,15 +22,13 @@ const AppRouter = () => {
     <GlobalProvider>
       <div className="daddy">
         <Profiler id="MyComponent" onRender={onRender}>
-          <ErrorBoundary>
-            <BrowserRouter>
-              <Routes>
-                {routes.map((route) => (
-                  <Route key={route.path} path={route.path} element={route.element} />
-                ))}
-              </Routes>
-            </BrowserRouter>
-          </ErrorBoundary>
+          <BrowserRouter>
+            <Routes>
+              {routes.map((route) => (
+                <Route key={route.path} path={route.path} element={route.element} />
+              ))}
+            </Routes>
+          </BrowserRouter>
         </Profiler>
       </div>
     </GlobalProvider>

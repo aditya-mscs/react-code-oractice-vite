@@ -28,6 +28,7 @@ import UseDebounceExample from "../components/useDebounceExample";
 import TsFunctionDeclarations from "../hooks/TsFunctionDeclarations";
 import UseReducerComp from "../hooks/UseReducerComp";
 import ParkingLotUI from "../components/ParkingSystemUsage";
+import UserTable from "../components/UserTable";
 
 interface RouteType {
   path: string;
@@ -107,6 +108,7 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
+  {path: "/UserTable", element: <UserTable />, linkText: "User Table"},
   { path: "/ParkingLotSystem", element: <ParkingLotUI />, linkText: "Parking Lot System" },
   { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
   { path: "/TicTackToe", element: <TicTacToe />, linkText: "Tic Tac Toe" },

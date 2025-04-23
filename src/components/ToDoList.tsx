@@ -40,8 +40,8 @@ const ToDoList = () => {
     setToDoList(toDoList.filter(task => task.id !== taskId));
   }
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => { //__________ KeyboardEvent
+    if (event.key === 'Enter') { //_________ event.key
       addTask();
     }
   }

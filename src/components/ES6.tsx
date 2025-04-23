@@ -14,13 +14,13 @@ export const ES6 = () => {
   console.log(typeof true);         // boolean
   console.log(typeof undefined);    // undefined
   console.log(typeof null);         // object (quirk)
-  console.log(typeof Symbol("id")); // symbol
-  console.log(typeof 123456789n);   // bigint
+  console.log(typeof Symbol("id")); //_________ symbol
+  console.log(typeof 123456789n);   //_________ bigint
 
   // Non-primitive data types
   console.log(typeof {});           // object
   console.log(typeof []);           // object
-  console.log(typeof function () { }); // function
+  console.log(typeof function () { }); // _______ function
   console.log(typeof new Map());    // object
   console.log(typeof new Set());    // object
   console.log(typeof new WeakMap());// object
@@ -39,15 +39,20 @@ export const ES6 = () => {
 
   // Object Copying and Merging
   console.log('4. Object.assign:', Object.assign({}, { a: 1 }, { b: 2 })); // {a: 1, b: 2}
+  const obj1x = { a: 1 }; const obj2x = { b: 2 }; const merged = Object.assign({}, obj1x, obj2x);
+  console.log('4. Object.assign:', merged); // {a: 1, b: 2}
+  //NOTE: shallow copy only copies the first level of properties, while deep copy copies all levels
   const clone = structuredClone({ a: 1 }); console.log('5. structuredClone:', clone); // {a: 1}
 
   // Prototype and Property Manipulation
-  const proto = { greet: 'Hello' }; const obj1 = Object.create(proto); console.log('6. Object.create:', obj1.greet); // 'Hello'
+  const proto = { greet: 'Hello' }; const obj1 = Object.create(proto);
+  console.log('6. Object.create:', obj1.greet); // 'Hello'
   console.log('7. Object.getPrototypeOf:', Object.getPrototypeOf(obj1)); // {greet: 'Hello'}
   Object.setPrototypeOf(obj1, null); console.log('8. Object.setPrototypeOf:', Object.getPrototypeOf(obj1)); // null
 
   // Property Descriptor Methods
-  const obj2 = { a: 1 }; console.log('9. Object.getOwnPropertyDescriptor:', Object.getOwnPropertyDescriptor(obj2, 'a')); // {value: 1, writable: true, ...}
+  const obj2 = { a: 1 };
+  console.log('9. Object.getOwnPropertyDescriptor:', Object.getOwnPropertyDescriptor(obj2, 'a')); // {value: 1, writable: true, ...}
   console.log('10. Object.getOwnPropertyDescriptors:', Object.getOwnPropertyDescriptors(obj2)); // {a: {value: 1, writable: true, ...}}
 
   // Property Existence and Definition
@@ -60,7 +65,8 @@ export const ES6 = () => {
   console.log('15. Object.isFrozen:', Object.isFrozen(obj3)); // true
   const obj4 = { b: 2 }; Object.seal(obj4); console.log('16. Object.seal:', obj4); // {b: 2}
   console.log('17. Object.isSealed:', Object.isSealed(obj4)); // true
-  const obj5 = {}; Object.preventExtensions(obj5); console.log('18. Object.preventExtensions:', Object.isExtensible(obj5)); // false
+  const obj5 = {}; Object.preventExtensions(obj5);
+  console.log('18. Object.preventExtensions:', Object.isExtensible(obj5)); // false
   console.log('19. Object.isExtensible:', Object.isExtensible({})); // true
 
   // Comparison and Checking
@@ -74,7 +80,8 @@ export const ES6 = () => {
   console.log('23. Object.valueOf:', (new Number(10)).valueOf()); // 10
 
   // Property Definition
-  const obj6 = {}; Object.defineProperty(obj6, 'name', { value: 'John', writable: false }); console.log('24. Object.defineProperty:', obj6.name); // 'John'
+  const obj6 = {}; Object.defineProperty(obj6, 'name', { value: 'John', writable: false });
+  console.log('24. Object.defineProperty:', obj6.name); // 'John'
   Object.defineProperties(obj6, { age: { value: 30 }, city: { value: 'NY' } }); console.log('25. Object.defineProperties:', obj6); // {name: 'John', age: 30, city: 'NY'}
 
 
@@ -142,6 +149,7 @@ export const ES6 = () => {
   //ChatGpt
   // 🌟 Creation and Filling
   console.log('1.1 Array.from:', Array.from('Hello')); // ['H', 'e', 'l', 'l', 'o']
+  console.log('1.1 Array.from:', Array.from({ length: 5 }));  // [empty × 5]
   console.log('1.1 Array.from:', Array.from({ length: 5 }, (_, i) => i)); // [0,1,2,3,4] ----> IMP for creating arrays
   console.log('1.1 Array.from:', Array.from({ length: 5 }, (_, i) => (i & 1 ? 1 : -1))); // [1, -1, 1, -1, 1]
   console.log('1.1 Array.from:', Array.from({ length: 3 }, () => Math.random())); // [0.123, 0.456, 0.789]
@@ -152,12 +160,13 @@ export const ES6 = () => {
 
   console.log('1.3 Array.of:', Array.of(1, 2, 3)); // [1, 2, 3]
   console.log('1.4 Array.fill:', [1, 2, 3].fill(0)); // [0, 0, 0]
+  console.log('1.4 Array.from:', Array.from({ length: 5 }).fill(1));  // ___________[1, 1, 1, 1, 1]
 
   // 🔄 Iteration
   [1, 2, 3].forEach((num) => console.log('4. forEach:', num * 2)); // 2, 4, 6
   console.log('5. map:', [1, 2, 3].map(x => x * 2)); // [2, 4, 6]
   console.log('6. filter:', [1, 2, 3, 4].filter(x => x % 2 === 0)); // [2, 4]
-  console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 //----> reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: number[]) => number, initialValue: number)
+  console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 //----> reduce(callbackfn: (previousValue, currentValue, currentIndex, array) => number, initialValue)
   console.log('1.7 Max:', [1, 2, 3, 4].reduce((max, curr) => (curr > max ? curr : max), -Infinity));
   console.log('1.7 Fruit count:', ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'].reduce((acc, fruit) => {
     acc[fruit] = (acc[fruit] || 0) + 1;
@@ -171,21 +180,21 @@ export const ES6 = () => {
   }, {})); // { d: ['dog'], c: ['cat', 'car'], a: ['apple'] }
   console.log('8. reduceRight:', ['a', 'b', 'c'].reduceRight((acc, val) => acc + val)); // "cba"
 
-  // 🔍 Searching
-  console.log('9. find:', [1, 2, 3, 4].find(x => x > 2)); // 3
+  // 🔍 __________ Searching
+  console.log('9. find:', [1, 2, 3, 4].find(x => x > 2)); // 3 //Returns _____ first element in the array where predicate is true, and undefined otherwise.
   console.log('10. findIndex:', [1, 2, 3, 4].findIndex(x => x > 2)); // 2
-  console.log('11. includes:', [1, 2, 3].includes(2)); // true
-  console.log('12. indexOf:', [1, 2, 3].indexOf(2)); // 1 --->  Array<number>.indexOf(searchElement: number, fromIndex?: number): number
+  console.log('11. includes:', [1, 2, 3].includes(2)); // true ____________
+  console.log('12. indexOf:', [1, 2, 3].indexOf(2)); // 1 --->  Array<number>.indexOf(searchElement, fromIndex)
   console.log('13. lastIndexOf:', [1, 2, 3, 2].lastIndexOf(2)); // 3
-  console.log('14. some:', [1, 2, 3].some(x => x > 2)); // true
+  console.log('14. some:', [1, 2, 3].some(x => x > 2)); // true ____________ some/every returns boolean
   console.log('15. every:', [1, 2, 3].every(x => x > 0)); // true
 
   // 🧩 Transformation
-  console.log('16. concat:', [1, 2].concat([3, 4])); // [1, 2, 3, 4]
+  console.log('16. concat:', [1, 2].concat([3, 4])); // _____________[1, 2, 3, 4]
   console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3" //---> .join(separator?: string): string
   console.log('18. flat:', [1, [2, [3]]].flat()); // (3) [1, 2, Array(1)] ---> .flat by default flattens only 1 level deep
   console.log('18. flat:', [1, [2, [3]]].flat(2)); // [1, 2, 3]
-  console.log('18. flat:', [1, [2, [3, [4, [5]]]]].flat(Infinity)); // [1, 2, 3, 4, 5]
+  console.log('18. flat:', [1, [2, [3, [4, [5]]]]].flat(Infinity)); // _________[1, 2, 3, 4, 5]
   console.log('19. flatMap:', [1, 2].flatMap(x => [x * 2])); // [2, 4]
   console.log('20. reverse:', [1, 2, 3].reverse()); // [3, 2, 1]
 
@@ -194,11 +203,14 @@ export const ES6 = () => {
   console.log('21. push:', [1, 2].push(3), [1, 2]); // 3, [1, 2, 3] ---> PUSH AT END
   console.log('22. pop:', [1, 2, 3].pop(), [1, 2]); // 3, [1, 2] ---> POP FROM END
   // UNSHIFT = PUSH at the START
-  console.log('23. unshift:', [2, 3].unshift(1), [2, 3]); // 3, [1, 2, 3] --> UNSHIFT is PUSH AT START. unshift(...items: number[])
+  console.log('23. unshift:', [2, 3].unshift(1), [2, 3]); // 3, [1, 2, 3] --> UNSHIFT is PUSH AT START. unshift(...items)
   console.log('24. shift:', [1, 2, 3].shift(), [2, 3]); // 1, [2, 3] ---> SHIFT is pop from START
 
+
+
   //SPLICE ----> (INDEX, HOW MANY TO REMOVE, HOW MANY TO ADD)
-  //	•	⚠️ Mutating – _________ SPLICE Modifies the original array. Used to add, remove, or replace elements
+  // ⚠️ Mutating – _________ SPLICE Modifies the original array. //-------> SO NEED TO ASSIGN TO OTHER VARIABLE
+  // Used to add, remove, or replace elements
   console.log('25. splice (add):', [1, 3].splice(1, 0, 2), [1, 2, 3]); //returns [], Original array[1,2] --> [1, 2, 3] ---> INSERTS INBETWEEN
   console.log('26. splice (remove):', [1, 2, 3].splice(1, 1), [1, 3]); // [2], [1, 3] ---> DELETES
   const a1 = [1, 2, 3, 4];
@@ -206,7 +218,6 @@ export const ES6 = () => {
   console.log('26.2 Remove last:', [...a1].splice(3, 1));         // [4] //Original array: [1, 2, 3]
   console.log('26.3 Remove middle:', [...a1].splice(1, 2));       // [2, 3] //Original array: [1, 4]
   console.log('26.4 Insert at index 2:', [...a1].splice(2, 0, 99)); // [] ---> .splice() always returns an array of removed items. Since deleteCount = 0, nothing is removed, so the return value is: [] // Original array: [1, 2, 99, 3, 4]
-  //-------> SO NEED TO ASSIGN TO OTHER VARIABLE
   const a2 = [1, 2, 3, 4]
   const a3 = a2.splice(2, 0, 99); // a3 = [] // a2 = [1, 2, 99, 3, 4]
   console.log('26.5 Insert at start:', [...a1].splice(0, 0, 0));  // [] // Original array: [0, 1, 2, 3, 4]
@@ -223,6 +234,23 @@ export const ES6 = () => {
   console.log('26.16 Add "start" at beginning:', [...a1].splice(0, 0, 'start')); // [] // Original array: ['start', 1, 2, 3, 4]
   console.log('26.17 Add "end" at end:', [...a1].splice(a1.length, 0, 'end')); // [] // Original array: [1, 2, 3, 4, 'end']
 
+
+
+  //Chunking -----> slice(start, end)  RETURNS SLICE
+  //	✅ Non-mutating ___________Returns a shallow copy, original array remains unchanged. Used to extract a portion of an array
+  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3] //----------->
+  //Slice 3 from [1, 2, 3, 4] and returns [2, 3]
+  console.log('38. slice:', [1, 2, 3, 4].slice(-2)); // [3, 4] //----------->
+  console.log('38.1 Slice full:', a1.slice());                     // [1, 2, 3, 4]
+  console.log('38.2 Slice from index 1:', a1.slice(1));            // [2, 3, 4]
+  console.log('38.3 Slice index 1 to 3:', a1.slice(1, 3));         // [2, 3]
+  console.log('38.4 Slice with negative start:', a1.slice(-2));    // [3, 4]
+  console.log('38.5 Slice with negative end:', a1.slice(0, -1));   // [1, 2, 3]
+  console.log('38.6 Slice last element only:', a1.slice(-1));      // [4]
+  console.log('38.7 Slice with both negative:', a1.slice(-3, -1)); // [2, 3]
+  console.log('38.8 Slice zero elements:', a1.slice(2, 2));        // []
+
+
   const a4 = [1, 2, 3, 4]
   function deleteFromArray(valueToRemove) { //search and delete --> indexOf and splice
     const index = a4.indexOf(valueToRemove);
@@ -238,31 +266,17 @@ export const ES6 = () => {
   const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
 
 
-  //Chunking -----> slice(start?: number, end?: number)  RETURNS SLICE
-  //	✅ Non-mutating ___________Returns a shallow copy, original array remains unchanged. Used to extract a portion of an array
-  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3] //----------->
-  //Slice 3 from [1, 2, 3, 4] and returns [2, 3]
-  console.log('38. slice:', [1, 2, 3, 4].slice(-2)); // [3, 4] //----------->
-  console.log('38.1 Slice full:', a1.slice());                     // [1, 2, 3, 4]
-  console.log('38.2 Slice from index 1:', a1.slice(1));            // [2, 3, 4]
-  console.log('38.3 Slice index 1 to 3:', a1.slice(1, 3));         // [2, 3]
-  console.log('38.4 Slice with negative start:', a1.slice(-2));    // [3, 4]
-  console.log('38.5 Slice with negative end:', a1.slice(0, -1));   // [1, 2, 3]
-  console.log('38.6 Slice last element only:', a1.slice(-1));      // [4]
-  console.log('38.7 Slice with both negative:', a1.slice(-3, -1)); // [2, 3]
-  console.log('38.8 Slice zero elements:', a1.slice(2, 2));        // []
-
   // 🔄 Sorting and Rearranging
   console.log('27. sort:', [3, 1, 2].sort((a, b) => a - b)); // [1, 2, 3]
   console.log('28. copyWithin:', [1, 2, 3, 4].copyWithin(0, 2)); // [3, 4, 3, 4]
-  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0] //fill(value, start, end): number[]
+  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0] //fill(value, start, end)
 
   // 📐 Array Properties
   console.log('30. length:', [1, 2, 3].length); // 3
   console.log('31. isArray:', Array.isArray([1, 2, 3])); // true
 
   // 🌟 Finding Min/Max
-  console.log('32. Math.min:', Math.min(...[1, 2, 3])); // 1 //----> Note ... is spread operator to unpack array
+  console.log('32. Math.min:', Math.min(...[1, 2, 3])); // 1 //__________ Note ... is spread operator to unpack array
   console.log('33. Math.max:', Math.max(...[1, 2, 3])); // 3
 
   // 🔀 Converting and Cloning
@@ -270,15 +284,8 @@ export const ES6 = () => {
   console.log('35. toLocaleString:', [1, 2].toLocaleString()); // "1,2"
   const arr = [1, 2, 3]; const clonedArr = [...arr]; console.log('36. spread operator:', clonedArr); // [1, 2, 3]
 
-  // 🧩 Grouping
-  console.log('37. Array.from (range):', Array.from({ length: 5 }, (_, i) => i + 1)); // [1, 2, 3, 4, 5]
-
   // 🗃️ Advanced
   console.log('39. Array.prototype.at:', [1, 2, 3].at(-1)); // 3
-  console.log('40. Array.prototype.entries:', [...[1, 2, 3].entries()]); // [[0, 1], [1, 2], [2, 3]]
-  console.log('41. Array.prototype.keys:', [...[1, 2, 3].keys()]); // [0, 1, 2]
-  console.log('42. Array.prototype.values:', [...[1, 2, 3].values()]); // [1, 2, 3]
-
 
 
 
@@ -437,7 +444,7 @@ export const ES6 = () => {
   // 7. Iterating over Map entries
   console.log('8. Iterating over entries:');
   cityPopulationMap.forEach((value, key) => {
-    console.log(`   - City: ${key}, Population: ${value}`);
+    console.log(`- City: ${key}, Population: ${value}`);
   });
 
   // 8. Using for...of to iterate
@@ -493,8 +500,8 @@ export const ES6 = () => {
 
   // Find duplicates in an array
   const temp = [1, 2, 2, 3, 4, 4, 5]
-  const getDuplicates = (arr: number[]) => {
-    const newArr: number[] = [];
+  const getDuplicates = (arr) => {
+    const newArr = [];
     const map = new Map();
     arr.forEach((item) => {
       if (map.has(item)) { //--------> have to check if map has the item
@@ -603,6 +610,9 @@ export const ES6 = () => {
 
 
 
+
+
+
   console.log('----------------------WEAKSET QUESTIONS-----------------------------');
   //WeakSet -> new WeakSet(), .add(value), .has(value), .delete(value)
   //NOTE : WeakSet is an collection of ______ unique values, but the values must be objects
@@ -694,6 +704,9 @@ export const ES6 = () => {
 
 
 
+
+
+
   console.log('-------------------------STRING QUESTIONS--------------------------');
   // 1. Creating strings
   const str1 = 'Hello, World!';
@@ -709,6 +722,10 @@ export const ES6 = () => {
   // 3. Accessing characters
   console.log('5. First character of str1:', str1[0]); // H
   console.log('6. Last character of str1:', str1[str1.length - 1]); // !
+  // 14. Extracting characters
+  console.log('30. Char at position 4:', str1.charAt(4)); // o
+  console.log('31. Char code at position 4:', str1.charCodeAt(4)); // 111 (ASCII for 'o')
+
 
   // 4. String methods
   console.log('7. Uppercase:', str1.toUpperCase()); // HELLO, WORLD!
@@ -756,15 +773,11 @@ export const ES6 = () => {
   console.log('28. Compare "apple" > "banana":', 'apple' > 'banana'); // false
   console.log('29. Compare "cat" < "dog":', 'cat' < 'dog'); // true
 
-  // 14. Extracting characters
-  console.log('30. Char at position 4:', str1.charAt(4)); // o
-  console.log('31. Char code at position 4:', str1.charCodeAt(4)); // 111 (ASCII for 'o')
-
   // 15. Escaping special characters
   const escapeStr = 'He said, "It\'s a sunny day."';
   console.log('32. Escaped string:', escapeStr); // He said, "It's a sunny day."
 
-  // 16. Raw strings using String.raw
+  // 16._________ Raw strings using String.raw
   console.log('33. Raw template literal:', String.raw`Line 1\nLine 2`); // Line 1\nLine 2
 
   // 17. Checking for empty strings
@@ -797,11 +810,6 @@ export const ES6 = () => {
   console.log('40. Convert "42" to number:', Number('42')); // 42
   console.log('41. Parse float from "3.14abc":', parseFloat('3.14abc')); // 3.14
 
-  // 23. Template literals with expressions
-  const a = 5, b = 3;
-  console.log(`42. Sum of ${a} and ${b} is: ${a + b}`); // Sum of 5 and 3 is: 8
-
-
 
 
 
@@ -818,13 +826,34 @@ export const ES6 = () => {
   console.log('----------------------REGEX QUESTIONS-----------------------------');
   /*
   \d → digit
-  \s → space
+  \s → space ____________
   \w → word character (letter, digit, underscore)
-  ^ inside [] → NOT
+  ^ inside [] → NOT ___________
+  [abc] → any of a, b, or c
+  [a-z] → any lowercase letter
+  [A-Z] → any uppercase letter
+  [0-9] → any digit
+  [a-zA-Z] → any letter
+  [a-zA-Z0-9] → any letter or digit
+  [a-zA-Z0-9_] → any letter, digit, or underscore
+  \b → word boundary
+  \B → NOT word boundary
+  \d{n} → exactly n digits
+  \d{n,} → at least n digits
+  \d{n,m} → between n and m digits
+  \D → NOT digit
+  \S → NOT space
+  \W → NOT word character
+  \s+ → one or more spaces
+  \s* → zero or more spaces
+  \w+ → one or more word characters
+  \w* → zero or more word characters
+  \d{2,4} → between 2 and 4 digits
+  \d{2,} → at least 2 digits
 
   g → global (all matches)
   i → ignore case
-  + → one or more
+  + → one or more ___________
   * → zero or more
   
   {n} → exactly n
@@ -853,7 +882,7 @@ export const ES6 = () => {
 
   // 7. Removing all non-alphanumeric characters
   const specialChars1 = 'Hello@123!';
-  const cleanedString1 = specialChars1.replace(/[^a-zA-Z0-9]/g, '');
+  const cleanedString1 = specialChars1.replace(/[^a-zA-Z0-9]/g, ''); // 'Hello123' __________________ imp
   console.log('9. Cleaned string:', cleanedString1); // 'Hello123'
 
   // 3. Extracting all numbers from a string
