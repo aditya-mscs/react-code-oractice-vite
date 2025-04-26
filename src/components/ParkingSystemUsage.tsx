@@ -38,7 +38,7 @@ export default function ParkingLotUI() {
       <GoBackToHome />
       <h1 className="text-2xl font-bold">🚗 Parking Lot System</h1>
 
-      <input
+      <input type="text"
         className="border p-2 w-full"
         placeholder="License Plate"
         value={license}

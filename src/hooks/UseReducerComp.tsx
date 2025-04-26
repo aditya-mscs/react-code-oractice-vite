@@ -61,7 +61,7 @@ const UseReducerComp = () => {
 
       <label>
         Name:
-        <input
+        <input type="text"
           value={state.name}
           onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
         />
@@ -71,7 +71,7 @@ const UseReducerComp = () => {
 
       <label>
         Email:
-        <input
+        <input type="text"
           value={state.email}
           onChange={(e) => dispatch({ type: 'SET_EMAIL', payload: e.target.value })}
         />

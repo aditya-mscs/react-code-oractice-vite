@@ -77,7 +77,7 @@ function UserTable() {
     <tr>
       <td>
         {editing.id === user.id && editing.field === 'name' ? (
-          <input
+          <input type="text"
             value={editValue}
             autoFocus
             onChange={e => setEditValue(e.target.value)}
@@ -95,7 +95,7 @@ function UserTable() {
       </td>
       <td>
         {editing.id === user.id && editing.field === 'email' ? (
-          <input
+          <input type="text"
             value={editValue}
             autoFocus
             onChange={e => setEditValue(e.target.value)}
