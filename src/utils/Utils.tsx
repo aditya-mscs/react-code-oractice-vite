@@ -29,6 +29,7 @@ import TsFunctionDeclarations from "../coding-practice/TsFunctionDeclarations";
 import UseReducerComp from "../hooks/UseReducerComp";
 import ParkingLotUI from "../components/ParkingSystemUsage";
 import UserTable from "../components/UserTable";
+import { ToDoListProps } from "../components/ToDoListProps";
 
 interface RouteType {
   path: string;
@@ -118,6 +119,7 @@ export const routes: RouteType[] = [
   { path: "/cart", element: <Cart />, linkText: "Cart" },
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
+  { path: "/ToDoListProps", element: <ToDoListProps />, linkText: "To Do List Props" },
   { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
   { path: "/counter-example", element: <CounterExample />, linkText: "Counter", newSection: true },

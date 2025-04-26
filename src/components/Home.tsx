@@ -1,8 +1,8 @@
-import { Link } from "react-router";
 import { routes } from "../utils/Utils";
 import { API_URL } from "../config/config";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 export default function Home() {
   const { user, setUser } = useGlobalContext();
@@ -23,7 +23,13 @@ export default function Home() {
         <ol role="list" className="divide-y divide-gray-100">
           {routes.map((route) => (
             !route.hideOnHome &&
-            <li key={route.path} className={`flex justify-between gap-x-6 py-2 ${route.newSection ? 'bg-gray-50' : ''}`}>
+            <li
+              key={route.path} 
+              className={
+                `flex justify-between gap-x-6 py-2 border-b ` +
+                (route.newSection ? 'border-b-blue-500 new-section' : 'border-b-gray-200') +
+                ' last:border-b-0'
+              }>
               <Link to={route.path}>{route.linkText}</Link>
             </li>
           ))}
