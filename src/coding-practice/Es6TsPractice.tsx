@@ -1131,6 +1131,209 @@ export const Es6TsPractice = () => {
 
 
 
+  //------------------- 11 capital one questions ------------------
+
+  /*
+  construct an array with first character of a[i] and last character of a[i+1]
+  a = ["cat", "dog", "ferret", "scorpion"]
+  Output: ["cg", "dt", "fn", "st"]
+  Time O(n), Space O(n) — linear scan
+  */
+  const firstAndLast = (arr) => {
+    const result = [];
+    arr.forEach((word, index) => {
+      const nextWord = arr[index + 1] ? arr[index + 1] : arr[0],
+        lastChar = nextWord[nextWord.length - 1];
+      result.push(word[0] + lastChar);
+    });
+    return result;
+  }
+  console.log('11.1 firstAndLast: ', firstAndLast(["cat", "dog", "ferret", "scorpion"])); // Outputs: ["cg", "dt", "fn", "st"]
+
+
+  /*
+  fantasy card duel problem:
+  During each round:
+    •	The top cards of both decks are revealed.
+    •	If the card from playerDeckA is greater than or equal to the card from playerDeckB,
+    •	Player A wins the round, and both cards are placed at the bottom of playerDeckA,
+  first their own, then playerDeckB’s card.
+    •	Otherwise,
+    •	Player B wins the round, and both cards are placed at the bottom of playerDeckB,
+  first their own, then playerDeckA’s card.
+  The game ends when either player’s deck becomes empty (they can’t draw any more cards).
+  
+  Task: Determine how many rounds the duel lasts.
+  */
+  const cardDuel = (playerDeckA, playerDeckB) => {
+    let rounds = 0;
+    while (playerDeckA.length > 0 && playerDeckB.length > 0) {
+      const cardA = playerDeckA.shift();
+      const cardB = playerDeckB.shift();
+      rounds++;
+      if (cardA >= cardB) {
+        playerDeckA.push(cardA, cardB); //____________ PUSH MULTIPLE AT END
+      } else {
+        playerDeckB.push(cardB, cardA);
+      }
+      // console.log('11.2: cardDuel: A:', playerDeckA.join(','), ' B: ', playerDeckB.join(','));
+    }
+    return rounds;
+  }
+  console.log('11.2 cardDuel: ', cardDuel([1, 2, 3], [3, 2, 1])); // Outputs: 9 //A[2,3] B[2,1,3,1] --> A: 3,2,2  B:  1,3,1 -> A: 2,2,3,1  B:  3,1 ->  A: 2,3,1  B:  1,3,2 -> A: 3,1,2,1  B:  3,2 ->  ...... -> A: 3,3,2,2,1,1  B:
+  console.log('11.2 cardDuel: ', cardDuel([1, 2, 3], [4, 5, 6])); // Outputs: 3
+  console.log('11.2 cardDuel: ', cardDuel([1, 2, 3], [1, 2, 3])); // Outputs: 3
+
+
+  /*
+  gravity-based puzzle
+  You are given a rectangular matrix board representing the game board.
+  Each cell contains one of the following:
+  •	'.' — an empty cell
+  •	'x' — an obstacle
+  •	'#' — a part of the figure (the shape you want to drop)
+  It is guaranteed that the figure consists of one piece, with all '#' cells connected by the sides.
+  
+  Task: Simulate how the figure would fall, and find the minimum number of obstacles ('x') that must be removed to allow the figure to touch the bottom row of the board with at least one of its cells.
+  The figure falls straight down (gravity), maintaining its shape.
+  The figure cannot rotate or move horizontally.
+
+  board = [
+    ['.', '.', '.', '.', '.'],
+    ['.', 'x', 'x', '.', '.'],
+    ['.', '.', '#', '#', '.'],
+    ['x', 'x', '.', '.', '.'],
+    ['.', '.', '.', '.', '.']
+  ]
+    Output: 2
+  */
+  function gravityPuzzle(board) {
+    const rows = board.length;
+    const cols = board[0].length;
+
+    // Step 1: Identify figure blocks
+    const shape = [];
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (board[i][j] === '#') {
+          shape.push([i, j]);
+        }
+      }
+    }
+    console.log('11.3 gravityPuzzle: shape: ', shape);
+
+    // Step 2: Simulate how far the shape can drop before colliding
+    let minRemovals = Infinity;
+
+    // Try all possible drops
+    for (let drop = 0; drop < rows; drop++) {
+      let collision = false;
+      let removals = 0;
+
+      for (const [x, y] of shape) {
+        const newX = x + drop;
+        if (newX >= rows) {
+          collision = true;
+          break;
+        }
+
+        if (board[newX][y] === 'x') {
+          removals++;
+        }
+      }
+
+      if (collision) break;
+      minRemovals = Math.min(minRemovals, removals);
+    }
+
+    return minRemovals;
+  }
+  console.log('11.3 gravityPuzzle: ', gravityPuzzle([
+    ['.', '.', '.', '.', '.'],
+    ['.', 'x', 'x', '.', '.'],
+    ['.', '.', '#', '#', '.'],
+    ['x', 'x', '.', '.', '.'],
+    ['.', '.', '.', '.', '.']
+  ])); // Outputs: 0
+  console.log('11.3 gravityPuzzle: ', gravityPuzzle([
+    ['.', '.', '#', '.', '.'],
+    ['.', '#', '#', '#', '.'],
+    ['.', 'x', 'x', 'x', '.'],
+    ['.', '.', '.', '.', '.'],
+    
+  ])); // Outputs: 2
+
+  /*
+  Given an infinite integer number line, you would like to build some blocks and obstacles on it.
+  You have to implement code which supports two types of operations:
+    1.	[1, x] — Builds an obstacle at coordinate x along the number line.
+  It is guaranteed that coordinate x does not contain any obstacles when the operation is performed.
+    2.	[2, x, size] — Checks whether it’s possible to build a block centered on x and extending size-1 in each direction.
+  For example, for size = 3 and x = 0, it will check -2 through 2 on the number line for obstacles (i.e., all positions from x-(size-1) to x+(size-1)).
+    •	Produces "1" if possible (i.e., there are no obstacles at any of these positions).
+    •	Produces "0" otherwise.
+    [
+      [1, 2],      // place obstacle at 2
+      [1, 6],      // place obstacle at 6
+      [2, 4, 2],   // check if block size 2 at center 4: check 3,4,5
+      [2, 5, 2],   // check if block size 2 at center 5: check 4,5,6
+      [2, 1, 1],   // check if block size 1 at center 1: check 1
+      [2, 1, 2],   // check if block size 2 at center 1: check 0,1,2
+    ]
+    Output: 1010
+    const ops = [
+      [2, 0, 2], // check -1,0,1
+      [1, -1],
+      [2, 0, 2],
+      [1, 0],
+      [2, 0, 2],
+    ];
+    Output: 100
+    Time O(n), Space O(n) — uses Set to track obstacles
+  */
+  function solution(operations) {
+    const obstacles = new Set();
+    let result = "";
+
+    for (const op of operations) {
+      if (op[0] === 1) {
+        // [1, x] - build an obstacle at x
+        obstacles.add(op[1]);
+      } else {
+        // [2, x, size] - check block centered at x, from (x-(size-1)) to (x+(size-1))
+        const [, x, size] = op; // Ignore op[0], take x and size
+        let canBuild = true;
+        for (let i = x - (size - 1); i <= x + (size - 1); i++) {
+          if (obstacles.has(i)) {
+            canBuild = false;
+            break;
+          }
+        }
+        result += canBuild ? "1" : "0";
+      }
+    }
+    return result;
+  }
+  console.log('11.4 solution: ', solution([
+    [1, 2],      // place obstacle at 2
+    [1, 6],      // place obstacle at 6
+    [2, 4, 2],   // check if block size 2 at center 4: check 3,4,5
+    [2, 5, 2],   // check if block size 2 at center 5: check 4,5,6
+    [2, 1, 1],   // check if block size 1 at center 1: check 1
+    [2, 1, 2],   // check if block size 2 at center 1: check 0,1,2
+  ])); // Outputs: 1010
+  console.log(solution([
+    [1, -1000000],
+    [2, -1000000, 1],
+    [2, -999999, 2],
+    [2, -1000001, 2],
+  ])); // => "010"
+
+
+
+
+
+
 
 
 

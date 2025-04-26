@@ -139,12 +139,17 @@ export const ES6 = () => {
 
 
   console.log('-------------------------1 ARRAY QUESTIONS--------------------------');
-  //ES6 array features
+  //MAP
   const numbersX = [1, 2, 3, 4, 5];
   const doubledNumbers = numbersX.map(num => num * 2); //-----> Best for Creating New Arrays SO REPLACE ALL uses map
-  const filteredNumbers = numbersX.filter(num => num > 2); //-----> Best for Filtering Arrays
+  const replaced = numbersX.map(x => x === 2 ? 99 : x); //__________ ARRAY REPLACE ALL array
+  // Best Practice:
+  // •	Use .map() for immutability (returns a new array).
+  // •	Use a loop or .forEach() if you need to mutate the original array.
   const sum = numbersX.reduce((total, num) => total + num, 0); //-----> Best for Summing or Aggregation
   //NOTE: first param is acc/total and second param is indiviual number. second param 0 is initialValue
+  const filteredNumbers = numbersX.filter(num => num > 2); //-----> Best for Filtering Arrays
+
 
   //ChatGpt
   // 🌟 Creation and Filling
@@ -162,10 +167,13 @@ export const ES6 = () => {
   console.log('1.4 Array.fill:', [1, 2, 3].fill(0)); // [0, 0, 0]
   console.log('1.4 Array.from:', Array.from({ length: 5 }).fill(1));  // ___________[1, 1, 1, 1, 1]
 
-  // 🔄 Iteration
+  // 🔄 Iteration - forEach, map, filter
   [1, 2, 3].forEach((num) => console.log('4. forEach:', num * 2)); // 2, 4, 6
   console.log('5. map:', [1, 2, 3].map(x => x * 2)); // [2, 4, 6]
   console.log('6. filter:', [1, 2, 3, 4].filter(x => x % 2 === 0)); // [2, 4]
+  console.log('6.1 Filter:', filteredNumbers); // [3, 4, 5]
+
+  //Reduce
   console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 //----> reduce(callbackfn: (previousValue, currentValue, currentIndex, array) => number, initialValue)
   console.log('1.7 Max:', [1, 2, 3, 4].reduce((max, curr) => (curr > max ? curr : max), -Infinity));
   console.log('1.7 Fruit count:', ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'].reduce((acc, fruit) => {
@@ -192,27 +200,30 @@ export const ES6 = () => {
   // 🧩 Transformation
   console.log('16. concat:', [1, 2].concat([3, 4])); // _____________[1, 2, 3, 4]
   console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3" //---> .join(separator?: string): string
+  console.log('20. reverse:', [1, 2, 3].reverse()); // [3, 2, 1]
+
+  //FLAT and FLATMAP
   console.log('18. flat:', [1, [2, [3]]].flat()); // (3) [1, 2, Array(1)] ---> .flat by default flattens only 1 level deep
   console.log('18. flat:', [1, [2, [3]]].flat(2)); // [1, 2, 3]
   console.log('18. flat:', [1, [2, [3, [4, [5]]]]].flat(Infinity)); // _________[1, 2, 3, 4, 5]
   console.log('19. flatMap:', [1, 2].flatMap(x => [x * 2])); // [2, 4]
-  console.log('20. reverse:', [1, 2, 3].reverse()); // [3, 2, 1]
 
-  //Adding removing from array
+  //Adding removing from array ---------> _________ modifies original array hence output
   // 📋 PUSH POP at the END
-  console.log('21. push:', [1, 2].push(3), [1, 2]); // 3, [1, 2, 3] ---> PUSH AT END
-  console.log('22. pop:', [1, 2, 3].pop(), [1, 2]); // 3, [1, 2] ---> POP FROM END
+  console.log('21. push:', [1, 2].push(3)); // 3, [1, 2, 3] ---> PUSH AT END
+  console.log('21. push:', [1, 2].push(3, 4)); // 3, [1, 2, 3, 4] ---> PUSH AT END
+  console.log('22. pop:', [1, 2, 3].pop()); // 3, [1, 2] ---> POP FROM END
   // UNSHIFT = PUSH at the START
-  console.log('23. unshift:', [2, 3].unshift(1), [2, 3]); // 3, [1, 2, 3] --> UNSHIFT is PUSH AT START. unshift(...items)
-  console.log('24. shift:', [1, 2, 3].shift(), [2, 3]); // 1, [2, 3] ---> SHIFT is pop from START
+  console.log('23. unshift:', [2, 3].unshift(1)); // 3, [1, 2, 3] --> UNSHIFT is PUSH AT START. unshift(...items)
+  console.log('24. shift:', [1, 2, 3].shift()); // 1, [2, 3] ---> SHIFT is pop from START
 
 
 
   //SPLICE ----> (INDEX, HOW MANY TO REMOVE, HOW MANY TO ADD)
   // ⚠️ Mutating – _________ SPLICE Modifies the original array. //-------> SO NEED TO ASSIGN TO OTHER VARIABLE
   // Used to add, remove, or replace elements
-  console.log('25. splice (add):', [1, 3].splice(1, 0, 2), [1, 2, 3]); //returns [], Original array[1,2] --> [1, 2, 3] ---> INSERTS INBETWEEN
-  console.log('26. splice (remove):', [1, 2, 3].splice(1, 1), [1, 3]); // [2], [1, 3] ---> DELETES
+  console.log('25. splice (add):', [1, 3].splice(1, 0, 2)); //returns [], Original array[1,2] --> [1, 2, 3] ---> INSERTS INBETWEEN
+  console.log('26. splice (remove):', [1, 2, 3].splice(1, 1)); // [2], [1, 3] ---> DELETES
   const a1 = [1, 2, 3, 4];
   console.log('26.1 Remove first:', [...a1].splice(0, 1));        // [1] //Original array: [2, 3, 4]
   console.log('26.2 Remove last:', [...a1].splice(3, 1));         // [4] //Original array: [1, 2, 3]
@@ -238,11 +249,12 @@ export const ES6 = () => {
 
   //Chunking -----> slice(start, end)  RETURNS SLICE
   //	✅ Non-mutating ___________Returns a shallow copy, original array remains unchanged. Used to extract a portion of an array
-  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3] //----------->
+  console.log('38. slice:', [1, 2, 3, 4].slice(1, 3)); // [2, 3]
   //Slice 3 from [1, 2, 3, 4] and returns [2, 3]
-  console.log('38. slice:', [1, 2, 3, 4].slice(-2)); // [3, 4] //----------->
+  console.log('38. slice:', [1, 2, 3, 4].slice(-2)); // [3, 4]
   console.log('38.1 Slice full:', a1.slice());                     // [1, 2, 3, 4]
-  console.log('38.2 Slice from index 1:', a1.slice(1));            // [2, 3, 4]
+  console.log('38.2 Slice first element:', a1.slice(0, 1));        // _________ [1] FIRST ONE
+  console.log('38.2 Slice from index 1:', a1.slice(1));            // _________ [2, 3, 4] REST
   console.log('38.3 Slice index 1 to 3:', a1.slice(1, 3));         // [2, 3]
   console.log('38.4 Slice with negative start:', a1.slice(-2));    // [3, 4]
   console.log('38.5 Slice with negative end:', a1.slice(0, -1));   // [1, 2, 3]
@@ -250,8 +262,13 @@ export const ES6 = () => {
   console.log('38.7 Slice with both negative:', a1.slice(-3, -1)); // [2, 3]
   console.log('38.8 Slice zero elements:', a1.slice(2, 2));        // []
 
-
+  //Array Delete all from array
   const a4 = [1, 2, 3, 4]
+  function deleteFromArray(valueToRemove) {
+    return a4.filter(val => val !== valueToRemove);
+  }
+  const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
+  //OR
   function deleteFromArray(valueToRemove) { //search and delete --> indexOf and splice
     const index = a4.indexOf(valueToRemove);
     if (index !== -1) {
@@ -259,17 +276,12 @@ export const ES6 = () => {
     }
   }
   deleteFromArray(3); // a4 = [1, 2, 4] ----> same array modfied
-  // OR
-  function deleteFromArray(valueToRemove) {
-    return a4.filter(val => val !== valueToRemove);
-  }
-  const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
 
 
   // 🔄 Sorting and Rearranging
   console.log('27. sort:', [3, 1, 2].sort((a, b) => a - b)); // [1, 2, 3]
   console.log('28. copyWithin:', [1, 2, 3, 4].copyWithin(0, 2)); // [3, 4, 3, 4]
-  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0] //fill(value, start, end)
+  console.log('29. fill:', [1, 2, 3].fill(0, 1, 3)); // [1, 0, 0] //__________ fill(value, start, end)
 
   // 📐 Array Properties
   console.log('30. length:', [1, 2, 3].length); // 3
@@ -350,7 +362,7 @@ export const ES6 = () => {
   const setBeta = new Set([3, 4, 5]);
 
   // 🧮 Set Union
-  const unionSet = new Set([...setAlpha, ...setBeta]);
+  const unionSet = new Set([...setAlpha, ...setBeta]); // ________ NOT (...setAlpha, ...setBeta) as set is still array so [...A, ...B]
   console.log('12. Union:', unionSet); // Set(5) { 1, 2, 3, 4, 5 }
 
   // 🔀 Set Intersection
@@ -385,6 +397,10 @@ export const ES6 = () => {
 
   // 🌲 Set to String
   console.log('21. Set to String:', Array.from(new Set([1, 2, 3])).join(',')); // "1,2,3"
+
+
+
+
 
   // 🌐 WeakSet Example
   const weakSetExample = new WeakSet();
