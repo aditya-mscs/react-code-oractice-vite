@@ -1,19 +1,16 @@
 import { useState } from "react"
 import GoBackToHome from "./GoBacktoHome"
 
-
 type Task = {
   task: string;
   desc: string;
 }
-
-
 export const ToDoListProps = () => {
   const [taskList, setTaskList] = useState<Task[]>([]) //useState<Task[]>
   return (
     <>
       <GoBackToHome />
-      <ToDoListChild setTaskList={setTaskList} />
+      <ToDoListChild setTaskList={setTaskList} /> {/*_________ pass setTaskList to child */}
 
       <div>The tasks are:</div>
       {taskList && taskList.length > 0 ? (
@@ -41,7 +38,7 @@ const ToDoListChild = ({ setTaskList }: { setTaskList: React.Dispatch<React.SetS
 
     if (task && desc) {
       setTaskList(prev => [{ task: task, desc: desc }, ...prev]);
-      (document.getElementById('task') as HTMLInputElement).value = '';
+      (document.getElementById('task') as HTMLInputElement).value = '';  //______ not value()
       setDesc('')
     }
     console.log('handleOnClick: ', task)
@@ -50,7 +47,7 @@ const ToDoListChild = ({ setTaskList }: { setTaskList: React.Dispatch<React.SetS
     <div>
       <h1>To Do List</h1>
       <input type="text" id="task" defaultValue="task 1" /> {/*______ CANT USE value="task 1". use defaultValue */}
-      <input type="text" id="desc" value={desc} onChange={(e) => setDesc(e.target.value)} />
+      <input type="text" id="desc" value={desc} onChange={(e) => setDesc(e.target.value)} /> {/* rem onChange if value as state */}
       <button type="button" onClick={handleOnClick}>Add</button>
     </div>
   )
