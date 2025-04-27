@@ -3,6 +3,7 @@ import { routes } from '../utils/Utils';
 import ErrorBoundary from "../react-next-concepts/ErrorBoundary";
 import { Profiler } from "react";
 import { GlobalProvider } from "../hooks/useGlobalContext";
+import { A, B } from "../components/BrwoserRouterExample";
 
 // Callback Function
 const onRender = (
@@ -27,6 +28,9 @@ const AppRouter = () => {
               {routes.map((route) => (
                 <Route key={route.path} path={route.path} element={route.element} />
               ))}
+
+              <Route path="/route-A" element={<A />}></Route>
+              <Route path="/route-B/:id/:feature" element={<B />}></Route>
             </Routes>
           </BrowserRouter>
         </Profiler>

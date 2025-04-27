@@ -31,6 +31,7 @@ import ParkingLotUI from "../components/ParkingSystemUsage";
 import UserTable from "../components/UserTable";
 import { ToDoListProps } from "../components/ToDoListProps";
 import { ToDoListUsingContext } from "../components/ToDoListContext";
+import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
 
 interface RouteType {
   path: string;
@@ -101,6 +102,7 @@ export const routes: RouteType[] = [
   { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize", newSection: true },
 
   //React, Next Concepts
+  { path: "/BrwoserRouterExample", element: <BrwoserRouterExample />, linkText: "BrwoserRouterExample" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
   { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
   { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
