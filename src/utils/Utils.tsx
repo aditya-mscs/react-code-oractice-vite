@@ -34,10 +34,11 @@ import { ToDoListUsingContext } from "../components/ToDoListContext";
 import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
 import CheckboxChange from "../components/CheckboxChange";
 import { LocalStorageBasic } from "../components/LocalStorageBasic";
-import { UseThemeExample } from "../hooks/useThemeExample";
+import { UseThemeExample } from "../hooks/useThemeExample"
 import { AccordionExample } from "../components/AccordionExample";
 import { UseInputControlExample } from "../hooks/useInputControl";
 import FlexboxCssGrid from "../css-html/FlexboxCssGrid";
+import { CreatePortal } from "../react-next-concepts/createPortal";
 
 interface RouteType {
   path: string;
@@ -109,6 +110,7 @@ export const routes: RouteType[] = [
   { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize", newSection: true },
 
   //React, Next Concepts
+  { path: "/CreatePortal", element: <CreatePortal />, linkText: "Create Portal" },
   { path: "/BrwoserRouterExample", element: <BrwoserRouterExample />, linkText: "BrwoserRouterExample" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
   { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },

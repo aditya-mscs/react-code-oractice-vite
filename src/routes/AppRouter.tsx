@@ -35,6 +35,7 @@ const AppRouter = () => {
           </BrowserRouter>
         </Profiler>
       </div>
+      <div id="modal-root"></div>
     </GlobalProvider>
   );
 };
