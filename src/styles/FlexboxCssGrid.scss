@@ -1,0 +1,218 @@
+.layouts-advanced-demo {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  padding: 32px 8px;
+}
+
+section {
+  margin-bottom: 38px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Shared box style */
+.box {
+  background: #70a1ff;
+  color: #fff;
+  padding: 22px 0;
+  border-radius: 7px;
+  min-width: 60px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 3px;
+  transition: background 0.2s;
+}
+
+.box:hover {
+  background: #1e90ff;
+}
+
+/* ========== FLEXBOX EXAMPLES ========== */
+
+/* Row with space-between and center align */
+.flex-row-space-between {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: #eaf6ff;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+/* Column, align-items and justify-content center */
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 250px;
+  border: 1px dashed #70a1ff;
+}
+
+/* Flex Wrap with gap */
+.flex-wrap-gap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #eaf6ff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+/* ========== CSS GRID EXAMPLES ========== */
+
+/* Basic 2x2 grid */
+.grid-basic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  background: #eaf6ff;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+/* Grid: auto-fit */
+.grid-auto-fit {
+  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  background: #eaf6ff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+/* Grid: auto-fill */
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  background: #eaf6ff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+/* Grid: justify-content and align-content */
+.grid-justify-align {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(2, 60px);
+  gap: 12px;
+  justify-content: center;
+  /* Main axis: horizontally center */
+  align-content: center;
+  /* Cross axis: vertically center */
+  background: #eaf6ff;
+  height: 220px;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+/* Grid: template areas */
+.grid-template-areas {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: 48px 120px 40px;
+  gap: 8px;
+  background: #eaf6ff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.header {
+  grid-area: header;
+  background: #1e90ff;
+  color: #fff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #ffd32a;
+  color: #333;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  grid-area: content;
+  background: #2ed573;
+  color: #fff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  grid-area: footer;
+  background: #3742fa;
+  color: #fff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grid: align-items example */
+.grid-align-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 120px;
+  background: #eaf6ff;
+  border-radius: 7px;
+  padding: 10px;
+  gap: 10px;
+  align-items: stretch;
+  /* Default */
+}
+
+.align-start {
+  align-self: start;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.align-end {
+  align-self: end;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .layouts-advanced-demo {
+    padding: 8px;
+  }
+
+  .box {
+    padding: 13px 0;
+    font-size: 1rem;
+  }
+
+  .grid-template-areas {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "content"
+      "footer";
+  }
+}

@@ -37,6 +37,7 @@ import { LocalStorageBasic } from "../components/LocalStorageBasic";
 import { UseThemeExample } from "../hooks/useThemeExample";
 import { AccordionExample } from "../components/AccordionExample";
 import { UseInputControlExample } from "../hooks/useInputControl";
+import FlexboxCssGrid from "../css-html/FlexboxCssGrid";
 
 interface RouteType {
   path: string;
@@ -136,5 +137,8 @@ export const routes: RouteType[] = [
   { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
   { path: "/counter-example", element: <CounterExample />, linkText: "Counter", newSection: true },
+
+  //Css, HTML
+  { path: "/FlexboxCssGrid", element: <FlexboxCssGrid />, linkText: "Flexbox and CSS Grid" },
 
 ]

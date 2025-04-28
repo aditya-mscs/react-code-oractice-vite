@@ -86,6 +86,37 @@ export const Es6TsPractice = () => {
 
   //------------------- 6 RECURSION QUESTIONS/number questions ------------------
 
+  //Regard interview question:
+  const medication_to_ingredients = {
+    "Advil": ["Ibuprofen"],
+    "Advil Cold": ["Advil", "Phenylephrine"],
+    "Advil Cold Plus": ["Advil Cold", "Caffeine"],
+    "Tylenol": ["Acetaminophen"],
+    "DayQuil": ["Acetaminophen", "Phenylephrine"],
+    "NyQuil": ["Acetaminophen", "Doxylamine"],
+    "Claritin": ["Loratadine"],
+  }
+  function getIngredients(input, str) {
+    const result = [];
+    // console.log('Hello, World', str);
+    Object.keys(input).forEach(key => {
+      // console.log(key, input[key].indexOf(str));
+      //Search value
+      if (input[key].indexOf(str) > -1) {
+        result.push(key);
+        result.push(getIngredients(input, key));
+      }
+    });
+    // console.log(result.flat(Infinity));
+    return result.flat(Infinity);
+  }
+  console.log('6.5 getIngredients: Loratadine', getIngredients(medication_to_ingredients, 'Loratadine'));
+  console.log('6.5 getIngredients: Acetaminophen', getIngredients(medication_to_ingredients, 'Acetaminophen')); //['Tylenol', 'DayQuil', 'NyQuil']
+  console.log('6.5 getIngredients: Ibuprofen', getIngredients(medication_to_ingredients, 'Ibuprofen'));//['Advil', 'Advil Cold', 'Advil Cold Plus']
+  console.log('6.5 getIngredients: Advil Cold', getIngredients(medication_to_ingredients, 'Advil Cold'));//['Advil Cold Plus']
+
+
+
   //toLocaleString
   //The first parameter (undefined in this case) specifies the locale. If undefined, it defaults to the user's locale.
   const formatMoney = (amount) => {
