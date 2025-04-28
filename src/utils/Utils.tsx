@@ -36,6 +36,7 @@ import CheckboxChange from "../components/CheckboxChange";
 import { LocalStorageBasic } from "../components/LocalStorageBasic";
 import { UseThemeExample } from "../hooks/useThemeExample";
 import { AccordionExample } from "../components/AccordionExample";
+import { UseInputControlExample } from "../hooks/useInputControl";
 
 interface RouteType {
   path: string;
@@ -97,7 +98,7 @@ export const routes: RouteType[] = [
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
   { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations", newSection: true },
 
-  //hooks
+  { path: "/useInputControlExample", element: <UseInputControlExample />, linkText: "useInputControl" },
   { path: "/useThemeExample", element: <UseThemeExample />, linkText: "useThemeExample" },
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
   { path: "/UseDebounceExample", element: <UseDebounceExample />, linkText: "useDebounce" },
