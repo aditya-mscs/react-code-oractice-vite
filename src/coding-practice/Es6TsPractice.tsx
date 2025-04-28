@@ -85,6 +85,27 @@ export const Es6TsPractice = () => {
 
 
   //------------------- 6 RECURSION QUESTIONS/number questions ------------------
+
+  //Math.random() method returns a random floating-point number between 0 (inclusive) and 1 (exclusive)
+  //so we need to multiply it by the difference between max and min, and then add min to ensure that the random integer is within the specified range.
+  const randomInRange = (min, max) => {
+    return Math.floor(Math.random(min, max) * (max - min) + min);
+  }
+  console.log('6.3 randomInRange: ', randomInRange(1, 10)); // Outputs: 5
+
+  //Leap year -
+  // •	divisible by 4 and
+  // •	(not divisible by 100 or divisible by 400)
+  const isLeapYear = year => {
+    // ________ Leap year if divisible by 4 and (not by 100 or by 400)
+    return year > 0 && (year % 4 === 0) && (year % 100 !== 0 || year % 400 === 0);
+  };
+  console.log('6.2 isLeapYear: ', isLeapYear(100)); // Outputs: false
+  console.log('6.2 isLeapYear: ', isLeapYear(200)); // Outputs: false
+  console.log('6.2 isLeapYear: ', isLeapYear(300)); // Outputs: false
+  console.log('6.2 isLeapYear: ', isLeapYear(400)); // Outputs: true
+  console.log('6.2 isLeapYear: ', isLeapYear(2000)); // Outputs: true
+
   //Find factorial - Time O(n), Space O(n) = standard recursion stack
   const factorial = (n: number): number => {
     if (n === 0 || n === 1) {
@@ -304,6 +325,13 @@ export const Es6TsPractice = () => {
   }
   console.log('1 reverseString: ', reverseString(str)); // 'dlrow olleh'
 
+
+
+  //removeWhitespaces with \t \n
+  const removeWhitespaces = (str) => {
+    return str.replace(/\s/g, ''); // \s matches any whitespace character (spaces, tabs, newlines)
+  }
+  console.log('2.1 removeWhitespaces: ', removeWhitespaces('hello \t\n world')); // 'helloworld'
 
   //Reverse the string without using built-in functions
   //Time O(n), Space O(1) — in-place reversal
@@ -1260,7 +1288,7 @@ export const Es6TsPractice = () => {
     ['.', '#', '#', '#', '.'],
     ['.', 'x', 'x', 'x', '.'],
     ['.', '.', '.', '.', '.'],
-    
+
   ])); // Outputs: 2
 
   /*

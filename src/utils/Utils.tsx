@@ -32,6 +32,8 @@ import UserTable from "../components/UserTable";
 import { ToDoListProps } from "../components/ToDoListProps";
 import { ToDoListUsingContext } from "../components/ToDoListContext";
 import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
+import CheckboxChange from "../components/CheckboxChange";
+import { LocalStorageBasic } from "../components/localStorageBasic";
 
 interface RouteType {
   path: string;
@@ -109,6 +111,7 @@ export const routes: RouteType[] = [
   { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
+  { path: "LocalStorage", element: <LocalStorageBasic />, linkText: "Local Storage" },
   { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)", newSection: true },
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
@@ -121,6 +124,7 @@ export const routes: RouteType[] = [
   { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
   { path: "/cart", element: <Cart />, linkText: "Cart" },
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
+  { path: "/CheckboxChange", element: <CheckboxChange />, linkText: "Checkbox Change" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
   { path: "/ToDoListUsingContext", element: <ToDoListUsingContext />, linkText: "ToDoListUsingContext" },
   { path: "/ToDoListProps", element: <ToDoListProps />, linkText: "To Do List Props" },

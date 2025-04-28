@@ -842,9 +842,20 @@ export const ES6 = () => {
   console.log('----------------------REGEX QUESTIONS-----------------------------');
   /*
   \d → digit
-  \s → space ____________
-  \w → word character (letter, digit, underscore)
+  \s → space ____________ ALONG WITH \t \n \r \f \v
+  \w → word character (letter, digit, underscore) 
+  \b → word boundary
+  
   ^ inside [] → NOT ___________
+  g → global (all matches)
+  i → ignore case
+  + → one or more ___________  /\s+/g, ' ' --> "This     is" -> "This is".     /a+/ --> ['aaa']
+  ? → zero or one
+  * → zero or more
+
+  ^abc → starts with abc
+  abc$ → ends with abc
+
   [abc] → any of a, b, or c
   [a-z] → any lowercase letter
   [A-Z] → any uppercase letter
@@ -852,11 +863,15 @@ export const ES6 = () => {
   [a-zA-Z] → any letter
   [a-zA-Z0-9] → any letter or digit
   [a-zA-Z0-9_] → any letter, digit, or underscore
-  \b → word boundary
-  \B → NOT word boundary
+  
+  {n} → exactly n
+  {n,} → at least n
+  {n,m} → between n and m
   \d{n} → exactly n digits
   \d{n,} → at least n digits
   \d{n,m} → between n and m digits
+  
+  \B → NOT word boundary
   \D → NOT digit
   \S → NOT space
   \W → NOT word character
@@ -866,17 +881,10 @@ export const ES6 = () => {
   \w* → zero or more word characters
   \d{2,4} → between 2 and 4 digits
   \d{2,} → at least 2 digits
-
-  g → global (all matches)
-  i → ignore case
-  + → one or more ___________
-  * → zero or more
   
   {n} → exactly n
   () → capture group
   \1 → reference 1st capture group
-  
-  
   */
 
 
@@ -909,7 +917,7 @@ export const ES6 = () => {
   // 4. Replacing all whitespace with a single space
   const multiSpaceString1 = 'This   is  a    test.';
   const singleSpaceString1 = multiSpaceString1.replace(/\s+/g, ' ');
-  console.log('5. Replaced multiple spaces:', singleSpaceString1); // 'This is a test.'
+  console.log('5. Replaced multiple spaces:', singleSpaceString1); // 'This is a test.' //___________ + give multiple
 
   // 16. Extracting initials from a name
   const fullName1 = 'John Doe Smith';
