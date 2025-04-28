@@ -39,6 +39,7 @@ import { AccordionExample } from "../components/AccordionExample";
 import { UseInputControlExample } from "../hooks/useInputControl";
 import FlexboxCssGrid from "../css-html/FlexboxCssGrid";
 import { CreatePortal } from "../react-next-concepts/createPortal";
+import { ForwardRefParent } from "../react-next-concepts/forwardRef";
 
 interface RouteType {
   path: string;
@@ -110,6 +111,7 @@ export const routes: RouteType[] = [
   { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize", newSection: true },
 
   //React, Next Concepts
+  { path: "/ForwardRefParent", element: <ForwardRefParent />, linkText: "Forward Ref" },
   { path: "/CreatePortal", element: <CreatePortal />, linkText: "Create Portal" },
   { path: "/BrwoserRouterExample", element: <BrwoserRouterExample />, linkText: "BrwoserRouterExample" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
