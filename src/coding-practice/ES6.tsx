@@ -174,7 +174,12 @@ export const ES6 = () => {
   console.log('6.1 Filter:', filteredNumbers); // [3, 4, 5]
 
   //Reduce
-  console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 //----> reduce(callbackfn: (previousValue, currentValue, currentIndex, array) => number, initialValue)
+  const sumOfThirds = (arr) => {
+    return arr.reduce((acc, number, index) => acc + (index % 3 === 0 ? number : 0), 0) //_______ THIRD PARAM IS INDEX
+  }
+  console.log('1.7 reduce sumOfThirds:', sumOfThirds([1, 2, 3, 4, 5, 6])); // 9
+  console.log('1.7 reduce:', [1, 2, 3].reduce((acc, curr) => acc + curr, 0)); // 6 
+  //_________ reduce(callbackfn: (previousValue, currentValue, currentIndex, array), initialValue)
   console.log('1.7 Max:', [1, 2, 3, 4].reduce((max, curr) => (curr > max ? curr : max), -Infinity));
   console.log('1.7 Fruit count:', ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'].reduce((acc, fruit) => {
     acc[fruit] = (acc[fruit] || 0) + 1;
@@ -304,7 +309,7 @@ export const ES6 = () => {
 
 
 
-  console.log('-----------------------SET QUESTIONS----------------------------');
+  console.log('-----------------------2 SET QUESTIONS----------------------------');
   //Set --> new Set(), .add(X), .has(X), .delete(X), .clear(), .size, forEach,
   //NOTE : Set is an collection of ______ unique values, meaning it can only contain one instance of each value
   //NOTE : Set is an NOT iterable, so we canNOT use map, filter, reduce, etc. on it
@@ -414,7 +419,7 @@ export const ES6 = () => {
 
 
 
-  console.log('----------------------MAP QUESTIONS-----------------------------');
+  console.log('----------------------3 MAP QUESTIONS-----------------------------');
   //MAP --> new Map(), .set(key, value), .has(key), .get(key), .delete(key), .clear(), .size .forEach()
   const map = new Map(); //NOTE : Map is an collection of ______ key-value pairs with unique keys
   map.set('name', 'John');
@@ -430,6 +435,16 @@ export const ES6 = () => {
     console.log(`${key}: ${value}`); //NOTE : iterate over map
   });
   map.clear(); //NOTE : clear all values from map
+
+  const frequencyCounter = (arr) => {
+    const map = new Map();
+    arr.map(val => {
+      if (map.has(val)) map.set(val, map.get(val) + 1);
+      else map.set(val, 1);
+    })
+    return Object.fromEntries(map); //______ IMP MAP to OBJECT
+  }
+  console.log('3.1 frequencyCounter: ', frequencyCounter([1, 2, 3, 4, 5, 1, 2, 3])); // { '1': 2, '2': 2, '3': 2, '4': 1, '5': 1 }
 
   //ChatGpt
   // 1. Creating a Map
@@ -504,7 +519,7 @@ export const ES6 = () => {
   console.log('18. Population of Chicago in nested map:', usaMap?.get('Chicago')); // 2750000
 
   // 17. Converting map to JSON-like object
-  const mapToObject = Object.fromEntries(cityPopulationMap);
+  const mapToObject = Object.fromEntries(cityPopulationMap); //___________ IMP return Object.fromEntries(map);
   console.log('19. Map to Object:', mapToObject); // {}
 
   // 18. Reinitializing the map with new data

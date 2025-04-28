@@ -33,7 +33,8 @@ import { ToDoListProps } from "../components/ToDoListProps";
 import { ToDoListUsingContext } from "../components/ToDoListContext";
 import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
 import CheckboxChange from "../components/CheckboxChange";
-import { LocalStorageBasic } from "../components/localStorageBasic";
+import { LocalStorageBasic } from "../components/LocalStorageBasic";
+import { UseThemeExample } from "../hooks/useThemeExample";
 
 interface RouteType {
   path: string;
@@ -96,6 +97,7 @@ export const routes: RouteType[] = [
   { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations", newSection: true },
 
   //hooks
+  { path: "/useThemeExample", element: <UseThemeExample />, linkText: "useThemeExample" },
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
   { path: "/UseDebounceExample", element: <UseDebounceExample />, linkText: "useDebounce" },
   { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },

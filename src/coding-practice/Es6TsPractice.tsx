@@ -86,6 +86,13 @@ export const Es6TsPractice = () => {
 
   //------------------- 6 RECURSION QUESTIONS/number questions ------------------
 
+  //toLocaleString
+  //The first parameter (undefined in this case) specifies the locale. If undefined, it defaults to the user's locale.
+  const formatMoney = (amount) => {
+    return '$' + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  console.log('6.4 formatMoney: ', formatMoney(1234567)); // Outputs: $1,234,567.00
+
   //Math.random() method returns a random floating-point number between 0 (inclusive) and 1 (exclusive)
   //so we need to multiply it by the difference between max and min, and then add min to ensure that the random integer is within the specified range.
   const randomInRange = (min, max) => {
@@ -429,6 +436,38 @@ export const Es6TsPractice = () => {
 
 
   //------------------- 2 ARRAY QUESTIONS ------------------
+
+  //Custom rdeuce imp
+  Array.prototype.myReduce = function (callback, initialValue) {
+    let accumulator = initialValue;
+
+    for (let i = 0; i < this.length; i++) {
+      if (accumulator !== undefined) {
+        accumulator = callback.call(undefined, accumulator, this[i], i, this); // _________ IMP
+      } else {
+        accumulator = this[i];
+      }
+    }
+    return accumulator;
+  };
+  console.log('2.13 myReduce [1, 2, 3]: ', [1, 2, 3].myReduce((acc, curr) => acc + curr)); // Outputs: 6
+
+  function haveSameElements(array1, array2) {
+    if (array1.length !== array2.length) return false;
+    const count = arr =>
+      arr.reduce((map, el) => {
+        map[el] = (map[el] || 0) + 1;
+        return map;
+      }, {});
+    const map1 = count(array1);
+    const map2 = count(array2);
+    for (const key in map1) {
+      if (map1[key] !== map2[key]) return false;
+    }
+    return true;
+  }
+  console.log('2.12 haveSameElements: [1, 2, 3], [3, 2, 1]: ', haveSameElements([1, 2, 3], [3, 2, 1])); // Outputs: true
+  console.log('2.12 haveSameElements: [1, 2, 3], [3, 2, 2]: ', haveSameElements([1, 2, 3], [3, 2, 2])); // Outputs: false
 
   //Given two arrays A and B of the same length, how many cyclic rotations of A make every element A[i] >= B[i]
   //Time O(n²), Space O(n) — brute-force approach
