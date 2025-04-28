@@ -35,6 +35,7 @@ import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
 import CheckboxChange from "../components/CheckboxChange";
 import { LocalStorageBasic } from "../components/LocalStorageBasic";
 import { UseThemeExample } from "../hooks/useThemeExample";
+import { AccordionExample } from "../components/AccordionExample";
 
 interface RouteType {
   path: string;
@@ -118,6 +119,7 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
+  { path: "/Accordion", element: <AccordionExample />, linkText: "Accordion" },
   { path: "/UserTable", element: <UserTable />, linkText: "User Table" },
   { path: "/ParkingLotSystem", element: <ParkingLotUI />, linkText: "Parking Lot System" },
   { path: "/SuggestedCities", element: <SuggestedCities />, linkText: "Suggested Cities" },
