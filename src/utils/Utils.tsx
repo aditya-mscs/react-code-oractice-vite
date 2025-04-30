@@ -40,6 +40,9 @@ import { UseInputControlExample } from "../hooks/useInputControl";
 import FlexboxCssGrid from "../css-html/FlexboxCssGrid";
 import { CreatePortal } from "../react-next-concepts/createPortal";
 import { ForwardRefParent } from "../react-next-concepts/forwardRef";
+import MarketAxessStockFilter from "../components/MarketAxessStockFilter";
+import { DogGalleryPromiseAll } from "../react-next-concepts/DogGalleryPromiseAll";
+import { DogGalleryAsyncAwait } from "../react-next-concepts/DogGalleryAsyncAwait";
 
 interface RouteType {
   path: string;
@@ -125,6 +128,9 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
+  { path: "/DogGalleryPromiseAll", element: <DogGalleryPromiseAll />, linkText: "DogGallery - Promise All" },
+  { path: "/DogGalleryAsyncAwait", element: <DogGalleryAsyncAwait />, linkText: "DogGallery - Async Await" },
+  { path: "/MarketAxessStockFilter", element: <MarketAxessStockFilter />, linkText: "MarketAxess Stock Filter" },
   { path: "/Accordion", element: <AccordionExample />, linkText: "Accordion" },
   { path: "/UserTable", element: <UserTable />, linkText: "User Table" },
   { path: "/ParkingLotSystem", element: <ParkingLotUI />, linkText: "Parking Lot System" },
