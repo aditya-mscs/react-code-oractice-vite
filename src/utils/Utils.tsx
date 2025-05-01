@@ -43,6 +43,7 @@ import { ForwardRefParent } from "../react-next-concepts/forwardRef";
 import MarketAxessStockFilter from "../components/MarketAxessStockFilter";
 import { DogGalleryPromiseAll } from "../react-next-concepts/DogGalleryPromiseAll";
 import { DogGalleryAsyncAwait } from "../react-next-concepts/DogGalleryAsyncAwait";
+import GreenLightRedLight from "../components/GreenLightRedLight";
 
 interface RouteType {
   path: string;
@@ -128,6 +129,7 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
+  { path: "/GreenLightRedLight", element: <GreenLightRedLight />, linkText: "Green Light Red Light" },
   { path: "/DogGalleryPromiseAll", element: <DogGalleryPromiseAll />, linkText: "DogGallery - Promise All" },
   { path: "/DogGalleryAsyncAwait", element: <DogGalleryAsyncAwait />, linkText: "DogGallery - Async Await" },
   { path: "/MarketAxessStockFilter", element: <MarketAxessStockFilter />, linkText: "MarketAxess Stock Filter" },

@@ -886,6 +886,29 @@ export const Es6TsPractice = () => {
 
   //------------------- 7 Stack questions ------------------
 
+  //Stack
+  class Stack {
+    constructor(arr) {
+      this.items = arr || []; //__________ ALWAYS SOME LOCAL VARIABLE STORES THE VALUE. Here items
+    }
+    push(item) {
+      this.items.push(item);
+    }
+    pop() {
+      return this.items.pop();
+    }
+    peek() {
+      return this.items[this.items.length - 1];
+    }
+    isEmpty() {
+      return this.items.length === 0;
+    }
+  }
+  const stack = new Stack([1, 2, 3]);
+  stack.push(4);
+  stack.push(5);
+  console.log('7.3 Stack: ', stack.items); // Outputs: [1, 2, 3, 4, 5]
+
   /*
   Given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
   For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
@@ -1162,13 +1185,13 @@ export const Es6TsPractice = () => {
 
 
   //------------------- 10 Linked list questions ------------------
-  class Node {
+  class Node { //______ VA. Need to store 2 values so cant use just []. Second value "next" is a reference so Node class mandatory
     constructor(value) {
       this.value = value;
-      this.next = null;
+      this.next = null; //____________ VI
     }
   }
-  class LinkedList {
+  class LinkedList { //_______ I WROTE class LinkedList = {
     constructor() {
       this.head = null;
     }
@@ -1179,11 +1202,13 @@ export const Es6TsPractice = () => {
         return;
       }
 
+      // _______ BELOW 4 lines MOST IMP
       let current = this.head;
       while (current.next) {
         current = current.next;
       }
       current.next = newNode;
+
       console.log('10.1: LinkedList append: ', current);
     }
     prepend(value) {
@@ -1198,13 +1223,34 @@ export const Es6TsPractice = () => {
         return;
       }
       let current = this.head;
-      while (current.next && current.next.value !== value) {
+      while (current.next && current.next.value !== value) { //_______ current.next.value !== value
         current = current.next;
       }
       if (current.next) {
         current.next = current.next.next;
       }
     }
+
+
+    deleteIndex(index) {
+      if (index < 0 || index >= this.size()) {
+        console.log('10.1: LinkedList deleteIndex: Invalid index');
+        return;
+      }
+      if (index === 0) {
+        this.head = this.head.next;
+        return;
+      }
+      let current = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        current = current.next;
+      }
+      if (current.next) {
+        current.next = current.next.next;
+      }
+    }
+
+
     print() {
       let current = this.head;
       const values = [];

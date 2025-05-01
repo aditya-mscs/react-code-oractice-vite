@@ -2,16 +2,15 @@
 
 //Remember these 5 lines -
 
-export const debounce = (func, delay) => { //_________ VI REM (func, delay)
-  let timeoutId; //1
+export const debounce = (callback, delay) => { //_________ (callback, delay) ______ALSO WRITE FROM timeoutId perspective. 3 times in first 4 lines
+  let timeoutId; //✅ 1. Store timeout reference for clearing
 
-  return (...args) => { //2 VAAAAAAA
+  return (...args) => { //2 _____________________________ VAAAAAAA ✅ 2. Return a new debounced function
 
-    clearTimeout(timeoutId); //3
-    timeoutId = setTimeout(() => { //4 timeout = setTimeout VA
-      func(...args); //5
+    clearTimeout(timeoutId); //3 ____ I wrote timeoutId.clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => { //4 _____________________________ timeout = setTimeout VA ✅ 4. Set new delay
+      callback(...args); //✅ 5. Execute callback after delay
     }, delay);
-
   };
 };
 

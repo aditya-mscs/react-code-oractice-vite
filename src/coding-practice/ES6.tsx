@@ -31,6 +31,14 @@ export const ES6 = () => {
 
 
   console.log('----------------------2 OBJECT QUESTIONS-----------------------------');
+
+  function isPlainObject(variable) { //___________ ONLY WAY TO MAKE SURE ITS AN OBJECT {}
+    return typeof variable === 'object' && variable !== null && !Array.isArray(variable);
+  }
+  //OR
+  // Object.prototype.toString.call(val) === '[object Object]'
+  console.log('2.1 isPlainObject:', isPlainObject({})); // true
+
   //ChatGpt
   // Object Property and Value Access
   console.log('1. Object.keys:', Object.keys({ a: 1, b: 2 })); // ['a', 'b']
@@ -290,7 +298,7 @@ export const ES6 = () => {
 
   // 📐 Array Properties
   console.log('30. length:', [1, 2, 3].length); // 3
-  console.log('31. isArray:', Array.isArray([1, 2, 3])); // true
+  console.log('31. isArray:', Array.isArray([1, 2, 3])); // true __________ VA
 
   // 🌟 Finding Min/Max
   console.log('32. Math.min:', Math.min(...[1, 2, 3])); // 1 //__________ Note ... is spread operator to unpack array
@@ -555,6 +563,7 @@ export const ES6 = () => {
 
 
 
+
   console.log('----------------------WEAKMAP QUESTIONS-----------------------------');
   //WeakMap -> new WeakMap(), .set(key, value), .has(key), .get(key), .delete(key)
   //NOTE : WeakMap is an collection of ______ key-value pairs with unique keys, but the keys must be objects
@@ -763,7 +772,7 @@ export const ES6 = () => {
   console.log('8. Lowercase:', str1.toLowerCase()); // hello, world!
   console.log('9. Substring:', str1.substring(0, 5)); // Hello
   console.log('10. Slice:', str1.slice(7, 12)); // World
-  console.log('11. Includes "World":', str1.includes('World')); // true
+  console.log('11. Includes "World":', str1.includes('World')); // true //__________ FORGOT
   console.log('12. Starts with "Hello":', str1.startsWith('Hello')); // true
   console.log('13. Ends with "!":', str1.endsWith('!')); // true
 
@@ -830,7 +839,7 @@ export const ES6 = () => {
   // 20. Checking for alphanumeric characters
   const alphaNumeric = 'abc123';
   const nonAlphaNumeric = '!@#';
-  console.log('37. Is alphanumeric:', /^[a-zA-Z0-9]+$/.test(alphaNumeric)); // true
+  console.log('37. Is alphanumeric:', /^[a-zA-Z0-9]+$/.test(alphaNumeric)); // true _______ REGEX.TEST(searchStr). NOT other way
   console.log('38. Is non-alphanumeric:', /^[a-zA-Z0-9]+$/.test(nonAlphaNumeric)); // false
 
   // 21. Reversing a string (one-liner)

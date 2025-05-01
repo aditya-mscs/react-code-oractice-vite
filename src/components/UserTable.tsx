@@ -42,6 +42,9 @@ function UserTable() {
     debouncedUpdate(val);        // delayed update
   };
 
+
+
+
   const filteredUsers = useMemo(() => {
     let res = users;
     if (debouncedSearch) {
@@ -55,6 +58,9 @@ function UserTable() {
     });
     return res;
   }, [users, debouncedSearch, sortKey, sortOrder]);
+
+
+
 
   const handleEdit = (id, field, value) => {
     setUsers(prev =>

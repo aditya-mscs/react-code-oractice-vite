@@ -65,6 +65,7 @@ export default function MarketAxessStockFilter() {
           </div>
           <div className="text-gray-600 text-left mt-0 flex h-full">
             <div className="p-2 w-[200px] border border-gray-500 border-t-0 min-w-[200px] overflow-y-auto">
+              {/*_________ THIS IMP: filteredStocks */}
               {filteredStocks.map((stock) => (
                 <div
                   key={stock?.symbol}

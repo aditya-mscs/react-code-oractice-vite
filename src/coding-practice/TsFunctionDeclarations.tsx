@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import GoBackToHome from "../components/GoBacktoHome";
 
+
+
+
 // ✅ 1. Basic function with parameter and return types
 function greet(name: string, age: number): string {
   const message = `Hello, ${name}. You are ${age} years old.`;
@@ -8,12 +11,16 @@ function greet(name: string, age: number): string {
   return message;
 }
 
+
+
 // ✅ 2. Arrow function with types
 const multiply = (a: number, b: number): number => {
   const result = a * b;
   console.log("multiply():", result);
   return result;
 };
+
+
 
 // ✅ 3. Generic type and function
 type DropdownProps<T> = {
@@ -24,6 +31,9 @@ function identity<T>(value: T): T { // ------------> IMPORTANT <> only this befo
   console.log("identity():", value);
   return value;
 }
+
+
+
 //<T,> Generic Arrow function
 //This is a quirk of TypeScript.
 //TypeScript uses the comma , as a way to disambiguate the syntax and force the parser to treat <T> as a generic, not JSX.
@@ -31,6 +41,8 @@ const identity2 = <T,>(value: T) => { //generic arrow function ------------> IMP
   console.log("identity2():", value);
   return value;
 };
+
+
 
 // ✅ 4. Rest parameters
 function logAll(...args: string[]): void {
