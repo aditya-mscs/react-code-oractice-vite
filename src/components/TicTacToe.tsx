@@ -4,26 +4,27 @@ import GoBackToHome from './GoBacktoHome';
 
 
 const checkWinner = (board) => {
+  let winner = null;
   // Rows
-  for (let i = 0; i < 3; i++) {
-    const [a, b, c] = board[i];
-    if (a && a === b && a === c) return a;
-  }
+  [0, 1, 2].forEach((i) => {
+    const [a, b, c] = board[i]; // destructuring ___________IMP
+    if (a && a === b && a === c) winner = a;
+  });
 
   // Columns
-  for (let i = 0; i < 3; i++) {
+  [0, 1, 2].forEach((i) => {
     const a = board[0][i], b = board[1][i], c = board[2][i];
-    if (a && a === b && a === c) return a;
-  }
+    if (a && a === b && a === c) winner = a;
+  });
 
   // Diagonals
   const center = board[1][1]; //_______ center is the middle element
   if (center) {
-    if (center === board[0][0] && center === board[2][2]) return center;
-    if (center === board[0][2] && center === board[2][0]) return center;
+    if (center === board[0][0] && center === board[2][2]) winner = center;
+    if (center === board[0][2] && center === board[2][0]) winner = center;
   }
 
-  return null;
+  return winner;
 };
 
 
@@ -31,19 +32,30 @@ const checkWinner = (board) => {
 
 // Tic Tac Toe component
 export const TicTacToe = () => {
-  const [board, setBoard] = useState(Array(3).fill(null).map(() => Array(3).fill(null))); //IMP 3x3 array. _____ 0th array will be shown as 1st row
-  const [isXNext, setIsXNext] = useState(true);
+  const emptyGrid = Array(3).fill(null).map(() => Array(3).fill(null));  //IMP 3x3 array. _____ 0th array will be shown as 1st row
+  const [board, setBoard] = useState(emptyGrid);
+  const [turnX, setTurnX] = useState(true);
 
   const winner = checkWinner(board);
+  const isDraw = board.flat().every((cell) => cell !== null); // Check if all cells are filled
 
   const handleClick = (row, col) => {
     if (board[row][col] || winner) return;
-    // const newBoard = board.map(row => [...row]); // shallow copy
+
     const newBoard = [...board]; // shallow copy
-    newBoard[row][col] = isXNext ? 'X' : 'O';
+    newBoard[row][col] = turnX ? 'X' : 'O';
+
     setBoard(newBoard);
-    setIsXNext(!isXNext);
+    setTurnX(!turnX);
   };
+
+  const resetGame = () => {
+    setBoard(emptyGrid);
+    setTurnX(true);
+  };
+
+
+
   console.log('board', board, board.flat());
   return (
     <div>
@@ -78,7 +90,24 @@ export const TicTacToe = () => {
         ))}
       </div>
 
-      {winner && <h3>Winner: {winner}</h3>}
+      {winner && (
+        <h3 style={{ color: 'green' }}>Winner: {winner}</h3>
+      )}
+      {isDraw && !winner && (
+        <h3 style={{ color: 'red' }}>It's a Draw!</h3>
+      )}
+      {!winner && !isDraw && (
+        <h3 style={{ color: 'blue' }}>Next Turn: {turnX ? 'X' : 'O'}</h3>
+      )}
+
+
+
+      <button
+        type="button"
+        onClick={resetGame}
+      >
+        Reset Game
+      </button>
     </div>
   );
 };
