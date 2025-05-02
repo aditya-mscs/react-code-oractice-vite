@@ -107,6 +107,7 @@ export const ConnectFour = () => {
           <code>{jsCode}</code>
       </pre>
       {winner && <h2 style={{ color: "green" }}>{winner} wins!</h2>}
+      
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 50px)', gap: '5px' }}>
         {board.map((row, rowIndex) => (
           row.map((cell, colIndex) => (

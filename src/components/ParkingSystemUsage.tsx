@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ParkingLot, ParkingSpot, SpotType, Vehicle, VehicleType } from './ParkingSystem';
+import { ParkingLot, ParkingSpot, SpotType, Vehicle, VehicleType } from './ParkingSystem'; //____________ IMP
 import GoBackToHome from './GoBacktoHome';
 
 // --- Assume the classes from the previous message are already imported here ---

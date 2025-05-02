@@ -146,6 +146,9 @@ export const ES6 = () => {
 
 
 
+
+
+
   console.log('-------------------------1 ARRAY QUESTIONS--------------------------');
   //MAP
   const numbersX = [1, 2, 3, 4, 5];
@@ -157,6 +160,30 @@ export const ES6 = () => {
   const sum = numbersX.reduce((total, num) => total + num, 0); //-----> Best for Summing or Aggregation
   //NOTE: first param is acc/total and second param is indiviual number. second param 0 is initialValue
   const filteredNumbers = numbersX.filter(num => num > 2); //-----> Best for Filtering Arrays
+
+
+
+  //ARRAY SEARCH AND DELETE --> __________ splice for in-array / filter for new array
+  const numbersY = [1, 2, 3, 4, 5];
+  const index = numbersY.indexOf(3);
+  if (index !== -1) {
+    numbersY.splice(index, 1);
+  }
+  console.log('numbersY after deletion:', numbersY); // [1, 2, 4, 5]
+  //OR
+  const newNumberY = numbersY.filter(num => num !== 2);
+  console.log('newNumberY after deletion:', newNumberY); // [1, 3, 4, 5]
+
+  //Array Delete all from array
+  const a4 = [1, 2, 3, 4]
+  function deleteFromArray(valueToRemove) {
+    return a4.filter(val => val !== valueToRemove);
+  }
+  const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
+
+
+  //return from forEach --> DOESNT BREAK THE FUNCTION
+
 
 
   //ChatGpt
@@ -275,20 +302,7 @@ export const ES6 = () => {
   console.log('38.7 Slice with both negative:', a1.slice(-3, -1)); // [2, 3]
   console.log('38.8 Slice zero elements:', a1.slice(2, 2));        // []
 
-  //Array Delete all from array
-  const a4 = [1, 2, 3, 4]
-  function deleteFromArray(valueToRemove) {
-    return a4.filter(val => val !== valueToRemove);
-  }
-  const result = deleteFromArray(2); // result = [1, 4] // a4 = [1, 2, 4]
-  //OR
-  function deleteFromArray(valueToRemove) { //search and delete --> indexOf and splice
-    const index = a4.indexOf(valueToRemove);
-    if (index !== -1) {
-      a4.splice(index, 1);
-    }
-  }
-  deleteFromArray(3); // a4 = [1, 2, 4] ----> same array modfied
+
 
 
   // 🔄 Sorting and Rearranging

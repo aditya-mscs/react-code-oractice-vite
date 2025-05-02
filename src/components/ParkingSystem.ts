@@ -1,3 +1,11 @@
+
+//ParkingLot (address, carHasAccess, addFloor, parkVehicle(vehicle), vacateSpot )
+// ---> ParkingFloor[] (level,  vacateSpot(floorLevel, spotId), getAvailableSpot(vehicle))
+// ---> ParkingSpot[] (spotNumber, ______ isReserved, canAssign(vehicle), assignVehicle(vehicle), ______ getAvailableSpot)
+// ---> Vehicle (platNumber, isReservedVehicle, isInsideTheLot(), isTagExpired())
+
+//Find ParkingLot.nextAvailableSpot()
+
 export enum SpotType {
   Compact = 'Compact',
   Large = 'Large',
@@ -12,6 +20,10 @@ export enum VehicleType {
   Emergency = 'Emergency',
 }
 
+
+
+
+
 export class Vehicle {
   constructor(
     public licensePlate: string,
@@ -25,21 +37,27 @@ export class Vehicle {
   }
 }
 
-export class ParkingSpot {
-  public occupiedBy: Vehicle | null = null;
 
+
+
+
+export class ParkingSpot {
   constructor(
     public id: string,
     public type: SpotType,
-    public isReserved: boolean = false
+    public isReserved: boolean = false,
+    public occupiedBy: Vehicle | null = null
   ) {}
+  
+  // public occupiedBy: Vehicle | null = null;
 
-  isAvailable(): boolean {
+
+  isSpotAvailable(): boolean {
     return !this.occupiedBy;
   }
 
   canAssign(vehicle: Vehicle): boolean {
-    if (!this.isAvailable()) return false;
+    if (!this.isSpotAvailable()) return false;
     if (this.isReserved && !vehicle.isReservedVehicle) return false;
     if (this.type === SpotType.Emergency && vehicle.type !== VehicleType.Emergency) return false;
     return true;
@@ -56,10 +74,13 @@ export class ParkingSpot {
   }
 }
 
-export class ParkingFloor {
-  public spots: ParkingSpot[] = [];
 
+
+
+export class ParkingFloor {
   constructor(public level: number) {}
+
+  public spots: ParkingSpot[] = [];
 
   addSpot(spot: ParkingSpot): void {
     this.spots.push(spot);
@@ -77,7 +98,14 @@ export class ParkingFloor {
   }
 }
 
+
+
+
 export class ParkingLot {
+  constructor(public address: string) {
+    this.address = address; // 👈 not needed — already set via parameter
+  }
+
   private floors: ParkingFloor[] = [];
 
   addFloor(numberOfFloors: number): void {
@@ -91,12 +119,21 @@ export class ParkingLot {
     return this.floors.find(f => f.level === level) || null;
   }
 
-  parkVehicle(vehicle: Vehicle): boolean {
+  // Add to ParkingLot
+  private carHasAccess(vehicle: Vehicle): boolean {
+    return !vehicle.isTagExpired(); // Or add other access logic here
+  }
+
+  parkVehicle(vehicle: Vehicle): boolean { //_________ IMP
+    if (!this.carHasAccess(vehicle)) {
+      console.warn(`Vehicle ${vehicle.licensePlate} does not have access.`);
+      return false;
+    }
     for (const floor of this.floors) {
-      const spot = floor.getAvailableSpot(vehicle);
-      if (spot && spot.assignVehicle(vehicle)) {
+      const spot = floor.getAvailableSpot(vehicle); //________ LOOP thr floors and get available spot
+      if (spot && spot.assignVehicle(vehicle)) {    //_________ THEN assign spot to vehicle and return
         console.log(`Vehicle ${vehicle.licensePlate} parked at Floor ${floor.level} Spot ${spot.id}`);
-        return true;
+        return true; //_________ IMP
       }
     }
     console.warn(`No suitable spot for vehicle ${vehicle.licensePlate}`);
@@ -116,3 +153,25 @@ export class ParkingLot {
     return this.floors.flatMap(floor => floor.getExpiredTags());
   }
 }
+
+
+
+/*
+
+🔍 Applying This to Your Code
+
+✅ public
+	•	Vehicle.isTagExpired() — makes sense to expose, used by other classes.
+	•	ParkingSpot.canAssign() — helpful for ParkingFloor to check assignment rules.
+	•	ParkingSpot.assignVehicle() — needed by external logic to assign a vehicle.
+	•	ParkingFloor.getAvailableSpot() — used by ParkingLot, so should be accessible.
+	•	ParkingLot.parkVehicle() & vacateSpot() — core public actions expected in the API.
+	•	ParkingLot.address — descriptive field, safe to expose.
+	•	ParkingFloor.level — identity of the floor; safe and needed externally.
+
+❌ Should Be private
+	•	ParkingSpot.occupiedBy — internal state; should be modified only by assignVehicle() and removeVehicle() to enforce rules.
+	•	ParkingLot.floors — internal structure, external code should use methods, not access floors directly.
+	•	ParkingLot.carHasAccess() — internal logic to validate access; doesn’t need exposure.
+
+*/
