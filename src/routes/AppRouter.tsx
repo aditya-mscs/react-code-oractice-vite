@@ -28,7 +28,6 @@ const AppRouter = () => {
               {routes.map((route) => (
                 <Route key={route.path} path={route.path} element={route.element} />
               ))}
-
               <Route path="/route-A" element={<A />}></Route>
               <Route path="/route-B/:id/:feature" element={<B />}></Route>
             </Routes>

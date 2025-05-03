@@ -1,0 +1,68 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "conditions": [
+        {
+          "id": "c1",
+          "name": "Hypertension",
+          "status": "approved",
+          "doctorNote": "Continue with current meds. ",
+          "medications": [
+            {
+              "id": "m1",
+              "name": "Lisinopril",
+              "dosage": "10mg"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "name": "Diabetes",
+          "status": "pending",
+          "doctorNote": "",
+          "medications": [
+            {
+              "id": "m2",
+              "name": "Metformin",
+              "dosage": "500mg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "John Doe",
+      "conditions": [
+        {
+          "id": "c1",
+          "name": "Hypertension",
+          "status": "approved",
+          "doctorNote": "Continue with current meds.",
+          "medications": [
+            {
+              "id": "m1",
+              "name": "Lisinopril",
+              "dosage": "10mg"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "name": "Diabetes",
+          "status": "pending",
+          "doctorNote": "",
+          "medications": [
+            {
+              "id": "m2",
+              "name": "Metformin",
+              "dosage": "500mg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
