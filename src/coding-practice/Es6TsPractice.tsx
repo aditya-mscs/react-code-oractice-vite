@@ -2,6 +2,15 @@
 //DONT USE TYPESCRIPT. USE PLAIN JAVASCRIPT
 import GoBackToHome from "../components/GoBacktoHome";
 
+
+/*
+NOTES:
+
+Whenever min max within array, better to do sort and use insertInOrder(A, newElem) which is Log n
+*/
+
+
+
 export const Es6TsPractice = () => {
   /*
   Hands-On/Algorithmic Technical Interview
@@ -468,6 +477,91 @@ export const Es6TsPractice = () => {
 
   //------------------- 2 ARRAY QUESTIONS ------------------
 
+
+
+
+  /*
+  You are given a list of n elements, all initially set to 0. You will perform a number of operations on the array. Each operation contains three integers, a, b, and k, and it means:
+  Add the value k to each of the elements from index a to b (inclusive).
+  Your task is to determine the maximum value in the array after all operations have been performed.
+  */
+  function arrayManipulation(n, queries) {
+    // Write your code here
+    let maxNum = -1;
+    const arr = Array(n).fill(0);
+
+    for (const query of queries) {
+      const [lowerIndex, higherIndex, addNumber] = query;
+      // console.log(lowerIndex, higherIndex, addNumber);
+      for (let i = lowerIndex - 1; i <= higherIndex - 1; i++) {
+        arr[i] += addNumber;
+        if (arr[i] > maxNum) maxNum = arr[i];
+      }
+    }
+    console.log(arr, maxNum)
+    return maxNum;
+  }
+  console.log('2.15 arrayManipulation: ', arrayManipulation(5, [[1, 3, 100], [2, 5, 100], [3, 4, 100]])); // Outputs: 300
+  console.log('2.15 arrayManipulation: ', arrayManipulation(10, [[1, 5, 3], [4, 8, 7], [6, 9, 1]])); // Outputs: 10
+
+  /*
+  Jesse loves cookies and wants the sweetness of all cookies to be at least k.
+  To increase the sweetness, Jesse can repeatedly combine the two least sweet cookies into one new cookie using the formula:
+  new_cookie = (1 * least sweet) + (2 * second least sweet)
+  Returns:
+  •	The minimum number of operations required to make all cookies sweet enough.
+  */
+  function cookies(k, A) {
+    let noOfSteps = 0;
+    function isEveryAgreaterThanK(k, A) {
+      return A.length > 0 && A.every(num => num >= k);
+    }
+    while (!isEveryAgreaterThanK(k, A)) {
+      const lowest = Math.min(...A);
+      const secondLowest = Math.min(...A.filter(num => num !== lowest));
+      const newElem = lowest + 2 * secondLowest;
+      A = A.filter(num => num !== lowest && num !== secondLowest);
+      A.push(newElem);
+      noOfSteps++;
+      console.log(lowest, secondLowest, newElem, A, noOfSteps);
+    }
+    return noOfSteps;
+  }
+  console.log('2.14 cookies: ', cookies(7, [1, 2, 3, 9, 10, 12])); // Outputs: 2 //_______ running time is O(n²) because of the filter method
+  //OR
+  function cookies(k, A) {
+    let noOfSteps = 0;
+    A = A.sort((a, b) => a - b);
+    while (A[0] < k && A.length >= 2) {
+      const [lowest, secondLowest] = A;
+      const newElem = lowest + 2 * secondLowest;
+      A.splice(0, 2, newElem); // O(n) Remove first two, insert combined cookie
+      A.sort((a, b) => a - b); // sort O(n log n) ---> increasing time. Better insertInOrder as it will be log n.
+      noOfSteps++;
+    }
+    return noOfSteps;
+  }
+  console.log('2.14 cookies: ', cookies(7, [1, 2, 3, 9, 10, 12])); // Outputs: 2 //_______ running time is O(n) * O(n log n) = O(n² log n) because of the sort method within while
+  //OR
+  //______ USE inseertInOrder instead of sort //insert in sorted array
+  function insertInOrder(arr, value) {
+    let left = 0, right = arr.length;
+    while (left < right) {
+      let mid = Math.floor((left + right) / 2);
+      if (arr[mid] < value) left = mid + 1;
+      else right = mid;
+    }
+    arr.splice(left, 0, value); // Insert at correct position
+  }
+  //insertInOrder(A, newElem); ----> O(n.log n)
+  //OR
+  // To reduce this to O(n log n) overall, you should:
+  // 1.	Use a min-heap (priority queue):
+  // •	Insertion: O(log n)
+  // •	Extraction: O(log n)
+  // •	Total operations: ≤ n
+
+
   //Custom rdeuce imp
   Array.prototype.myReduce = function (callback, initialValue) {
     let accumulator = initialValue;
@@ -482,6 +576,7 @@ export const Es6TsPractice = () => {
     return accumulator;
   };
   console.log('2.13 myReduce [1, 2, 3]: ', [1, 2, 3].myReduce((acc, curr) => acc + curr)); // Outputs: 6
+
 
   function haveSameElements(array1, array2) {
     if (array1.length !== array2.length) return false;
@@ -1273,7 +1368,38 @@ export const Es6TsPractice = () => {
   linkedList.delete(2);
   linkedList.print(); // Outputs: 0 -> 1 -> 3
 
-
+  //Merge two sorted linked lists
+  function mergeTwoLists(list1, list2) {
+    let l1 = list1.head;
+    let l2 = list2.head;
+    const dummy = new Node();
+    let tail = dummy;
+    while (l1 && l2) {
+      if (l1.val < l2.val) {
+        tail.next = l1;
+        l1 = l1.next;
+      } else {
+        tail.next = l2;
+        l2 = l2.next;
+      }
+      tail = tail.next;
+    }
+    tail.next = l1 || l2;
+    // Wrap the merged result in a new LinkedList
+    const mergedList = new LinkedList();
+    mergedList.head = dummy.next;
+    return mergedList;
+  }
+  const list1 = new LinkedList();
+  list1.append(1);
+  list1.append(2);
+  list1.append(4);
+  const list2 = new LinkedList();
+  list2.append(1);
+  list2.append(3);
+  list2.append(5);
+  const mergedList = mergeTwoLists(list1, list2);
+  console.log('10.2: mergeTwoLists: ', mergedList, mergedList.print()); // Outputs: 1 -> 1 -> 2 -> 3 -> 4 -> 5
 
   //------------------- 11 capital one questions ------------------
 
