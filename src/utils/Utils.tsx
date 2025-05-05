@@ -45,6 +45,7 @@ import { DogGalleryPromiseAll } from "../react-next-concepts/DogGalleryPromiseAl
 import { DogGalleryAsyncAwait } from "../react-next-concepts/DogGalleryAsyncAwait";
 import GreenLightRedLight from "../components/GreenLightRedLight";
 import { PatientPortalRegard } from "../components/PatientPortalRegard";
+import { ReactChartJs2 } from "../third-party-libs/React-chartjs-2";
 
 interface RouteType {
   path: string;
@@ -106,6 +107,11 @@ export const routes: RouteType[] = [
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
   { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations", newSection: true },
 
+  //Third party libraries
+  { path: "/ReactChartJs2", element: <ReactChartJs2 />, linkText: "React Chart JS 2", newSection: true },
+  { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal - TanStack Axios" },
+
+  //React, Next Hooks
   { path: "/useInputControlExample", element: <UseInputControlExample />, linkText: "useInputControl" },
   { path: "/useThemeExample", element: <UseThemeExample />, linkText: "useThemeExample" },
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
@@ -130,7 +136,6 @@ export const routes: RouteType[] = [
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
   //Examples - Challenges
-  { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal" },
   { path: "/GreenLightRedLight", element: <GreenLightRedLight />, linkText: "Green Light Red Light" },
   { path: "/DogGalleryPromiseAll", element: <DogGalleryPromiseAll />, linkText: "DogGallery - Promise All" },
   { path: "/DogGalleryAsyncAwait", element: <DogGalleryAsyncAwait />, linkText: "DogGallery - Async Await" },

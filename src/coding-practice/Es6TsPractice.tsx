@@ -477,8 +477,25 @@ export const Es6TsPractice = () => {
 
   //------------------- 2 ARRAY QUESTIONS ------------------
 
-
-
+  /*
+  Snail traversal: You’re given a 1D array (nums) and asked to convert it into a 2D array of size rowsCount × colsCount by filling column-wise.
+  */
+  function convertTo2D(nums, rowsCount, colsCount) {
+    if (nums.length !== rowsCount * colsCount) return [];
+    const result = Array.from({ length: rowsCount }, () => Array(colsCount).fill(0));
+    for (let i = 0; i < nums.length; i++) {
+      const row = i % rowsCount; //_______ 
+      const col = Math.floor(i / rowsCount);
+      result[row][col] = nums[i];
+    }
+    return result;
+  }
+  // Example usage
+  const nums = [19, 10, 3, 7, 9, 8, 5, 2, 1, 17, 16, 14, 12, 18, 6, 13, 11, 20, 4, 15];
+  const rowsCount = 5;
+  const colsCount = 4;
+  const output = convertTo2D(nums, rowsCount, colsCount);
+  console.log('2.16 convertTo2D: ', nums, output.flat()); // Outputs: [[19, 10, 3, 7], [9, 8, 5, 2], [1, 17, 16, 14], [12, 18, 6, 13], [11, 20, 4, 15]]
 
   /*
   You are given a list of n elements, all initially set to 0. You will perform a number of operations on the array. Each operation contains three integers, a, b, and k, and it means:
