@@ -1,5 +1,7 @@
 import express from 'express';
 import Profile from '../models/mongo/profile.js';
+import { validateBody } from '../middleware/validateBody.js';
+import { profileSchema } from '../schemas/profileSchema.js';
 
 const router = express.Router();
 
@@ -23,7 +25,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', validateBody(profileSchema), async (req, res) => {
   try {
     const profile = await Profile.create(req.body);
     res.status(201).json(profile);
@@ -32,7 +34,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateBody(profileSchema), async (req, res) => {
   try {
     const profile = await Profile.findByIdAndUpdate(req.params.id, req.body, {
       new: true,

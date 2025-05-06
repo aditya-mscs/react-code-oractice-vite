@@ -1,5 +1,9 @@
 import express from 'express';
 import User from '../models/sql/user.js';
+import { userSchema } from '../schemas/userSchema.js';
+import { validateBody } from '../middleware/validateBody.js';
+
+
 
 const router = express.Router();
 
@@ -21,7 +25,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', validateBody(userSchema), async (req, res) => {
   try {
     const user = await User.create(req.body);
     res.status(201).json(user);
@@ -30,7 +34,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateBody(userSchema), async (req, res) => {
   try {
     const [updated] = await User.update(req.body, {
       where: { id: req.params.id },

@@ -11,6 +11,7 @@ export const UserManagerPgsql = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [form, setForm] = useState<Omit<User, 'id'>>({ name: '', email: '' });
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [errors, setErrors] = useState<string[]>([]);
 
   const fetchUsers = async () => {
     const res = await fetch('/api/users');
@@ -27,20 +28,35 @@ export const UserManagerPgsql = () => {
     const method = editingId ? 'PUT' : 'POST';
     const url = editingId ? `/api/users/${editingId}` : '/api/users';
 
-    await fetch(url, {
+    const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
     });
 
+    if (!res.ok) {
+      const data = await res.json();
+      const issues = data?.issues || {};
+      const collectedErrors: string[] = [];
+      Object.values(issues).forEach((val) => {
+        if (val && Array.isArray(val._errors)) {
+          collectedErrors.push(...val._errors);
+        }
+      });
+      setErrors(collectedErrors.length ? collectedErrors : ['Validation failed']);
+      return;
+    }
+
     setForm({ name: '', email: '' });
     setEditingId(null);
+    setErrors([]);
     fetchUsers();
   };
 
   const handleEdit = (user: User) => {
     setForm({ name: user.name, email: user.email });
     setEditingId(user.id);
+    setErrors([]);
   };
 
   const handleDelete = async (id: number) => {
@@ -52,6 +68,11 @@ export const UserManagerPgsql = () => {
     <div>
       <GoBackToHome />
       <h2>Users</h2>
+      {errors.length > 0 && (
+        <ul style={{ color: 'red' }}>
+          {errors.map((err, i) => <li key={i}>{err}</li>)}
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           value={form.name}
