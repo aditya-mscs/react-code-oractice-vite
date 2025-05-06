@@ -46,6 +46,7 @@ import { DogGalleryAsyncAwait } from "../react-next-concepts/DogGalleryAsyncAwai
 import GreenLightRedLight from "../components/GreenLightRedLight";
 import { PatientPortalRegard } from "../components/PatientPortalRegard";
 import { ReactChartJs2 } from "../third-party-libs/React-chartjs-2";
+import MuiXDataGrid from "../third-party-libs/MuiXDataGrid";
 
 interface RouteType {
   path: string;
@@ -103,26 +104,22 @@ export const ARTICLES_DATA: ArticlesDataI = [
 
 export const routes: RouteType[] = [
   //Coding Practice
-  { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice" },
+  { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice", newSection: true },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
-  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations", newSection: true },
-
-  //Third party libraries
-  { path: "/ReactChartJs2", element: <ReactChartJs2 />, linkText: "React Chart JS 2", newSection: true },
-  { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal - TanStack Axios" },
+  { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations" },
 
   //React, Next Hooks
-  { path: "/useInputControlExample", element: <UseInputControlExample />, linkText: "useInputControl" },
+  { path: "/useInputControlExample", element: <UseInputControlExample />, linkText: "useInputControl", newSection: true },
   { path: "/useThemeExample", element: <UseThemeExample />, linkText: "useThemeExample" },
   { path: "/useReducerComp", element: <UseReducerComp />, linkText: "useReducer - User Profile Form" },
   { path: "/UseDebounceExample", element: <UseDebounceExample />, linkText: "useDebounce" },
   { path: "/UseDeferredValue", element: <UseDeferredValue />, linkText: "useDeferredValue" },
   { path: "/UseTransition", element: <UseTransition />, linkText: "useTransition" },
   { path: "/usePreviousHook", element: <UsePreviousHook />, linkText: "usePrevious Hook" },
-  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize", newSection: true },
+  { path: "/useWindowDimentionsOnResize", element: <UseWindowDimentionsOnResize />, linkText: "useWindowDimentionsOnResize" },
 
   //React, Next Concepts
-  { path: "/ForwardRefParent", element: <ForwardRefParent />, linkText: "Forward Ref" },
+  { path: "/ForwardRefParent", element: <ForwardRefParent />, linkText: "Forward Ref", newSection: true },
   { path: "/CreatePortal", element: <CreatePortal />, linkText: "Create Portal" },
   { path: "/BrwoserRouterExample", element: <BrwoserRouterExample />, linkText: "BrwoserRouterExample" },
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
@@ -132,11 +129,16 @@ export const routes: RouteType[] = [
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },
   { path: "LocalStorage", element: <LocalStorageBasic />, linkText: "Local Storage" },
-  { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)", newSection: true },
+  { path: "*", element: <h1>404 <GoBackToHome /></h1>, linkText: "Catch Route (404)" },
   { path: "/", element: <Home />, hideOnHome: true, linkText: "Home" },
 
+  //Third party libraries
+  { path: "/MuiXDataGrid", element: <MuiXDataGrid />, linkText: "Mui X Data Grid", newSection: true },
+  { path: "/ReactChartJs2", element: <ReactChartJs2 />, linkText: "React Chart JS 2" },
+  { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal - TanStack Axios" },
+
   //Examples - Challenges
-  { path: "/GreenLightRedLight", element: <GreenLightRedLight />, linkText: "Green Light Red Light" },
+  { path: "/GreenLightRedLight", element: <GreenLightRedLight />, linkText: "Green Light Red Light", newSection: true },
   { path: "/DogGalleryPromiseAll", element: <DogGalleryPromiseAll />, linkText: "DogGallery - Promise All" },
   { path: "/DogGalleryAsyncAwait", element: <DogGalleryAsyncAwait />, linkText: "DogGallery - Async Await" },
   { path: "/MarketAxessStockFilter", element: <MarketAxessStockFilter />, linkText: "MarketAxess Stock Filter" },
@@ -155,9 +157,9 @@ export const routes: RouteType[] = [
   { path: "/ToDoListProps", element: <ToDoListProps />, linkText: "To Do List Props" },
   { path: "/ToDoList", element: <ToDoList />, linkText: "To Do List" },
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
-  { path: "/counter-example", element: <CounterExample />, linkText: "Counter", newSection: true },
+  { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
 
   //Css, HTML
-  { path: "/FlexboxCssGrid", element: <FlexboxCssGrid />, linkText: "Flexbox and CSS Grid" },
+  { path: "/FlexboxCssGrid", element: <FlexboxCssGrid />, linkText: "Flexbox and CSS Grid", newSection: true },
 
 ]
