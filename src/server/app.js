@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import sequelize from './config/sequelize.js';
 import connectMongo from './config/mongoose.js';
 import registerRoutes from './routes/index.js';
-import logger from './middleware/logger.js';
+import { applyMiddlewares } from './middleware/index.js';
 
 // Load environment variables from .env file
 dotenv.config({ path: '.env.development' });
@@ -12,8 +12,7 @@ dotenv.config({ path: '.env.development' });
 const app = express();
 
 //Middleware
-app.use(logger); // applies logging to all incoming requests
-app.use(express.json());
+applyMiddlewares(app);
 
 // Sequalize setup
 try {
