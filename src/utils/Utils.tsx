@@ -49,6 +49,8 @@ import { ReactChartJs2 } from "../third-party-libs/React-chartjs-2";
 import MuiXDataGrid from "../third-party-libs/MuiXDataGrid";
 import { UserManagerPgsql } from "../third-party-libs/UserManagerPgsql";
 import { UserManagerMongo } from "../third-party-libs/UserManagerMongo";
+import { GraphqlPostDemoUi } from "../third-party-libs/GraphqlPostDemoUi";
+import WebSocketChat from "../components/WebSocketChat";
 
 interface RouteType {
   path: string;
@@ -136,8 +138,9 @@ export const routes: RouteType[] = [
 
   //Third party libraries
   { path: "/MuiXDataGrid", element: <MuiXDataGrid />, linkText: "Mui X Data Grid", newSection: true },
+  { path: "/GraphqlPostDemoUi", element: <GraphqlPostDemoUi />, linkText: "GraphQL Post Demo UI" },
   { path: "/UserManagerMongo", element: <UserManagerMongo />, linkText: "User Manager - Mongo" },
-  { path: "/UserManagerPgsql", element: <UserManagerPgsql />, linkText: "User Manager - Pgsql Mongo" },
+  { path: "/UserManagerPgsql", element: <UserManagerPgsql />, linkText: "Profile Manager - Pgsql Mongo" },
   { path: "/ReactChartJs2", element: <ReactChartJs2 />, linkText: "React Chart JS 2" },
   { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal - TanStack Axios" },
 
@@ -163,7 +166,8 @@ export const routes: RouteType[] = [
   { path: "/ShowHideDiv", element: <ShowHideDiv />, linkText: "Show/hide content" },
   { path: "/counter-example", element: <CounterExample />, linkText: "Counter" },
 
-  //Css, HTML
+  //Css, HTML, HTML5
   { path: "/FlexboxCssGrid", element: <FlexboxCssGrid />, linkText: "Flexbox and CSS Grid", newSection: true },
+  { path: "/WebSocketChat", element: <WebSocketChat />, linkText: "WebSocket Chat" },
 
 ]

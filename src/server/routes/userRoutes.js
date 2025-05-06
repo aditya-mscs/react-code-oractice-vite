@@ -1,5 +1,5 @@
 import express from 'express';
-import User from '../models/sql/user.js';
+import { User } from '../models/sql/user.js';
 import { userSchema } from '../schemas/userSchema.js';
 import { validateBody } from '../middleware/validateBody.js';
 
