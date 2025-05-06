@@ -10,6 +10,15 @@ export default defineConfig({
   define: {
     'process.env': process.env, // Ensures process.env works in Vite
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   plugins: [
     react(),
     // tailwindcss(),
