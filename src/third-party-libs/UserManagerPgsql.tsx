@@ -7,7 +7,7 @@ interface User {
   email: string;
 }
 
-export const UserManagerPgsqlMongo = () => {
+export const UserManagerPgsql = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [form, setForm] = useState<Omit<User, 'id'>>({ name: '', email: '' });
   const [editingId, setEditingId] = useState<number | null>(null);

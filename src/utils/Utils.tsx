@@ -47,7 +47,7 @@ import GreenLightRedLight from "../components/GreenLightRedLight";
 import { PatientPortalRegard } from "../components/PatientPortalRegard";
 import { ReactChartJs2 } from "../third-party-libs/React-chartjs-2";
 import MuiXDataGrid from "../third-party-libs/MuiXDataGrid";
-import { UserManagerPgsqlMongo } from "../third-party-libs/UserManagerPgsqlMongo";
+import { UserManagerPgsql } from "../third-party-libs/UserManagerPgsql";
 
 interface RouteType {
   path: string;
@@ -135,7 +135,7 @@ export const routes: RouteType[] = [
 
   //Third party libraries
   { path: "/MuiXDataGrid", element: <MuiXDataGrid />, linkText: "Mui X Data Grid", newSection: true },
-  { path: "/UserManagerPgsqlMongo", element: <UserManagerPgsqlMongo />, linkText: "User Manager - Pgsql Mongo" },
+  { path: "/UserManagerPgsql", element: <UserManagerPgsql />, linkText: "User Manager - Pgsql Mongo" },
   { path: "/ReactChartJs2", element: <ReactChartJs2 />, linkText: "React Chart JS 2" },
   { path: "/PatientPortalRegard", element: <PatientPortalRegard />, linkText: "Patient Portal - TanStack Axios" },
 
