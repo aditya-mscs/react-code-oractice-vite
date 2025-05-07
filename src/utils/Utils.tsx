@@ -34,7 +34,7 @@ import { ToDoListUsingContext } from "../components/ToDoListContext";
 import { BrwoserRouterExample } from "../components/BrwoserRouterExample";
 import CheckboxChange from "../components/CheckboxChange";
 import { LocalStorageBasic } from "../components/LocalStorageBasic";
-import { UseThemeExample } from "../hooks/useThemeExample"
+import { UseThemeExample } from "../hooks/UseThemeExample";
 import { AccordionExample } from "../components/AccordionExample";
 import { UseInputControlExample } from "../hooks/useInputControl";
 import FlexboxCssGrid from "../css-html/FlexboxCssGrid";
@@ -51,6 +51,7 @@ import { UserManagerPgsql } from "../third-party-libs/UserManagerPgsql";
 import { UserManagerMongo } from "../third-party-libs/UserManagerMongo";
 import { GraphqlPostDemoUi } from "../third-party-libs/GraphqlPostDemoUi";
 import WebSocketChat from "../components/WebSocketChat";
+import { PaypalSheetBeamsFrameBolts } from "../components/PaypalSheetBeamsFrameBolts";
 
 interface RouteType {
   path: string;
@@ -146,6 +147,7 @@ export const routes: RouteType[] = [
 
   //Examples - Challenges
   { path: "/GreenLightRedLight", element: <GreenLightRedLight />, linkText: "Green Light Red Light", newSection: true },
+  { path: "/PaypalSheetBeamsFrameBolts", element: <PaypalSheetBeamsFrameBolts />, linkText: "Paypal Sheet Beams Frame Bolts" },
   { path: "/DogGalleryPromiseAll", element: <DogGalleryPromiseAll />, linkText: "DogGallery - Promise All" },
   { path: "/DogGalleryAsyncAwait", element: <DogGalleryAsyncAwait />, linkText: "DogGallery - Async Await" },
   { path: "/MarketAxessStockFilter", element: <MarketAxessStockFilter />, linkText: "MarketAxess Stock Filter" },
