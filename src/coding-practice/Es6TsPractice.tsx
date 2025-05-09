@@ -95,6 +95,58 @@ export const Es6TsPractice = () => {
 
   //------------------- 6 RECURSION QUESTIONS/number questions ------------------
 
+  //flatten nested object
+
+
+  const flattenObj = (mainInput) => {
+    const output = {};
+
+    function recur(key, keyArr) {
+      console.log(key, keyArr);
+
+      //Check if key already in one of the output values
+      let alreadyAdded = false;
+      Object.keys(output).forEach(outputKey => {
+        if (output[outputKey].indexOf(key) > -1) {
+          //skip
+          if (key !== outputKey) output[outputKey].push(...keyArr);
+          console.log('skipped and added:', key, output[outputKey]);
+          alreadyAdded = true;
+        }
+      });
+      if (alreadyAdded) return;
+      console.log('Not skipped', key, keyArr);
+
+      //Check if key already in output
+      if (!output[key]) {
+        output[key] = [key, ...keyArr]
+      }
+
+
+      keyArr.forEach(letter => {
+        if (keys.indexOf(letter) > -1) {
+          recur(key, mainInput[letter])
+        }
+      })
+    }
+
+    const keys = Object.keys(mainInput);
+    keys.forEach(key => {
+      recur(key, input[key]);
+    });
+
+    console.log(output);
+    return output;
+  }
+  const input = {
+    "a": ["b", "c", "d"],
+    "d": ["e", "f"],
+    "x": ["y"],
+    "f": ["z"]
+  };
+  console.log('6.6 flattenObj: ', flattenObj(input)); // Outputs: { a: [ 'a', 'b', 'c', 'd' ], d: [ 'd', 'e', 'f' ], x: [ 'x', 'y' ], f: [ 'f', 'z' ] }
+
+
   //Regard interview question:
   const medication_to_ingredients = {
     "Advil": ["Ibuprofen"],
@@ -332,7 +384,7 @@ export const Es6TsPractice = () => {
   //Check if the parentheses are balanced
   //Time O(n), Space O(n) — uses a stack to track brackets
   const isParenBalanced = (str: string): boolean => {
-    const stack: string[] = [];
+    const stack = [];
     const map = {
       ")": "(",
       "]": "[",
@@ -340,18 +392,14 @@ export const Es6TsPractice = () => {
     };
     for (let i = 0; i < str.length; i++) {
       const char = str.charAt(i);
-      // console.log(char, '-->', map[char]);
       //if opening bracket, push to stack
       if (!map[char]) {
         stack.push(char); // ( ---> 1{2(
-        // console.log("pushing to stack", char, stack);
       }
       //else pop and check if matching bracket or not
       else {
         const lastChar = stack.pop();
-        // console.log("popping from stack", map[char], lastChar, stack);
         if (map[char] !== lastChar) {
-          // console.log('NOT GOOD. Return false');
           return false;
         }
       }
@@ -362,7 +410,22 @@ export const Es6TsPractice = () => {
   console.log('5 isParenBalanced: ', isParenBalanced("({[)}")); // Outputs: false
   console.log('5 isParenBalanced: ', isParenBalanced(")()[]{}")); // Outputs: false
 
-
+  function calculateMultipleParen(input) {
+    const result = []
+    input.forEach(str => {
+      if (isParenBalanced(str)) {
+        result.push(str);
+      }
+    })
+    console.log('5.1 calculateMultipleParen: ', result); // Outputs: [ '((()))', '(()())', '(())()', '()(())', '()()()' ]
+  }
+  calculateMultipleParen([
+    "((()))",
+    "(()())",
+    "(())()",
+    "()())",
+    "()()()"
+  ]);
 
   //Reverse the string
   //Time O(n), Space O(n) — split, reverse, and join
@@ -1123,6 +1186,7 @@ export const Es6TsPractice = () => {
     constructor() {
       this.root = null
     }
+    //Recursion
     _insertNode(node, newNode) {
       if (newNode.value < node.value) {
         if (node.left === null) {
@@ -1296,7 +1360,7 @@ export const Es6TsPractice = () => {
   queue.print(); // Outputs: 1 <- 2 <- 3
 
 
-  //------------------- 10 Linked list questions ------------------
+  //------------------- 10 Linked list questions/ Linked Lists questions ------------------
   class Node { //______ VA. Need to store 2 values so cant use just []. Second value "next" is a reference so Node class mandatory
     constructor(value) {
       this.value = value;
@@ -1305,7 +1369,7 @@ export const Es6TsPractice = () => {
   }
   class LinkedList { //_______ I WROTE class LinkedList = {
     constructor() {
-      this.head = null;
+      this.head = null; //______ THIS IS NODE AS WELL
     }
     append(value) {
       const newNode = new Node(value);
@@ -1339,7 +1403,7 @@ export const Es6TsPractice = () => {
         current = current.next;
       }
       if (current.next) {
-        current.next = current.next.next;
+        current.next = current.next.next; //________ current.next = current.next.next
       }
     }
 
@@ -1360,6 +1424,36 @@ export const Es6TsPractice = () => {
       if (current.next) {
         current.next = current.next.next;
       }
+    }
+
+    /*
+    Use two pointers:
+      •	slow moves one step at a time.
+      •	fast moves two steps at a time.
+      •	If there’s a cycle, fast will eventually “lap” slow and they will meet.
+    */
+    hasCycle() {
+      let slow = this.head;
+      let fast = this.head;
+      while (fast !== null && fast.next !== null) {
+        slow = slow.next;          // move 1 step
+        fast = fast.next.next;     // move 2 steps
+
+        if (slow === fast) {
+          return true;             // cycle detected
+        }
+      }
+      return false;                // no cycle
+    }
+
+    findMiddle() {
+      let slow = this.head;
+      let fast = this.head;
+      while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+      }
+      return slow; // middle node
     }
 
 
@@ -1384,6 +1478,7 @@ export const Es6TsPractice = () => {
   linkedList.prepend(0);
   linkedList.delete(2);
   linkedList.print(); // Outputs: 0 -> 1 -> 3
+  console.log('10.3: LinkedList findMiddle(): ', linkedList.findMiddle()); // Outputs: 1
 
   //Merge two sorted linked lists
   function mergeTwoLists(list1, list2) {
@@ -1449,7 +1544,7 @@ export const Es6TsPractice = () => {
     •	Player B wins the round, and both cards are placed at the bottom of playerDeckB,
   first their own, then playerDeckA’s card.
   The game ends when either player’s deck becomes empty (they can’t draw any more cards).
-  
+   
   Task: Determine how many rounds the duel lasts.
   */
   const cardDuel = (playerDeckA, playerDeckB) => {
@@ -1480,11 +1575,11 @@ export const Es6TsPractice = () => {
   •	'x' — an obstacle
   •	'#' — a part of the figure (the shape you want to drop)
   It is guaranteed that the figure consists of one piece, with all '#' cells connected by the sides.
-  
+   
   Task: Simulate how the figure would fall, and find the minimum number of obstacles ('x') that must be removed to allow the figure to touch the bottom row of the board with at least one of its cells.
   The figure falls straight down (gravity), maintaining its shape.
   The figure cannot rotate or move horizontally.
-
+  
   board = [
     ['.', '.', '.', '.', '.'],
     ['.', 'x', 'x', '.', '.'],

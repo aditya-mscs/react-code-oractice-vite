@@ -52,6 +52,7 @@ import { UserManagerMongo } from "../third-party-libs/UserManagerMongo";
 import { GraphqlPostDemoUi } from "../third-party-libs/GraphqlPostDemoUi";
 import WebSocketChat from "../components/WebSocketChat";
 import { PaypalSheetBeamsFrameBolts } from "../components/PaypalSheetBeamsFrameBolts";
+import TsClassExample from "../coding-practice/TsClassExample";
 
 interface RouteType {
   path: string;
@@ -112,6 +113,7 @@ export const routes: RouteType[] = [
   { path: "/Es6TsPractice", element: <Es6TsPractice />, linkText: "ES6 and TypeScript Practice", newSection: true },
   { path: "/es6-features", element: <ES6 />, linkText: "ES6 Features" },
   { path: "/TsFunctionDeclarations", element: <TsFunctionDeclarations />, linkText: "Typescript Function Declarations" },
+  { path: "/TsClassExample", element: <TsClassExample />, linkText: "Typescript Class Example" },
 
   //React, Next Hooks
   { path: "/useInputControlExample", element: <UseInputControlExample />, linkText: "useInputControl", newSection: true },
