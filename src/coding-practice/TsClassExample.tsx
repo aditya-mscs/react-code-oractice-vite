@@ -1,14 +1,20 @@
-//@ts-nocheck
+// @ts-nocheck
 import React from 'react';
 import GoBackToHome from '../components/GoBacktoHome';
+
+
+
+
 
 
 
 // ✅ INTERFACE — defines expected structure for implementing classes
 //
 interface Flyable {
-  fly(): void;
+  fly(); //_________ void means no return value
 }
+
+
 
 
 
@@ -18,10 +24,10 @@ interface Flyable {
 //
 abstract class Vehicle {
   // Abstract method — must be implemented by subclasses
-  abstract getType(): string;
+  abstract getType();
 
   // Concrete method — shared behavior
-  start(): string {
+  start() {
     return `${this.getType()} is starting...`;
   }
 }
@@ -31,21 +37,18 @@ abstract class Vehicle {
 
 
 
+
 // ✅ MAIN CLASS with key TypeScript class features
 //
 class Car extends Vehicle {
-  private speed: number;            // ❌ Not accessible outside this class
-  protected fuel: number;           // ☑️ Accessible in this and child classes
-  readonly brand: string;           // 🧊 Immutable once set via constructor
-  static totalCars = 0;             // 📦 Shared across all instances
+  private speed;            // ❌ Not accessible outside this class
+  protected fuel;           // ☑️ Accessible in this and child classes
+  readonly brand;           // 🧊 Immutable once set via constructor
+  static totalCars = 0;     // 📦 Shared across all instances
 
-  constructor(
-    public model: string,           // ✅ Public property created via parameter shorthand
-    brand: string,
-    speed: number = 0,
-    fuel: number = 100
-  ) {
+  constructor(model, brand, speed = 0, fuel = 100) {
     super();                        // 🔁 Call parent (Vehicle) constructor
+    this.model = model;            // Public via shorthand
     this.speed = speed;
     this.fuel = fuel;
     this.brand = brand;
@@ -55,34 +58,34 @@ class Car extends Vehicle {
   //
   // ✅ GETTER — access like `car.currentSpeed`
   //
-  get currentSpeed(): number {
+  get currentSpeed() {
     return this.speed;
   }
 
   //
   // ✅ SETTER — assign like `car.currentSpeed = 100`
   //
-  set currentSpeed(value: number) {
+  set currentSpeed(value) {
     if (value < 0) throw new Error("Speed can't be negative");
     this.speed = value;
   }
 
   // ✅ Implements abstract method
-  getType(): string {
+  getType() {
     return "Car";
   }
 
   //
   // ❌ PRIVATE METHOD — inaccessible outside class
   //
-  private secretEngineCode(): string {
+  private secretEngineCode() {
     return "🔒 SecretEngineV12-X";
   }
 
   //
   // ☑️ PROTECTED METHOD — only available within this class and subclasses
   //
-  protected consumeFuel(): string {
+  protected consumeFuel() {
     this.fuel -= 10;
     return `Fuel left: ${this.fuel}`;
   }
@@ -90,28 +93,28 @@ class Car extends Vehicle {
   //
   // ✅ PUBLIC PROXY to access private method (safe exposure)
   //
-  getSecretEngineCode(): string {
+  getSecretEngineCode() {
     return this.secretEngineCode();
   }
 
   //
   // ✅ PUBLIC PROXY to access protected method
   //
-  useFuel(): string {
+  useFuel() {
     return this.consumeFuel();
   }
 
   //
   // ✅ NORMAL PUBLIC METHOD
   //
-  drive(): string {
+  drive() {
     return `${this.brand} ${this.model} driving at ${this.speed} km/h`;
   }
 
   //
   // ✅ STATIC METHOD — called on class itself, not instance
   //
-  static stats(): string {
+  static stats() {
     return `Total cars built: ${Car.totalCars}`;
   }
 }
@@ -124,12 +127,12 @@ class Car extends Vehicle {
 // ✅ SUBCLASS — inherits from Car, implements Flyable
 //
 class FlyingCar extends Car implements Flyable {
-  fly(): string {
+  fly() {
     return `${this.model} is now flying!`;
   }
 
   // ✅ Overrides getType()
-  override getType(): string {
+  override getType() {
     return "FlyingCar";
   }
 }
@@ -143,7 +146,7 @@ class FlyingCar extends Car implements Flyable {
 //
 class TsClassExample extends React.Component {
   state = {
-    log: [] as string[]
+    log: []
   };
 
   // ✅ Instantiate a car instance once

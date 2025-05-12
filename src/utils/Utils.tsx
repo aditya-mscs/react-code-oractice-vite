@@ -53,6 +53,7 @@ import { GraphqlPostDemoUi } from "../third-party-libs/GraphqlPostDemoUi";
 import WebSocketChat from "../components/WebSocketChat";
 import { PaypalSheetBeamsFrameBolts } from "../components/PaypalSheetBeamsFrameBolts";
 import TsClassExample from "../coding-practice/TsClassExample";
+import { FormInputs } from "../components/FormInputs";
 
 interface RouteType {
   path: string;
@@ -162,6 +163,7 @@ export const routes: RouteType[] = [
   { path: "/ConnectFour", element: <ConnectFour />, linkText: "Connect Four" },
   { path: "/cart", element: <Cart />, linkText: "Cart" },
   { path: "/WordOmitter", element: <WordOmitter />, linkText: "Word Omitter" },
+  { path: "/FormInputs", element: <FormInputs />, linkText: "Form Inputs" },
   { path: "/CheckboxChange", element: <CheckboxChange />, linkText: "Checkbox Change" },
   { path: "/ArticleSort", element: <ArticleSort articlesData={ARTICLES_DATA} />, linkText: "Article Sort" },
   { path: "/ToDoListUsingContext", element: <ToDoListUsingContext />, linkText: "ToDoListUsingContext" },
