@@ -49,7 +49,8 @@ export const ES6 = () => {
   console.log('4. Object.assign:', Object.assign({}, { a: 1 }, { b: 2 })); // {a: 1, b: 2}
   const obj1x = { a: 1 }; const obj2x = { b: 2 }; const merged = Object.assign({}, obj1x, obj2x);
   console.log('4. Object.assign:', merged); // {a: 1, b: 2}
-  //NOTE: shallow copy only copies the first level of properties, while deep copy copies all levels
+
+  //NOTE:________  shallow copy only copies the first level of properties, while deep copy copies all levels
   const clone = structuredClone({ a: 1 }); console.log('5. structuredClone:', clone); // {a: 1}
 
   // Prototype and Property Manipulation

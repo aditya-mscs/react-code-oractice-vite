@@ -96,8 +96,6 @@ export const Es6TsPractice = () => {
   //------------------- 6 RECURSION QUESTIONS/number questions ------------------
 
   //flatten nested object
-
-
   const flattenObj = (mainInput) => {
     const output = {};
 
