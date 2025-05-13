@@ -34,24 +34,24 @@ export const DogGalleryAsyncAwait = () => {
 
       const thumbnailsData = {};
 
-      const fetchPromises = breeds.map(async (breed) => {
+      const fetchPromises = breeds.map(async (breed) => { //________ async here as well
         const res = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`); //ASYNC CALL SO AWAIT
         const imgData = await res.json(); //ASYNC CALL SO AWAIT
         thumbnailsData[breed] = imgData.message;
       });
 
-      // await Promise.all(fetchPromises); //_____ ALL RESPONSES SHD COME BACK so await Promise all
-      // console.log("All thumbnails fetched successfully");
-      // setThumbnails(thumbnailsData);
-      // setIsThumbnailsLoading(false);
+      await Promise.all(fetchPromises); //_____ ALL RESPONSES SHD COME BACK so await Promise all
+      console.log("All thumbnails fetched successfully", fetchPromises.length, thumbnailsData);
+      setThumbnails(thumbnailsData);
+      setIsThumbnailsLoading(false);
       //OR
       //_______ WHENEVER MULTIPLE CALLS ARE MADE TO THE SAME API, USE PROMISE.ALL
-      Promise.all(fetchPromises) //______ Promise.all this way EASY TO REMEMBER but not callback needed
-        .then(() => {
-          console.log("All thumbnails fetched successfully");
-          setThumbnails(thumbnailsData);
-          setIsThumbnailsLoading(false);
-        });
+      // Promise.all(fetchPromises) //______ Promise.all this way EASY TO REMEMBER but not callback needed
+      //   .then(data => {
+      //     console.log("All thumbnails fetched successfully: ", data);
+      //     setThumbnails(thumbnailsData);
+      //     setIsThumbnailsLoading(false);
+      //   });
     };
 
     fetchThumbnails();

@@ -443,6 +443,8 @@ export const ES6 = () => {
 
 
   console.log('----------------------3 MAP QUESTIONS-----------------------------');
+
+
   //MAP --> new Map(), .set(key, value), .has(key), .get(key), .delete(key), .clear(), .size .forEach()
   const map = new Map(); //NOTE : Map is an collection of ______ key-value pairs with unique keys
   map.set('name', 'John');
@@ -459,13 +461,15 @@ export const ES6 = () => {
   });
   map.clear(); //NOTE : clear all values from map
 
+
+
   const frequencyCounter = (arr) => {
     const map = new Map();
     arr.map(val => {
       if (map.has(val)) map.set(val, map.get(val) + 1);
       else map.set(val, 1);
     })
-    return Object.fromEntries(map); //______ IMP MAP to OBJECT
+    return Object.fromEntries(map); //____________ IMP MAP to OBJECT
   }
   console.log('3.1 frequencyCounter: ', frequencyCounter([1, 2, 3, 4, 5, 1, 2, 3])); // { '1': 2, '2': 2, '3': 2, '4': 1, '5': 1 }
 
@@ -544,6 +548,7 @@ export const ES6 = () => {
   // 17. Converting map to JSON-like object
   const mapToObject = Object.fromEntries(cityPopulationMap); //___________ IMP return Object.fromEntries(map);
   console.log('19. Map to Object:', mapToObject); // {}
+
 
   // 18. Reinitializing the map with new data
   cityPopulationMap.set('San Francisco', 884363).set('Boston', 692600);
@@ -1302,7 +1307,7 @@ export const ES6 = () => {
   const delayedPromise = new Promise((resolve) => {
     setTimeout(() => resolve('Delayed Result'), 1000);
   });
-  delayedPromise.then(result => console.log('3. Delayed:', result)); // Delayed Result after 1 second
+  delayedPromise.then(result => console.log('3. Delayed:', result)); // "3. Delayed: Delayed Result" after 1 second
 
   // 4. Using async/await with a promise
   async function asyncExample() {
@@ -1372,6 +1377,44 @@ export const ES6 = () => {
     8.	Promise (for handling asynchronous operations)
     9.	Intl (for internationalization and localization)
   */
+
+
+
+
+
+
+
+  console.log('----------------------JavaScript Coercion QUESTIONS-----------------------------');
+
+  // Case 1: [] + []
+  console.log("[] + [] =", [] + []);
+  // "" → both arrays coerced to empty strings → "" + "" → ""
+
+  // Case 2: [] + {}
+  console.log("[] + {} =", [] + {});
+  // [] → "" ; {} → "[object Object]" → "" + "[object Object]"
+
+  // Case 3: {} + []
+  console.log("{} + [] =", {} + []);
+  // {} is interpreted as a block → +[] = 0
+
+  // Fix: wrap {} in parentheses
+  console.log("({} + []) =", ({} + []));
+  // {} → "[object Object]", [] → "" → "[object Object]"
+
+  // Case 4: [] == false
+  console.log("[] == false:", [] == false);
+  // [] → "" → 0, false → 0 → 0 == 0 → true
+
+  // Bonus Case: [] == ![]
+  console.log("[] == ![]:", [] == ![]);
+  // [] == false (since ![] → false) → same as above → true
+
+  // More clarity
+  console.log("+[] =", +[]);           // 0
+  console.log("[] + 1 =", [] + 1);     // "1" → "" + "1"
+  console.log("{} + 1 =", {} + 1);     // NaN ({} parsed as object, +1 = NaN)
+  console.log("({} + 1) =", ({} + 1)); // "[object Object]1"
 
   return (
     <>

@@ -54,6 +54,7 @@ import WebSocketChat from "../components/WebSocketChat";
 import { PaypalSheetBeamsFrameBolts } from "../components/PaypalSheetBeamsFrameBolts";
 import TsClassExample from "../coding-practice/TsClassExample";
 import { FormInputs } from "../components/FormInputs";
+import { MutationObserverDemo } from "../components/MutationObserver";
 
 interface RouteType {
   path: string;
@@ -133,6 +134,7 @@ export const routes: RouteType[] = [
   { path: "/AutomaticBatching", element: <AutomaticBatching />, linkText: "Automatic Batching" },
   { path: "/ErrorBoundary", element: <ErrorBoundary children={<ErrorBoundaryThrowError />} />, linkText: "Error Boundary" },
   { path: "/VirtualizedListWrapper", element: <VirtualizedListWrapper />, linkText: "Virtualized List" },
+  { path: "/MutationObserver", element: <MutationObserverDemo />, linkText: "Mutation Observer" },
   { path: "/IntersectionObserver", element: <IntersectionObserver />, linkText: "Intersection Observer" },
   { path: "/FetchApiImages", element: <FetchLazyLoadImages />, linkText: "Fetch API" },
   { path: "/LazyLoadSuspense", element: <LazyLoadSuspense />, linkText: "Lazy Load Suspense" },

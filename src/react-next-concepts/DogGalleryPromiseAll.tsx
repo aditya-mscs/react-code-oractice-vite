@@ -44,8 +44,8 @@ export const DogGalleryPromiseAll = () => {
     );
 
     Promise.all(fetchPromises)
-      .then(() => {
-        console.log("All thumbnails fetched successfully");
+      .then(data => {
+        console.log("All thumbnails fetched successfully: ", data); //107 array of undefined as no await
         setThumbnails(thumbnailsData);
         setIsThumbnailsLoading(false);
       });
