@@ -292,6 +292,26 @@ export const Es6TsPractice = () => {
 
   //------------------- 1 STRING QUESTIONS ------------------
 
+  function getFirstUniqueChar(input) {
+    const map = new Map();
+
+    for (const char of input) {
+      console.log(char, map.get(char));
+      map.set(char, (map.get(char) || 0) + 1);
+    }
+    let result;
+    for (const [key, val] of map) {
+      if (val === 1) {
+        result = key;
+        break;
+      }
+    }
+    console.log(map, result);
+    return result || -1;
+  }
+
+  console.log(getFirstUniqueChar("leetcodel")); //t
+
   //Check string duplicates  - without extra memory
   //Time O(n²), Space O(1) — nested loops for comparison
   function removeDuplicates(str) {
@@ -537,6 +557,40 @@ export const Es6TsPractice = () => {
 
 
   //------------------- 2 ARRAY QUESTIONS ------------------
+
+
+  // Find duplicates in an array
+  const getDuplicates = (arr) => {
+    const newArr = [];
+    const map = new Map();
+    arr.forEach((item) => {
+      if (map.has(item)) { //--------> have to check if map has the item
+        map.set(item, map.get(item) + 1);
+      } else {
+        map.set(item, 1);
+      }
+    })
+    console.log(map);
+    map.forEach((value, key) => {
+      if (value > 1) {
+        newArr.push(key);
+      }
+    })
+    return newArr;
+  }
+  console.log('outputArr:', getDuplicates([1, 2, 2, 3, 4, 4, 5]));
+
+  //Better way
+  const frequencyCounter = (arr) => {
+    const map = new Map();
+    arr.map(val => {
+      if (map.has(val)) map.set(val, map.get(val) + 1);
+      else map.set(val, 1);
+    })
+    return Object.fromEntries(map); //____________ IMP MAP to OBJECT
+  }
+  console.log('3.2 frequencyCounter: ', frequencyCounter([1, 2, 3, 4, 5, 1, 2, 3])); // { '1': 2, '2': 2, '3': 2, '4': 1, '5': 1 }
+
 
   /*
   Snail traversal: You’re given a 1D array (nums) and asked to convert it into a 2D array of size rowsCount × colsCount by filling column-wise.

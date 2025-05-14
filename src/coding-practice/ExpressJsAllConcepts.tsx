@@ -112,7 +112,7 @@ app.use((err, req, res, next) => {
 
 
 // ✅ 11. ASYNC HANDLING (with try/catch)
-app.get('/async', async (req, res, next) => {
+app.get('/asyncApi', async (req, res, next) => { //__________ async before ()
   try {
     const data = await fetchSomeData(); // your async function
     res.json(data);
@@ -128,6 +128,7 @@ app.get('/async', async (req, res, next) => {
 import dotenv from 'dotenv';
 dotenv.config();
 app.listen(process.env.PORT);
+
 
 
 // ✅ 13. SECURITY PRACTICES
@@ -196,7 +197,7 @@ app.post('/register',
 
 
 
-  
+
 
 // ✅ 17. FILE UPLOAD (with multer)
 // npm install multer

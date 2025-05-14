@@ -58,7 +58,7 @@ console.log(__dirname, __filename);
 
 
 // 📦 ES Modules
-import { fileURLToPath } from 'url'; //______________ fileURLToPath from url / import.meta.url / path.direname
+import { fileURLToPath } from 'url'; //______________ fileURLToPath(import.meta.url) from url / path.direname
 const __filename = fileURLToPath(import.meta.url);
 
 import path from 'path';
@@ -70,7 +70,7 @@ const __dirname = path.dirname(__filename);
 // ✅ 12. PROCESS / GLOBALS
 // ==========================================
 console.log(process.argv);            // CLI args
-console.log(process.env.NODE_ENV);    // Environment
+console.log(process.env.NODE_ENV === 'developement');    // Environment
 process.on('SIGINT', () => process.exit());
 
 
@@ -117,7 +117,7 @@ const server = http.createServer((req, res) => {
 
 const express = require('express'); //_______ app.use(express.json()) / app.listen(4000)
 const app = express();
-app.use(express.json());
+app.use(express.json()); // Parse JSON ________ body
 app.get('/', (req, res) => res.send('Hello world'));
 app.listen(4000);
 

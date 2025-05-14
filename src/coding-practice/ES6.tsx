@@ -238,6 +238,22 @@ export const ES6 = () => {
   console.log('14. some:', [1, 2, 3].some(x => x > 2)); // true ____________ some/every returns boolean
   console.log('15. every:', [1, 2, 3].every(x => x > 0)); // true
 
+  //return from some
+  [1, 2, 'stop', 4].some(item => {
+    if (item === 'stop') return true; // exits early
+    console.log('14.1 return from some: ', item);
+    return false;
+  }); //1,2
+
+  //return from every
+  [1, 2, 'skip', 4, 'stop', 5].every(item => {
+    if (item === 'skip') return true;  // continue
+    if (item === 'stop') return false; // break
+    console.log('15.1 return from every: ', item);
+    return true;
+  }); //1,2,4
+
+
   // 🧩 Transformation
   console.log('16. concat:', [1, 2].concat([3, 4])); // _____________[1, 2, 3, 4]
   console.log('17. join:', [1, 2, 3].join('-')); // "1-2-3" //---> .join(separator?: string): string
@@ -443,35 +459,15 @@ export const ES6 = () => {
 
 
   console.log('----------------------3 MAP QUESTIONS-----------------------------');
-
-
   //MAP --> new Map(), .set(key, value), .has(key), .get(key), .delete(key), .clear(), .size .forEach()
-  const map = new Map(); //NOTE : Map is an collection of ______ key-value pairs with unique keys
-  map.set('name', 'John');
-  map.set('age', 30);
-  map.set('age', 31);
-  const color = 'red';
-  map.set(color, 'green');
-  console.log(map); // Map(3) { 'name' => 'John', 'age' => 31, 'red' => 'green' }
-  map.delete('name');
-  console.log(map.has('name')); // false
-  console.log(map.size); // 1
-  map.forEach((value, key) => {
-    console.log(`${key}: ${value}`); //NOTE : iterate over map
-  });
-  map.clear(); //NOTE : clear all values from map
 
 
-
-  const frequencyCounter = (arr) => {
-    const map = new Map();
-    arr.map(val => {
-      if (map.has(val)) map.set(val, map.get(val) + 1);
-      else map.set(val, 1);
-    })
-    return Object.fromEntries(map); //____________ IMP MAP to OBJECT
-  }
-  console.log('3.1 frequencyCounter: ', frequencyCounter([1, 2, 3, 4, 5, 1, 2, 3])); // { '1': 2, '2': 2, '3': 2, '4': 1, '5': 1 }
+  //Loop and continue, break from map
+  for (const [key, val] of new Map(Object.entries({ a: 1, b: 2, c: 'skip3', d: 4, e: 'stop', f: 5 }))) {
+    if (val === 'skip3') continue;
+    if (val === 'stop') break;
+    console.log('3.3 Loop and break from map: ', val);
+  } //1,2,4
 
   //ChatGpt
   // 1. Creating a Map
@@ -554,31 +550,23 @@ export const ES6 = () => {
   cityPopulationMap.set('San Francisco', 884363).set('Boston', 692600);
   console.log('20. Reinitialized map:', cityPopulationMap); // Map(2) {'San Francisco' => 884363, 'Boston' => 692600}
 
+  const map = new Map(); //NOTE : Map is an collection of ______ key-value pairs with unique keys
+  map.set('name', 'John');
+  map.set('age', 30);
+  map.set('age', 31);
+  const color = 'red';
+  map.set(color, 'green');
+  console.log(map); // Map(3) { 'name' => 'John', 'age' => 31, 'red' => 'green' }
+  map.delete('name');
+  console.log(map.has('name')); // false
+  console.log(map.size); // 1
+  map.forEach((value, key) => {
+    console.log(`${key}: ${value}`); //NOTE : iterate over map
+  });
+  map.clear(); //NOTE : clear all values from map
 
 
 
-  // Find duplicates in an array
-  const temp = [1, 2, 2, 3, 4, 4, 5]
-  const getDuplicates = (arr) => {
-    const newArr = [];
-    const map = new Map();
-    arr.forEach((item) => {
-      if (map.has(item)) { //--------> have to check if map has the item
-        map.set(item, map.get(item) + 1);
-      } else {
-        map.set(item, 1);
-      }
-    })
-    console.log(map);
-    map.forEach((value, key) => {
-      if (value > 1) {
-        newArr.push(key);
-      }
-    })
-    return newArr;
-  }
-  const outputArr = getDuplicates(temp);
-  console.log('outputArr:', outputArr);
 
 
 
